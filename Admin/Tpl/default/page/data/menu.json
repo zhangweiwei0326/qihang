@@ -1,0 +1,51 @@
+[{
+    "sort" : "1",
+    "name" : "用户中心",
+    "list" : [{
+            "sort" : "1",
+            "name" : "网站设置",
+            "url" : "/qihang/admin.php/Set/index"          
+        },{  
+            "sort" : "2",
+            "name" : "用户列表",
+            "url" : "/qihang/admin.php/User/index"            
+        },{  
+            "sort" : "3",
+            "name" : "导航管理",
+            "url" : "/qihang/admin.php/category/index"             
+        }]
+},
+{
+    "sort" : "1",
+    "name" : "项目管理",
+    "list" : [{
+            "sort" : "1",
+            "name" : "文章管理",
+            "url" : "/qihang/admin.php/Article/index"            
+        },{  
+            "sort" : "2",
+            "name" : "留言管理",
+            "url" : "/qihang/admin.php/comment/index",
+            "data_id" : "userList"               
+        },{  
+            "sort" : "3",
+            "name" : "需求管理",
+            "url" : "/qihang/admin.php/Require/index"            
+        },{  
+            "sort" : "4",
+            "name" : "项目管理",
+            "url" : "/qihang/admin.php/project/index"            
+        },{  
+            "sort" : "5",
+            "name" : "任务管理",
+            "url" : "/qihang/admin.php/Task/index"            
+        },{  
+           "sort" : "6",
+           "name" : "网址收藏",
+           "url" : "/qihang/admin.php/website/index"            
+		},{  
+           "sort" : "7",
+           "name" : "友情链接",
+           "url" : "/qihang/admin.php//friendlyLink/index"            
+		}]
+}]

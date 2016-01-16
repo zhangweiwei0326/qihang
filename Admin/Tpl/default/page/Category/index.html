@@ -1,0 +1,83 @@
+<{extends file="../Public/layout.html"}>
+<{block name="content"}>
+<div class="padding-10">
+	<div class="btn-list">
+		导航：<ul>
+		<{foreach item=vo from=$list}>
+			<li>
+				<a href="__URL__/edit/?id=<{$vo['id']}>"><{$vo['name']}></a>
+			</li>
+		<{/foreach}>
+		</ul>
+	</div>
+	<div class="lhz-form">
+		<form action="__URL__/add" method="post">
+			<ul>
+				<li>
+					<label>名称：</label>
+					<div class="input-part">
+						<input name="name" type="text" />
+					</div>
+				</li>
+				<li>
+					<label>url：</label>
+					<div class="input-part">
+						<input name="url" type="text" />
+					</div>
+				</li>
+				<li>
+					<label>排序：</label>
+					<div class="input-part">
+						<input name="sort" type="text" />
+					</div>
+				</li>
+				<li>
+					<label>显示设置：</label>显示
+					<div class="input-part">
+						<input type="radio" name="ifShow" value="1" checked />
+						不显示
+						<input type="radio" name="ifShow" value="0" />
+					</div>
+				</li>
+				<li>
+					<div class="from-footer">
+						<input name="add" type="submit" class="btn btn-primary" value="提交" />
+					</div>
+				</li>
+			</ul>
+		</form>
+	</div>
+	<div class="btn-list">分类：
+		<ul>
+		<{foreach item=vo from=$categoryList}>
+			<li>
+				<a href="__URL__/cate_edit/?id=<{$vo['id']}>"><{$vo['name']}></a>
+			</li>
+		<{/foreach}>
+		</ul>
+	</div>
+	<div class="lhz-form">
+		<form action="__URL__/cate_add" method="post">
+			<ul>
+				<li>
+					<label>名称：</label>
+					<div class="input-part">
+						<input name="name" type="text" />
+					</div>
+				</li>
+				<li>
+					<label>类别：</label>
+					<div class="input-part">
+						<input name="type" type="text" />
+					</div>
+				</li>
+				<li>
+					<div class="from-footer">
+						<input name="add" type="submit" class="btn btn-primary" value="提交" />
+					</div>
+				</li>
+			</ul>
+		</form>
+	</div>
+</div>
+<{/block}>

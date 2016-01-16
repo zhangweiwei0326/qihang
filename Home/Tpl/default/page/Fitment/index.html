@@ -1,0 +1,48 @@
+{extends file="../Public/base.html"}
+{block name="content"}
+<script type="text/javascript" src="__ROOT__/Home/Tpl/default/js-src/index.js"></script>
+<div class="wrap"> 
+  <div class="tag-show">
+    tag:
+    {section loop=$taglist name=tag}
+			<a href="###" data-tagId="{$taglist[tag].id}">{$taglist[tag].name}</a>
+	{/section}
+  </div>
+  <div class="main-body clearfix">
+
+      <div class="mainContent">
+      <div class="innerContent">
+        <div class="list border">
+
+	       {section loop=$list name=article}
+	            <ul class="post">
+	              <li class="list-title">{if $smarty.section.article.index lt 2}<span style="color:red;">[最新]</span>{/if}
+	 <if condition="$article['is_original'] eq 1 ">[原创]<else /></if>
+	<a href="__APP__/Article/detail/?id={$list[article].id}" target="_blank">{$list[article].title}</a></li>
+	              <li>
+	        <span class="info">
+	          <span class="info-cate">类别：{$list[article].typeName}</span>
+	        <span class="line">|</span>
+	        <span class="info-author"><font>admin</font> </span>
+	        <span class="info-time"><font>{$list[article].add_date}</font></span>
+	        <span class="line">|</span>
+	        <span class="info-view"><font>{$list[article].click_count}</font></span>
+	        </span>
+	        </li>
+	        <li class="list-text clearfix">
+	          {$list[article].content}</li>
+	          </ul>
+	       {/section}
+
+          <div class="ad"></div>
+          <div class="lhz-page">{$page}</div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sideBar">
+      {include  file="../Public/side.html"}
+  	</div>
+  </div>
+{/block}

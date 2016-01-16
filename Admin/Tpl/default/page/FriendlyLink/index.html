@@ -1,0 +1,27 @@
+<{extends file="../Public/layout.html"}>
+
+<{block name="head" append}>
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".btn").click(function(){
+	  var url = $(this).attr("data-href");
+	  $("#sideBarRight .iframes").load(url);
+	});
+});
+</script> 
+<{/block}>
+
+<{block name="content"}>
+<div class="mainContent">
+<a href="__APP__/friendlyLink/add" data-href="__APP__/friendlyLink/add"" class="btn btn-primary">添加新网址</a>
+<ul class="web-site">
+<{foreach item=website from=$list}>
+    <li>
+      <input type="checkbox" name="id[]"
+            value="<{$website['id']}>" style="margin-right: 10px;" />
+      <a href="__URL__/edit/?id=<{$website['id']}>" data-href="__URL__/edit/?id=<{$website['id']}>"><{$website['name']}></a>
+      </li>
+  <{/foreach}>
+</ul>
+</div>
+<{/block}>

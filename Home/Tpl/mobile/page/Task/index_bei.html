@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="__ROOT__/Public/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="__ROOT__/Public/css/reset.css" />
+<link rel="stylesheet" href="__ROOT__/Public/css/common.css" />
+<link rel="stylesheet" href="__ROOT__/Home/Tpl/default/css/index.css" />
+<link rel="stylesheet" href="__ROOT__/Public/lhz_table/skins/default/css/lhz_table.css" />
+<load href="__ROOT__/Public/jqTableWidget/js/jquery.js" />
+<script language="javascript" type="text/javascript" src="__ROOT__/Home/Tpl/default/js/table.js"></script>
+<script language="javascript" type="text/javascript" src="__ROOT__/Public/js/common.js"></script>
+<load href="__ROOT__/Public/jqTableWidget/jqTableWidget_simple.js" />
+<load href="__ROOT__/Public/lhz_table/lhz_table.js" />
+<script type="text/javascript"> 
+    var URL = "__URL__";
+    var APP = "__APP__";
+    var ROOT = "__ROOT__"; 
+ $(document).ready(function(){
+
+ 	$("#table_id").lhz_table({
+		//"getDataUrl" : '__ROOT__/Public/lhz_table/example/data.js'
+		"getDataUrl" : URL + "/getData"
+	});
+
+	function alertTest(obj){
+      var str = JSON.stringify(obj)           
+      alert(str); //用于测试      	   	
+    }
+	
+	var filterKeepJson = {"filterSearch":[{
+		"id":"status",
+		"defaultName": "",
+		"defaultCondition": "equal",
+		"idSerial": 1,
+		"defaultOption": ""             
+	   }]};
+		   
+	jQuery("#task_box").jqTableWidget({ 
+   		frame_id : 'task_box',
+		filterKeep : filterKeepJson,
+   		setting : setting,
+		treeShow :{
+		  enable:true,
+		  data:{"pId":"pId","showKey":"title"}
+		},
+   		data_url : URL + "/showData",
+   		data_key : 'id',
+   		add_url : URL + "/add_ajax",
+   		del_url : URL + "/del",
+   		edit_url : URL + "/update",
+   		close_url : URL + "/close",
+		save_filter_url : URL + "/save_fliter",
+		pageSize : '10',
+   		edit_switch : 'on',
+   		do_switch : 'on',
+		callbacks :{
+          addSub : addSub,
+		  editTask : editTask
+        },
+    });
+}); 
+
+function addSub(id){  		
+	var parentTaskId = id;
+	jQuery("#taskPid").val(parentTaskId);
+		
+	location.href='__URL__/Add/?id='+id;
+}
+
+function editTask(id){  				
+	location.href='__URL__/edit/?id='+id;
+}
+
+</script>
+<title>任务进度</title>
+</head>
+<body>
+	<include file="Public:head"/>
+<div class="wrap">
+    <div class="main-body radius">
+    	<div id="table_id">loading...</div>
+      <div id="task_box"></div>
+
+      <table><thead></thead></table>
+    </div>
+  </div>
+  <include file="Public:footer" /> </div>
+</body>
+</html>

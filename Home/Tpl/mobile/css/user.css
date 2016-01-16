@@ -1,0 +1,62 @@
+/*!----------------------------------
+* user
+**----------------------------------*/
+.register {
+	border: 1px #dedede solid;
+	border-radius: 5px;
+	background: #FFF;
+	padding: 10px;
+	margin-top: 50px;
+}
+.left-sidebar {
+	float: left;
+	width: 260px;
+	height: 300px;
+	border-right: 1px #E5E5E5 solid;
+	font-size: 14px;
+	padding-top: 50px;
+}
+.left-sidebar h1 {
+	font-size: 15px;
+	font-weight: normal;
+	text-align: center;
+}
+.left-sidebar p {
+	text-align: center;
+}
+.right-sidebar {
+	margin-left: 10px;
+	float: left;
+}
+.register ul {
+	margin-top: 10px;
+}
+.register ul li {
+	margin-bottom: 20px;
+}
+.register ul li label {
+	width: 100px;
+	text-align: right;
+}
+.register ul li input[type="text"] {
+	width: 200px;
+}
+.register label .icon-must {
+	color: #FF0000;
+	font-weight: 400px;
+	margin-right: 6px;
+	font-size: 14px;
+}
+.note {
+	margin-left: 10px;
+	color: #999;
+}
+.form-tip {
+	display: inline-block;
+	margin-left: 5px;
+	padding-left: 20px;
+	height: 28px;
+	line-height: 28px;
+	vertical-align: middle;
+	color: red;
+}

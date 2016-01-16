@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>梨花寨－前端教程，开源分享，插件开发</title>
+<meta content="梨花寨，lihuazhai.com，前端，html，css，js，jquery,php，教程，插件，开源" name="Keywords">
+<meta content="梨花寨（lihauzhai.com）是一个前端技术分享平台。包括前端开发的技巧总结、 经验分享，网站推广运营技巧，视频教程录制发布，插件组件开发。" name="Description">
+<!--正式-->
+<!--
+<link rel="stylesheet" href="__PUBLIC__/css/reset.min.css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.min.css" />
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/css/admin.min.css" />
+-->
+<link rel="stylesheet" href="__PUBLIC__/css/reset.css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.css" />
+
+<!-- <link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/css/admin.css" /> -->
+
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/css/common.css" />
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/page/Login/css/login.css" />
+
+<script type="text/javascript" src="__PUBLIC__/Juicer/juicer.js"></script>
+<script language="javascript" type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script language="javascript" type="text/javascript" src="__PUBLIC__/js/jquery.cookie.js"></script>
+<script language="javascript" type="text/javascript" src="__ROOT__/Admin/Tpl/default/js/admin.js"></script>
+</head>
+<body>
+	<header class="header">
+		<div class="grid-990 clearfix">
+			<h1 class="admin-logo">梨花寨</h1>
+			<nav>
+				<ul class="admin-nav">
+					<li>
+						<a href="http://www.lihuazhai.com" class="actived">首页</a>
+					</li>
+					<li>
+						<a href="http://localhost__ROOT__/" target="_blank">本地前台主页</a>
+					</li>
+					<li>
+						<a href="http://www.lihuazhai.com" target="_blank">前台主页</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<section id="mainBg">
+		<div class="login-main-body">
+		<div class="login-main container">
+			<div class="login_box">
+				<div class="ui-form-title">
+					<h2>后台登陆</h2>
+				</div>
+				<form action="__APP__/Login/login" method="post">
+					<ul>
+						<li>
+							<label>用户名：</label>
+							<input name="email" type="text" />
+						</li>
+						<li>
+							<label>密&nbsp;&nbsp;码：</label>
+							<input name="password" type="password" />
+						</li>
+						<li>
+							<input name="login" type="submit" value="登录" class="btn btn-primary" />
+						</li>
+					</ul>
+				</form>
+			</div>
+			</div>
+		</div>
+	</section>
+	<footer id="footer">
+	<div class="footer grid-990">
+		<div class="container">
+			Copyright © 2012-2015 lihuazhai.com, All rights reserved. | lihuazhai.com 梨花寨-前端技术交流平台
+		</div>
+		</div>
+	</footer>
+</body>
+</html>

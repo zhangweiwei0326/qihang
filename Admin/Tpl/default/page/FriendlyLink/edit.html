@@ -1,0 +1,41 @@
+<{extends file="../Public/layout.html"}>
+
+<{block name="content"}>
+<div class="mainContent">
+  <form action="__URL__/update" method="post">
+    <div class="show-field">
+      <div class="item-list">
+        <label>网站名称：</label>
+        <div class="field-value">
+          <input type="text" name="name" value="<{$list['name']}>" />
+        </div>
+      </div>
+      <div class="item-list">
+        <label>url：</label>
+        <div class="field-value">
+          <input type="text" name="url" value="<{$list['url']}>" />
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">是否显示：</label>
+        <div class="controls">
+          <{if $list['is_show'] eq 1 }> 显示
+            <input type="radio" name="is_show" value="1" checked />
+            不显示
+            <input type="radio" name="is_show" value="0" />
+              <{else}>
+            显示
+            <input type="radio" name="is_show" value="1" />
+            不显示
+            <input type="radio" name="is_show" value="0" checked />
+           <{/if}>
+        </div>
+      </div>
+
+    </div>
+    <input type="hidden" name="id" value="<{$list['id']}>" />
+    <input type="submit" value="提交" name="add" class="btn" />
+    <a href="javascript:window.history.go(-1);" class="btn">返回</a>
+  </form>
+</div>
+<{/block}>

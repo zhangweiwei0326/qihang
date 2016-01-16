@@ -1,0 +1,7 @@
+/* ao-tab-switch */
+.ao-tab-switch { border-bottom: 1px solid #ccc; }
+.ao-tab-switch li { display: inline; margin: 0 3px 0 0; }
+.ao-tab-switch li .ao-item-inner { background: -moz-linear-gradient(100% 100% 90deg, #ebebeb, #fefefe) repeat scroll 0 0 #eeeeee; border-color: #DEDEDE #DEDEDE #DEDEDE; border-style: solid solid none; border-top-left-radius: 3px; border-top-right-radius: 3px; border-width: 1px 1px medium; display: inline-block; padding: 3px 12px; position: relative; top: 1px; }
+.ao-tab-switch li a:hover { border-color: #94ADD5; text-decoration: none; }
+.ao-tab-switch li.active a { background: none repeat scroll 0 0 #FFFFFF; }
+.ao-tab-switch li a { background: -moz-linear-gradient(100% 100% 90deg, #ebebeb, #fefefe) repeat scroll 0 0 #eeeeee; border-color: #DEDEDE #DEDEDE #DEDEDE; border-style: solid solid none; border-top-left-radius: 3px; border-top-right-radius: 3px; border-width: 1px 1px medium; display: inline-block; padding: 3px 12px; position: relative; top: 1px; }

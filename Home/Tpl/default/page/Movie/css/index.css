@@ -1,0 +1,24 @@
+/*!----------------------------------
+* index
+**----------------------------------*/
+/* banner */
+.banner {
+	height: 200px;
+	display: none;
+}
+.banner-lt {
+	float: left;
+	width: 800px;
+	height: 100%;
+	border: 1px #dedede solid;
+}
+.banner-rt {
+	float: left;
+	width: 400px;
+	margin-left: 20px;
+	height: 100%;
+	border: 1px #dedede solid;
+}
+.notice-right {
+	font-size: 1.4rem;
+}

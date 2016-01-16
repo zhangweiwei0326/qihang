@@ -1,0 +1,16 @@
+<div class="comment-box">
+	<fieldset>
+		<legend class="comment-title">需求及问题提交：</legend>
+		<div class="add-comment">
+			<input type="hidden" name="type" id="type" value="<{$type}>" />
+			<input type="hidden" name="type" id="subject_id" value="<{$list['id']}>" />
+			<textarea id="commentText" name="content" maxlength="280" class="comment-textarea" value="请在这里发表您个人看法，发言时注意文明!">请在这里发表您的个人见解!</textarea>
+			<p style="text-align:right; padding-right:5px;">
+				<span style="color:#999;">点击图片更换数字</span>
+				<img src='__URL__/verify/' id="verifyImg" onclick="fleshVerify()" />
+				<input type="text" name="verify" id="verify" style="width:45px;height:18px; margin-left:5px;margin-right: 3px;" />
+				<input name="add" type="button" id="add_comment" class="btn btn-primary" value="发布" />
+			</p>
+		</div>
+	</fieldset>
+</div>

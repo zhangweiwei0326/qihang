@@ -1,0 +1,98 @@
+/*===================login=======================*/
+.header {
+	background: #fff;
+}
+.grid-990 {
+	margin: 0 auto;
+	width: 990px;
+}
+.admin-logo {
+	float: left;
+	font-size: 24px;
+	color: #4265a9;
+	font-family: "微软雅黑,arial,Hiragino Sans GB,宋体";
+	font-weight: bolder;
+}
+.admin-nav {
+	float: right;
+	height: 45px;
+	width: 410px;
+	font-size: 14px;
+	font-weight: bold;
+}
+.admin-nav li {
+	margin-right: 50px;
+}
+.admin-nav a {
+	color: #4e4d4d;
+	padding-left: 15px;
+}
+.admin-nav a:hover {
+	color: #ff6600;
+	text-decoration: none;
+	background: url("../images/red_lingxing.png") left center no-repeat;
+}
+.admin-nav a.actived {
+	color: #ff6600;
+	background: url("../images/red_lingxing.png") left center no-repeat;
+}
+.admin-nav li {
+	float: left;
+	height: 45px;
+	line-height: 45px;
+	position: relative;
+}
+.login-main-body {
+	background: #9f461c url("../images/admin_login_bg_1.jpg") center center no-repeat;
+	height: 450px;
+}
+.login-main{
+	width: 980px;
+	height: 100%;
+	margin: 0 auto;
+}
+.login_box {
+	background-color:#000; 
+	filter:alpha(opacity=50);  
+    -moz-opacity:0.5;  
+    -khtml-opacity: 0.5;  
+    opacity: 0.5; 
+	color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0);
+	width: 258px;
+	float: right;
+	margin: 80px 20px auto auto;
+	padding: 10px 20px;
+}
+
+.ui-form-title {
+	border-bottom: 1px solid #BBBBBB;
+	padding: 0 0 5px;
+}
+.ui-form-title h2 {
+	font-size: 16px;
+	line-height: 21px;
+	text-align: left;
+}
+.login_box li {
+	position: relative;
+	margin-top: 15px;
+}
+.login_box label {
+	display: inline-block;
+	width: 56px;
+	font-size: 12px;
+}
+.login_box li input[type="text"], .login_box li input[type="password"] {
+	width: 243px;
+}
+.login_box .btn {
+	width: 100%;
+}
+.footer {
+	border-top: 1px solid #ECECEC;
+    margin-top: 15px;
+	color: #A0A0A0;
+	height: 36px;
+	line-height: 36px;
+}

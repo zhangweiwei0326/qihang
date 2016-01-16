@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="__ROOT__/Public/css/theme.css" />
+<link rel="stylesheet" href="__ROOT__/Home/Tpl/default/css/index.css" />  
+<script type="text/javascript" src="__ROOT__/Public/ueditor/editor_config.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/ueditor/editor_all.js"></script>
+<link rel="stylesheet"
+	href="__ROOT__/Public/ueditor/themes/default/ueditor.css" />
+<load href="__ROOT__/Public/jqTableWidget/js/jquery.js" />
+<load href="__ROOT__/Public/jqTableWidget/js/My97DatePicker/WdatePicker.js" />
+<title>梨花寨－前端教程，开源分享，插件开发</title>
+<meta content="梨花寨，lihuazhai.com，前端，html，css，js，jquery,php，教程，插件，开源" name="Keywords">
+<meta content="梨花寨（lihauzhai.com）是一个前端技术分享平台。包括前端开发的技巧总结、 经验分享，网站推广运营技巧，视频教程录制发布，插件组件开发。" name="Description">
+</head>
+<body>
+<div class="wrap"> 
+ <include file="Public:head"/>
+  <div class="main-body clearfix">
+  <div class="task-add">
+    <form action="__URL__/updateForm" method="post" class="form-horizontal">  
+    	<div class="control-group">
+		   <label class="control-label" for="title">标题：</label>
+		   <div class="controls"> 
+            <input name="title" type="text" value="{$list['title']}" class="input-title" id="title" />
+		   </div>
+	    </div>
+	    
+	    <div class="control-group">
+		   <label class="control-label" for="project">所属项目：</label>
+		   <div class="controls"> 
+            <select name="projectId">
+             <volist name="projectList" id="project">
+              <option value="{$project['id']}">{$project['title']}</option>
+             </volist>
+            </select>
+		   </div>
+	    </div>
+	    
+	    <div class="control-group">
+		   <label class="control-label" for="project">类型：</label>
+		   <div class="controls"> 
+            <select name="type">
+             <option value="daily">普通任务</option>
+             <option value="bug">bug修复</option>
+            </select>
+		   </div>
+	    </div>
+	    
+	    <div class="control-group">
+		   <label class="control-label" for="project">优先级：</label>
+		   <div class="controls"> 
+            <select name="priority">
+             <option value="p1">P1</option>
+             <option value="p2">P2</option>
+             <option value="p3">P3</option>
+             <option value="p4">P4</option>
+            </select>
+		   </div>
+	    </div>
+	    
+	    <div class="control-group">
+		   <label class="control-label" for="project">状态：</label>
+		   <div class="controls"> 
+            <select name="status">
+             <option value="new">新提交</option>
+             <option value="ing">进行中</option>
+             <option value="pause">暂停中</option>
+             <option value="finished">已完成</option>
+             <option value="closed">已关闭</option>
+            </select>
+		   </div>
+	    </div>
+	    
+	    <div class="control-group">
+		   <label class="control-label" for="project">开始时间：</label>
+		   <div class="controls"> 
+              <input name="startDate" type="text" class="Wdate" onclick="WdatePicker()" />
+		   </div>
+	    </div>
+	    
+	    <div class="control-group">
+		   <label class="control-label" for="project">完成比例：</label>
+		   <div class="controls"> 
+              <input name="percent" type="text" />
+		   </div>
+	    </div>
+	    
+	    <div class="control-group">
+		   <label class="control-label" for="project">描述：</label>
+		   <div class="controls"> 
+              <script type="text/plain" id="myEditor">{$list['title']}</script>
+		   </div>
+	    </div>
+	    
+	    <div class="form-actions">
+	      <input name="id" type="hidden" value="{$list['id']}" />
+          <input name="update" type="submit" class="btn btn-primary"  value="提交" />
+        </div>
+    </form>
+  </div>
+<script type="text/javascript">
+    var editor = new baidu.editor.ui.Editor({
+       textarea:'description'
+     });
+    editor.render("myEditor");
+</script> 
+  <include file="Public:footer" />
+ </div>  
+</body>
+</body>
+</html>

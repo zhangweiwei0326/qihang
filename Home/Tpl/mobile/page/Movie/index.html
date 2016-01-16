@@ -1,0 +1,79 @@
+<{extends file="../Public/base.html"}>
+<{block name="head" append}>
+<script type="text/javascript" src="__ROOT__/Home/Tpl/default/js-src/index.js"></script>
+<{/block}>
+
+<{block name="content"}>
+<div class="wrap"> 
+  <div class="main-body clearfix">
+
+      <div class="mainContent">
+      <div class="innerContent">
+        <div class="list border">
+          <volist name="list" id="article" offset="0" length='2'>
+            <ul class="post">
+              <li class="list-title"><span style="color:red;">[最新]</span><if condition="$article['is_original'] eq 1 ">[原创]<else /></if>
+<a href="__URL__/showDetail/?id=<{$article['id']}>" target="_blank"><{$article['title']}></a></li>
+              <li>
+        <span class="info">
+          <span class="info-cate"><{$article['typeName']}></span>
+        <span class="line">|</span>
+        <span class="info-author"><font>admin</font> </span>
+        <span class="info-time"><font><{$article['add_date']}></font></span>
+        <span class="line">|</span>
+        <span class="info-view"><font><{$article['click_count']}></font></span>
+        </span>
+        </li>
+        <li class="list-text clearfix">
+          <img src="__ROOT__/Home/Tpl/default/images/<{$i}>.jpg" />
+          <{$article.summary}></li>
+          </ul>
+      </volist>
+
+      	<{foreach item=article from=$list}>
+            <ul class="post">
+              <li class="list-title"><if condition="$article['is_original'] eq 1 ">[原创]<else /></if>
+<a href="__URL__/showDetail/?id=<{$article['id']}>" target="_blank"><{$article['title']}></a></li>
+              <li>
+        <span class="info">
+          <span class="info-cate"><{$article['typeName']}></span>
+        <span class="line">|</span>
+        <span class="info-author"><font>admin</font> </span>
+        <span class="info-time"><font><{$article['add_date']}></font></span>
+        <span class="line">|</span>
+        <span class="info-view"><font><{$article['click_count']}></font></span>
+        </span>
+        </li>
+              <li class="list-text clearfix">
+                <img src="__ROOT__/Home/Tpl/default/images/<{$i}>.jpg" />
+                <{$article.summary}></li>
+            </ul>
+      	<{/foreach}>
+
+          <div class="ad"></div>
+          <div class="lhz-page"><{$page}></div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sideBar">
+    <div class="radius">
+     <h4 class="module-title">站内搜索</h4>
+      <div style="padding:6px;">
+       <form action="__URL__/toSearch" method="post">
+      <input type="text" name="keyName" placeholder="输入关键字搜索" class="search_input"/>
+      <input type="submit" value="搜索" class="search_btn"/></form>
+      </div>
+    </div>
+
+ 
+
+      <!--cnzz tui-->
+      <script  type="text/javascript" c=gd  charset="utf-8"  src="http://tui.cnzz.net/cs.php?id=1000072029"></script>
+      <!--cnzz tui-->
+    </div>
+
+  </div>
+  </div>
+<{/block}>

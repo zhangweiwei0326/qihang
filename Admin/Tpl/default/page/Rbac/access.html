@@ -1,0 +1,55 @@
+<{extends file="../Public/layout.html"}>
+<{block name="content"}>
+<script>
+$(document).ready(function() {
+	$('input[level=1]').click(function() {
+		 var inputs = $(this).parents('.node-list').find('input');
+		 $(this).attr('checked') ? inputs.attr('checked','checked') : inputs.removeAttr('checked');		 
+	});
+	
+	$('input[level=2]').click(function() {
+		 var inputs = $(this).parents('dl').find('input');
+		 $(this).attr('checked') ? inputs.attr('checked','checked') : inputs.removeAttr('checked');		 
+	});
+	
+});
+</script>
+<div class="mainContent node">
+	<a href="{:u('Admin/Rbac/role')}" class="btn">返回</a>
+	<form action="{:u('Admin/Rbac/setAccess')}" method="post">
+		<foreach name='node' item='app'>
+			<div class="node-list">
+				<p class="node-app">{$app.title}				
+				<if condition="$app['access'] eq 1"> 
+					<input type="checkbox" name='access[]' value='{$app.id}_1' level='1' checked/>
+						  <else />
+					<input type="checkbox" name='access[]' value='{$app.id}_1' level='1'/>
+          		</if>
+				 </p>
+				<foreach name='app.child' item='action'>
+					<dl>
+						<dt><strong>{$action.title}</strong>
+						<if condition="$action['access'] eq 1"> 
+							<input type="checkbox" name='access[]' value="{$action.id}_2" level="2" checked/>
+								  <else />
+							<input type="checkbox" name='access[]' value="{$action.id}_2" level="2" />
+						</if>
+						</dt>
+						<foreach name='action.child' item='method'>
+							<dd><span>{$method.title}</span>							
+							<if condition="$method['access'] eq 1"> 
+								<input type="checkbox" name='access[]' value="{$method.id}_3" level="3" checked/>
+									  <else />
+								<input type="checkbox" name='access[]' value="{$method.id}_3" level="3" />
+							</if>						
+							</dd>						
+						</foreach>
+					</dl>
+				</foreach>
+			</div>	
+		</foreach>
+		<input type="hidden" value="{$rid}" name="rid" />
+		<input type="submit" value="保存修改" class="btn" />
+	</form>
+  </div>
+<{/block}>

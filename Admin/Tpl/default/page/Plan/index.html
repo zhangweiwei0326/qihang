@@ -1,0 +1,42 @@
+<{extends file="../Public/layout.html"}>
+<{block name="head" append}>
+<link rel="stylesheet" href="__ROOT__/Public/css/table.css" />
+<{/block}>
+
+<{block name="content"}>
+<div class="mainContent">
+	<form name="formActicle" action="__URL__/del" method="post">
+		<div class="btn-list">
+			<a href="__URL__/add" class="btn btn-primary">添加新计划</a>
+			<a href="javascript:document.formActicle.submit();" class="btn">批量删除</a>
+			<input type="submit" name="delet" class="btn" value="批量删除" />
+		</div>
+		<table width="100%" class="lhz-table tableCenter">
+			<thead>
+				<tr>
+					<td>
+					<input type="checkbox" value="">
+					</td>
+					<td>名称</td>
+					<td>优先级</td>
+					<td>计划开始时间</td>
+					<td>添加时间</td>
+				</tr>
+			</thead>
+			<tbody>
+				  <{section loop=$list name=money}>
+					<tr>
+						<td>
+						<input type="checkbox" value="<{$list[money].id}>">
+						</td>
+						<td><a href="__URL__/detail?id=<{$list[money].id}>"><{$list[money].name}></a></td>
+						<td><{$list[money].priority}></td>
+						<td><{$list[money].plan_date}></td>
+						<td><{$list[money].add_date}></td>
+					</tr>
+				  <{/section}>
+			</tbody>
+		</table>
+	</form>
+</div>
+<{/block}>

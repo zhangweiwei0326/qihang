@@ -1,0 +1,52 @@
+<{extends file="../Public/layout.html"}>
+<{block name="head" append}>
+<script charset="utf-8" src="__PUBLIC__/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="__PUBLIC__/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="__PUBLIC__/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+var editor;
+KindEditor.ready(function(K) {
+	editor = K.create('textarea[name="content"]', {
+		resizeType : 1,
+		allowPreviewEmoticons : true,
+		allowFileManager : true,
+		allowImageUpload : true,
+		items : [
+			'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+			'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+			'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+			'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+			'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+			'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
+			'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+			'anchor', 'link', 'unlink', '|', 'about'
+		]
+	});
+});				
+</script>
+<{/block}>
+
+<{block name="content"}>
+<div class="mainContent">
+  <div class="add ao-from">
+    <form action="" method="post">
+      <div class="control-group">
+        <label>标题：</label>
+        <input name="title" type="text" value="" class="width-470"  />
+      </div>
+      <div class="control-group">
+        <label>期望完成时间：</label>
+        <input name="plan_end_date" type="text" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+      </div>
+      <div class="control-group">
+        <label>内容：</label>
+        <textarea id="editor_id" name="content" style="width:700px;height:400px;"></textarea>
+      </div>
+      <div class="control-group">
+        <input name="add" type="submit" value="提交" class="btn btn-primary" />
+        <input type="button" class="btn" value="返回" onClick="javascript:window.history.go(-1);" />        
+      </div>
+    </form>
+  </div>
+</div>
+<{/block}>

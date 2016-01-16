@@ -1,0 +1,41 @@
+<{extends file="../Public/layout.html"}>
+<{block name="head" append}>
+<link rel="stylesheet" href="__ROOT__/Public/css/table.css" />
+<{/block}>
+<{block name="content"}>
+	<div class="mainContent">
+		<form name="" action="" method="post">
+			<table width="100%" class="lhz-table tableCenter">
+				<thead>
+					<tr>
+						<td>
+						<input type="checkbox" value="">
+						</td>
+						<td>角色名称</td>
+						<td>角色描述</td>
+						<td>开启状态</td>
+						<td>操作</td>
+					</tr>
+				</thead>
+				<tbody>
+					<{foreach item=r from=$role}>
+						<tr>
+							<td>
+							<input type="checkbox" value="{$r['id']}">
+							</td>
+							<td><{$r['name']}></td>
+							<td><{$r['remark']}></td>
+							<td>
+							<if condition="$r['status']">
+								开启
+								<else/>
+								关闭
+							</if></td>
+							<td><a href="{:U('Admin/Rbac/access',array('rid'=>$r['id']))}">配置权限</a></td>
+						</tr>
+					<{/foreach}>
+				</tbody>
+			</table>
+		</form>
+	</div>
+<{/block}>

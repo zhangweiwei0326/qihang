@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="__ROOT__/Public/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="__ROOT__/Public/css/reset.css" />
+<link rel="stylesheet" href="__ROOT__/Public/css/common.css" />
+<link rel="stylesheet" href="__ROOT__/Home/Tpl/default/css/index.css" />
+<link rel="stylesheet" href="__ROOT__/Public/lhz_table/skins/default/css/lhz_table.css" />
+<load href="__ROOT__/Public/jqTableWidget/js/jquery.js" />
+<script language="javascript" type="text/javascript" src="__ROOT__/Home/Tpl/default/js/table.js"></script>
+<script language="javascript" type="text/javascript" src="__ROOT__/Public/js/common.js"></script>
+<load href="__ROOT__/Public/jqTableWidget/jqTableWidget_simple.js" />
+<load href="__ROOT__/Public/lhz_table/lhz_table.js" />
+<script type="text/javascript"> 
+    var URL = "__URL__";
+    var APP = "__APP__";
+    var ROOT = "__ROOT__"; 
+ $(document).ready(function(){
+ 	$("#table_id").lhz_table({
+		//"getDataUrl" : '__PUBLIC__/lhz_table/example/data.js'
+		"getDataUrl" : URL + "/getData"
+	});		   
+}); 
+</script>
+<title>梨花寨－前端教程，开源分享，插件开发</title>
+<meta content="梨花寨，lihuazhai.com，前端，html，css，js，jquery,php，教程，插件，开源" name="Keywords">
+<meta content="梨花寨（lihauzhai.com）是一个前端技术分享平台。包括前端开发的技巧总结、 经验分享，网站推广运营技巧，视频教程录制发布，插件组件开发。" name="Description">
+</head>
+<body>
+	<include file="Public:head"/>
+<div class="wrap">
+    <div class="main-body radius">
+      <div id="table_id">loading...</div>
+    </div>
+  </div>
+  <include file="Public:footer" /> </div>
+</body>
+</html>

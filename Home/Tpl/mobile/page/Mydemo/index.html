@@ -1,0 +1,54 @@
+<include file="Public:meta_all"/>
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+	<div class="wrap">
+		<include file="Public:head" />
+		<div class="main-body clearfix">
+			<div class="two-column-layout">
+				<div class="column" style="width: 160px;">
+					<div style="height: 250px;">
+						<ul>
+							<li>
+								<a href="__URL__/seajs" target="detailShow">seajs示例</a>
+							</li>
+							<li>
+								<a href="__URL__/backbone" target="detailShow">backbone示例</a>
+							</li>
+							<li>
+								<a href="__URL__/morris" target="detailShow">morris示例</a>
+							</li>
+							<li>
+								<a href="__URL__/awesome" target="detailShow">awesome示例</a>
+							</li>
+							<li>
+								<a href="__URL__/imgSign" target="_blank">awesome邮件签名</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="column" style="width: 808px;">
+					<iframe src="__URL__/morris" name="detailShow" id="detailShow" scrolling="no" frameborder="0" width="100%;" height="100%;" ></iframe>
+				</div>
+			</div>
+		</div>
+		<include file="Public:footer" />
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#hotShow").switchToFixed();
+
+			function setIfram(obj) {
+				var oIframe = top.document.getElementById(obj);
+				var odo = document.documentElement || document.body;
+				oIframe.height = odo.scrollHeight;
+			};
+
+			setIfram('detailShow');//设置ifreme高度
+		});
+
+	</script>
+</body>
+</html>

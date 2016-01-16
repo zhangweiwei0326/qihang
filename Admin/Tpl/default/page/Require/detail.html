@@ -1,0 +1,68 @@
+<{extends file="../Public/layout.html"}>
+<{block name="head" append}>
+	<script>
+		$(document).ready(function() {
+			$("#turn_to_project").click(function() {
+				var title = $("#req_title").text();
+				var content = $("#req_content").text();
+				$("#myModal .modal-body input[name='title']").val(title);
+				$("#myModal .modal-body textarea").val(content);
+			});
+		});
+	</script>
+<{/block}>
+
+<{block name="content"}>
+	<div class="mainContent article_list">
+		<div class="btn-list">
+			<a href="__URL__/edit/?id=<{$list['id']}>" class="btn  btn-primary">修改此需求</a>
+			<a href="" data-toggle="modal" data-target="#myModal" id="turn_to_project" class="btn  btn-primary">转项目</a>
+		</div>
+		<h1 class="title-text" id="req_title"><{$list['title']}></h1>
+		<div class="text" id="req_content">
+			<{$list['content']}>
+		</div>
+		<div class="ot">
+			<span>作者：<font color="red">admin</font> </span><span> 发表于：<font color="red"><{$list['add_date']}></font></span>
+		</div>
+		<div class="btn-list">
+			<a href="javascript:window.history.go(-1);" class="btn btn-primary">返回</a>
+		</div>
+	</div>
+	<div class="modal hide fade" id="myModal">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+				&times;
+			</button>
+			<h3>需求转项目</h3>
+		</div>
+		<form action="__APP__/Project/add" method="post">
+			<div class="modal-body">
+				<ul class="lhz-form">
+					<li>
+						<label>标题:</label>
+						<div class="input-part">
+							<input type="text" name="title" value="" style="width: 400px;" />
+						</div>
+					</li>
+					<li>
+						<label>计划结束:</label>
+						<div class="input-part">
+							<input name="plan_end_date" type="text" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+						</div>
+					</li>
+					<li>
+						<label>内容:</label>
+						<div class="input-part">
+							<textarea name="content" style="width: 400px;  height: 200px;"></textarea>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal">关闭</a>
+				<input type="submit" name="add" value="提交" class="btn btn-primary"  />
+			</div>
+		</form>
+	</div>
+<{/block}>

@@ -1,0 +1,52 @@
+<include file="./Admin/Tpl/default/Public/meta_form.html"/>
+<script type="text/javascript">
+var editor;
+KindEditor.ready(function(K) {
+	editor = K.create('textarea[name="content"]', {
+		resizeType : 1,
+		allowPreviewEmoticons : true,
+		allowFileManager : true,
+		allowImageUpload : true
+	});
+});				
+</script>
+<div class="mainContent">
+  <div class="ao-from">
+    <form action="__URL__/save" method="post">
+      <input name="id" type="hidden" value="{$list['id']}" />
+      <div class="control-group">
+        <label for="name">名称：</label>
+        <div class="controls">
+          <input name="name" type="text" value="{$list['name']}" />
+        </div>
+      </div>
+      <div class="control-group">
+        <label for="priority">优先级：</label>
+        <div class="controls">
+          <select name="priority">
+            <option value="p1">p1</option>
+            <option value="p2">p2</option>
+            <option value="p3">p3</option>
+            <option value="p4">p4</option>
+          </select>
+        </div>
+      </div>
+      <div class="control-group">
+        <label for="plan_date">计划开始时间：</label>
+        <div class="controls">
+          <input name="plan_date" type="text" class="Wdate" onClick="WdatePicker()" value="{$list['plan_date']}" />
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputEmail">内容：</label>
+        <div class="controls">
+          <textarea id="editor_id" name="content" style="width:100%;height:400px;">{$list['content']}</textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <input name="add" type="submit" value="发布" class="btn btn-primary" />
+        <input type="button" class="btn" value="返回" onClick="javascript:window.history.go(-1);" />
+      </div>
+    </form>
+  </div>
+</div>

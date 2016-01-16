@@ -1,0 +1,80 @@
+/*==========  website  ==========*/
+.website a {
+	color: #454545;
+}
+.website a:hover {
+	color: #3ea7cb;
+}
+.website li {
+	float: left;
+	width: 18%;
+	margin-right: 10px;
+}
+.web-site p.title {
+	font-size: 16px;
+	font-weight: bold;
+}
+.comment-list {
+	margin-top: 10px;
+}
+.comment-list li {
+	position: relative;
+	overflow: hidden;
+}
+.comment-item-date {
+	position: absolute;
+	border-right: 1px #D7D7D7 solid;
+	width: 80px;
+	height: 100%;
+	text-align: right;
+	padding-right: 10px;
+}
+.comment-item-date .date-time {
+	font-size: 10px;
+}
+.comment-item-date span.bull {
+	color: #D7D7D7;
+	font-family: arial;
+	font-size: 19px;
+	position: absolute;
+	right: -4px;
+	top: 0;
+}
+.comment-item-content {
+	margin-left: 80px;
+	padding-bottom: 20px;
+}
+.comment-user-msg {
+	float: left;
+	margin: 2px 22px 0;
+	max-width: 110px;
+}
+.comment-user-msg .avatar {
+	float: left;
+}
+.comment-user-msg .user-name {
+	padding-left: 3px;
+}
+.comment-body {
+	border: 1px solid #E6E6E6;
+	float: left;
+	padding: 6px 8px;
+	width: 484px;
+}
+.comment-body p {
+}
+/*================ webUrl ===========================*/
+.web .title{ font-weight:bold; margin-bottom: 5px;}
+.web-site {
+	margin-left: 10px;
+}
+.web-site li {
+	float: left;
+	width: 20%;
+}
+.web-url .webUrl {
+	width: 70%;
+}
+.web-url .web-nav {
+	width: 28%;
+}

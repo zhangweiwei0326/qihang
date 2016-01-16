@@ -1,0 +1,26 @@
+<{extends file="../Public/layout.html"}>
+<{block name="content"}>
+	<div class="mainContent node">
+		<a href="__URL__/addNode" class="btn">添加应用</a>
+		<{foreach  item='app' from=$node}>
+			<div class="node-list">
+				<p class="node-app">
+					<{$app.title}>[<a href="__URL__/addNode',array('pid'=>$app['id'],'level'=>2))}">添加控制器</a>]
+				</p>
+				<foreach name='app.child' item='action'>
+					<dl>
+						<dt>
+							<strong><{$action.title}></strong>
+							<a href="__URL__/addNode',array('pid' =>$action['id'],'level'=>3))}">添加方法</a>
+						</dt>
+						<{foreach item='method' from=$app.child}>
+							<dd>
+								<span><{$method.title}></span>[<a href="">添加</a>][<a href="">删除</a>]
+							</dd>
+						<{/foreach}>
+					</dl>
+				</foreach>
+			</div>
+		<{/foreach}>
+	</div>
+<{/block}>

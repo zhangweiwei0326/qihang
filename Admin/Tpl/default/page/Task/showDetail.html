@@ -1,0 +1,33 @@
+<{extends file="../Public/layout.html"}>
+<{block name="content"}>
+	<div class="mainContent">
+		<div class="article-detail">
+			<div class="btn-list">
+				<a href="__URL__/edit/?id=<{$list['id']}>" class="btn btn-primary">修改此任务</a>
+				<a href="javascript:window.history.go(-1);" class="btn">返回</a>
+			</div>
+			<h1><{$list['title']}></h1>
+			<ul class="info clearfix">
+				<li>
+					<label>所属项目：</label> <{$list['project_id']}>
+				</li>
+				<li>
+					<label>类型：</label> <{$list['type']}>
+				</li>
+				<li>
+					<label>完成比例：</label> <{$list['percent']}>
+				</li>
+				<li>
+					<label>计划开始时间：</label> <{$list['plan_start_date']}>
+				</li>
+				<li>
+					<label>计划结束时间：</label>
+						<{$list['plan_end_date']}>
+				</li>
+			</ul>
+			<p>
+				<label>描述：</label> <div><{$list['description']}></div>
+			</p>
+		</div>
+	</div>
+<{/block}>

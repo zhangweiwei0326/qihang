@@ -1,0 +1,10 @@
+<{extends file="../Public/layout.html"}>
+<{block name="content"}>
+<div class="mainContent">
+<div class="btn-list"> <a href="__URL__/edit/?id={$list['id']}" class="btn  btn-primary">修改此需求</a> <a href="javascript:window.history.go(-1);" class="btn">返回</a> </div>
+  <h1 class="title-text"><{$list['title']}></h1>
+  <div class="text"><{$list['content']}></div>
+  <div class="ot"><span>作者：<font color="red">admin</font> </span><span> 发表于：<font color="red"><{$list['add_date']}></font></span> </div>
+<div class="btn-list"> <a href="javascript:window.history.go(-1);" class="btn btn-primary">返回</a> </div>
+</div>
+<{/block}>

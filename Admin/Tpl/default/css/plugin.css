@@ -1,0 +1,198 @@
+@charset "utf-8";
+/*==========  plugin  ==========*/
+.flash {
+	height: 348px;
+	background: url("../images/flash.png") repeat 0 0 transparent;
+}
+.notice {
+	height: 34px;
+	background: url("../images/notice-cen.png") repeat 0 0 transparent;
+	margin-top: 10px;
+}
+.notice-lt {
+	height: 33px;
+	background: url("../images/notice-lt.png") no-repeat 0 0 transparent;
+}
+.notice-rt {
+	height: 33px;
+	background: url("../images/notice-rt.png") no-repeat right 0 transparent;
+}
+.plugin-left {
+	width: 72%;
+}
+.plugin-right {
+	width: 25%;
+}
+.features {
+}
+.features li.item {
+	display: inline;
+	float: left;
+	height: 121px;
+	width: 275px;
+	position: relative;
+	padding: 30px 0 10px 65px;
+}
+.features .icon {
+	display: block;
+	height: 48px;
+	left: 5px;
+	position: absolute;
+	top: 30px;
+	width: 48px;
+	background: url("../images/sp2.gif") no-repeat scroll 0 0 transparent;
+}
+.features .f_01 {
+	background-position: -288px -161px;
+}
+.features .f_02 {
+	background-position: -240px -161px;
+}
+.features .f_03 {
+	background-position: -144px -161px;
+}
+.features .f_04 {
+	background-position: 0 -161px;
+}
+.download p {
+	text-align: center;
+}
+#downloadBtn a {
+	background: url("../images/downloadbtn.gif") no-repeat scroll center center transparent;
+	color: #993300;
+	display: inline-block;
+	height: 38px;
+	line-height: 18px;
+	padding: 8px 0;
+	text-decoration: none;
+	width: 200px;
+}
+.comment-fieldset {
+	background: none repeat scroll 0 0 #F6F6F6;
+	border: 1px solid #DDDDDD;
+	padding: 0 0px 10px 10px;
+}
+.comment-fieldset legend {
+	border: 0 solid #DDDDDD;
+	width: auto;
+}
+.date-time {
+	font-size: 12px;
+	color: #666;
+	font-weight: normal;
+}
+
+.comment-list {
+	margin-top: 10px;
+}
+.comment-list li {
+	position: relative;
+	overflow: hidden;
+}
+.comment-item-date {
+	position: absolute;
+	border-right: 1px #D7D7D7 solid;
+	width: 80px;
+	height: 100%;
+	text-align: right;
+	padding-right: 10px;
+}
+.comment-item-date .date-time {
+	font-size: 10px;
+}
+.comment-item-date span.bull {
+	color: #D7D7D7;
+	font-family: arial;
+	font-size: 19px;
+	position: absolute;
+	right: -4px;
+	top: 0;
+}
+.comment-item-content {
+	margin-left: 80px;
+	padding-bottom: 20px;
+}
+.comment-user-msg {
+	float: left;
+	margin: 2px 22px 0;
+	max-width: 110px;
+}
+.comment-user-msg .avatar {
+	float: left;
+}
+.comment-user-msg .user-name {
+	padding-left: 3px;
+}
+.comment-body {
+	border: 1px solid #E6E6E6;
+	float: left;
+	padding: 6px 8px;
+	width: 484px;
+}
+.comment-body p {
+}
+.pop-dialog-bg {
+	background: none repeat scroll 0 0 #666666;
+	height: 100% !important;
+	left: 0;
+	min-height: 100% !important;
+	overflow: visible;
+	position: fixed;
+	top: 0;
+	width: 100% !important;
+	z-index: 1031;
+	display: none;
+}
+.pop-dialog {
+	width: 500px;
+	height: 200px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -100px auto auto -250px;
+	background: none repeat scroll 0 0 #FFFFFF;
+	border-radius: 8px 8px 8px 8px;
+	z-index: 1032;
+	display: none;
+}
+.pop-dialog-title {
+	background: none repeat scroll 0 0 #0874C4;
+	border: 1px solid #0D6EB8;
+	border-radius: 6px 6px 0 0;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 1px 1px rgba(0, 0, 0, 0.2); /*cursor: move;*/
+	line-height: 14px;
+	padding: 10px 15px;
+	position: relative;
+}
+.pop-dialog-close {
+	float: right;
+	font-size: 20px;
+	color: #FFF;
+	cursor: pointer;
+}
+.pop-dialog-title-text {
+	color: #FFFFFF;
+	font-size: 15px;
+	font-weight: 700;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+.pop-dialog-content {
+	padding: 15px;
+}
+.pop-dialog-login {
+	width: 240px;
+	margin: 0px auto auto 10px;
+	float: left;
+	border-right: 1px solid #CCCCCC;
+}
+.pop-dialog-login li {
+	margin-bottom: 10px;
+}
+.pop-dialog-login li input {
+	width: 200px;
+}
+.pop-dialog-content-right {
+	width: 205px;
+	float: left;
+	margin-left: 10px;
+}

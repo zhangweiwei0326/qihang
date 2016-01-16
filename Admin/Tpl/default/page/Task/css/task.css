@@ -1,0 +1,14 @@
+/*================ Task ===========================*/
+.task-add {
+	margin-top: 10px;
+}
+.task-list {
+	margin-top: 10px;
+}
+/*taskDetail*/
+.taskDetail {
+	margin-top: 10px;
+}
+.taskDetail label {
+	display: inline-block;
+}

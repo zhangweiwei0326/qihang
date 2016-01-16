@@ -1,0 +1,53 @@
+<{extends file="../Public/layout.html"}>
+<{block name="content"}>
+<include file="./Admin/Tpl/default/Public/meta_form.html"/>
+<div class="mainContent">
+	<div class="lhz-form">
+		<form action="__URL__/update" method="post">
+			<ul>
+				<li>
+					<label>标题：</label>
+					<div class="input-part">
+						<input name="name" type="text" value="<{$list['name']}>" style="width:300px;" />
+					</div>
+				</li>
+				<li>
+					<label>url：</label>
+					<div class="input-part">
+						<input name="url" type="text" value="<{$list['url']}>" style="width:300px;" />
+					</div>
+				</li>
+				<li>
+					<label>是否显示：</label>
+					<div class="input-part">
+						<{if $list['is_show'] eq 1}>
+							显示
+							<input type="radio" name="is_show" value="1" checked />
+							不显示
+							<input type="radio" name="is_show" value="0" />
+							<{else}>
+							显示
+							<input type="radio" name="is_show" value="1" />
+							不显示
+							<input type="radio" name="is_show" value="0" checked />
+						<{/if}>
+					</div>
+				</li>
+				<li>
+					<label>排序：</label>
+					<div class="input-part">
+						<input name="sort" type="text" value="<{$list['sort']}>" style="width:300px;" />
+					</div>
+				</li>
+				<li>
+					<div class="from-footer">
+						<input name="id" type="hidden" value="<{$list['id']}>" />
+						<input name="update" type="submit" value="发布" class="btn btn-primary" />
+						<a href="javascript:window.history.go(-1);" class="btn">返回</a>
+					</div>
+				</li>
+			</ul>
+		</form>
+	</div>
+</div>
+<{/block}>

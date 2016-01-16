@@ -1,0 +1,45 @@
+<{extends file="../Public/layout.html"}>
+
+<{block name="content"}>
+<style type="text/css">
+.sidebar-nav {
+	padding: 9px 0;
+}
+</style>
+<script type="text/javascript">
+$(function(){
+    $('.button').click(function(){
+        if(confirm("确认要清除模版缓存目录？")) {
+	        var type = $(this).attr("data-type");
+	        $.ajax({
+	          type: "get",
+			  url: '__URL__/delcache',
+			  data: { type : type},
+			  success: function(data){
+			  	//alert(data);
+			  }
+			});
+         }else{
+            return false; 
+         }   
+    });
+});      
+</script>
+</head>
+<form action="" method="get">
+  <table border="0" cellpadding="2" cellspacing="1" style="width:100%">
+    <tr>
+      <td nowrap align="left"><input type="button" class="button" data-type="Admin" style="height:30px;" value="一键清除后台缓存" /></td>
+      <td><input type="button" class="button" data-type="Home" style="height:30px;" value="一键清除前端缓存" /></td>
+    </tr>
+  </table>
+  <ul>
+    <li> <a href="__APP__/Article/add">新建文章</a> </li>
+     <li> <a href="__APP__/Fitment/add">新建装修</a> </li>
+    <li> <a href="__APP__/Movie/add">新建电影</a> </li>
+    <li> <a href="__APP__/Task/add">新建任务</a> </li>
+    <li> <a href="__APP__/Plan/add">新建日程</a> </li>
+    <li> <a href="http://localhost__ROOT__/Public/demo/" target="_blank">查看demo</a> </li>
+  </ul>
+</form>
+<{/block}>

@@ -1,0 +1,10 @@
+/* !----------------------------------
+* require
+**---------------------------------- */
+/*require-index*/
+.require .mainContent{ margin-left: -560px;}
+.require .sideBar{width: 540px;}
+.require .mainContent .innerContent{ margin-left: 560px;}
+/*require-detail*/
+
+

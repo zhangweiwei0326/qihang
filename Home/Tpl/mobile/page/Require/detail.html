@@ -1,0 +1,191 @@
+{extends file="../Public/base.html"}
+{block name="content"}
+<include file="Public:head"/>
+<div class="wrap require-detail">
+	<include file="Public:head"/>
+	<div class="main-body">
+		<div class="mainContent">
+			<div class="innerContent" style="border: 1px #DEDEDE solid; padding:10px;background: #fff; ">
+				<h1 class="article-title">{$list['title']}</h1>
+				<div class="info">
+					<span>
+						作者： <font color="red">admin</font>
+					</span>
+					<span>
+						发表于： <font color="red">{$list['add_date']}</font>
+					</span>
+				</div>
+				<div class="article-content indent">{$list['content']}</div>
+				<div class="go-back">
+					<a href="javascript:window.history.go(-1);" class="btn btn-primary">返回</a>
+				</div>
+				<div class="add-comment">
+					<p class="comment-title">发布评论：</p>
+						<input type="hidden" id="subject_id" value="{$list['id']}" />
+						<input type="hidden" id="type" value="require" />
+						<textarea id="commentText" name="content" maxlength="280" class="comment" value="请在这里发表您个人看法，发言时注意文明!" style="resize:vertical;">请在这里发表您个人看法，发言时注意文明!</textarea>
+						<p style="margin-top:10px; text-align:right; padding-right:5px;">
+							<span style="color:#999;">输入验证码，看不清可点击图片更换数字</span>
+							<img src='__URL__/verify/' id="verifyImg" onclick="fleshVerify()" />
+							<input type="text" name="verify" id="verify" style="width:45px; margin-left:5px;margin-right: 5px;" />
+							<input name="add" type="button" id="add_comment" class="btn btn-primary" value="发布" />
+						</p>
+				</div>
+				<!-- add-comment-->
+
+				<!--comment-list start-->
+		        <ul class="comment-list">
+		          {section loop=$comment name=comment}
+		            <li class="comment-item">
+		              <div class="comment-item-date">
+		                <span class="date-time">{$comment[comment].add_date}</span>
+		                <span class="bull">•</span>
+		              </div>
+		              <div class="comment-item-content">
+		                <div class="comment-user-msg">
+		                  <div class="avatar">
+		                    <img width="40" height="40" src="http://tp2.sinaimg.cn/1224685661/50/5616000618/0"></div>
+		                  <span class="user-name">匿名网友</span>
+		                </div>
+		                <div class="comment-body">
+		                  {$comment[comment].content}
+		                </div>
+		                <div class="clearfix"></div>
+		                 <a href="###" class="toReply" data-parent-id="{$comment[comment].id}" data-opened="0">回复</a>
+		                <ul class="operation">
+		                  <li>
+		                    <a href="javascript:;" class="ding" data-id="{$comment[comment].id}">{$comment[comment].ding}</a>
+		                  </li>
+		                  <li>
+		                    <a href="javascript:;" class="cai" data-id="{$comment[comment].id}">{$comment[comment].cai}</a>
+		                  </li>
+		                </ul>
+		                <div style="clear:both;"></div>
+		                {section loop=$comment[comment].sub_comment name=sub}
+		                  <p style="color: #F00; margin-left:155px; margin-top:5px;">
+		                    <span>回复：</span>
+		                    {$comment[comment].sub_comment[sub].content}
+		                  </p>
+		                {/section}
+		              </div>
+		            </li>
+		          {/section}
+		        </ul>
+		     <!--comment-list end--> 
+			</div>
+		</div>
+		<div class="sideBar">这里是侧栏-暂无</div>
+	</div>
+
+
+
+</div>
+</div>
+<script type="text/javascript">
+ 	var URL = "__URL__";
+    $("#commentText").focus(function(){
+         $(this).html("");              
+      }).blur(function(){ 
+    });
+    jQuery("#commentText").textareaAutoHeight();
+    function fleshVerify(){ //重载验证码
+        var time = new Date().getTime();
+        document.getElementById('verifyImg').src= '__URL__/verify/'+time;
+    }
+    jQuery("#add_comment").click(function(){
+      var verify =  jQuery("#verify").val();
+      var id =  jQuery("#subject_id").val();
+      var type =  jQuery("#type").val();
+      var content =  jQuery("#commentText").val();
+      $.ajax({ 
+          type: "post", 
+          url : URL + "/commentAdd", 
+          dataType:'json',//从php返回的值以 JSON方式
+          data: 'id='+id+'&content='+content+'&verify='+verify+'&type='+type+'&parent_id=0', 
+          success: function(data){ 
+            if(data['flag'] == 0){
+              window.location.reload(); 
+            }else{
+              alert('验证码错误!');        
+            } 
+          }
+      });
+    });
+
+    jQuery(".toReply").click(function(){
+      //var id =  jQuery(this).attr("data-id");
+      var $this = jQuery(this);
+      if($this.attr("data-opened") == "0"){
+        var html = '<div class="replyBox"><textarea></textarea> <input type="button" class="addReplay" value="提交"/></div>';
+        $this.after(html);
+        $this.attr("data-opened","1");
+      }else if($this.attr("data-opened") == "1"){
+ 		$this.next(".replyBox").toggle();
+      }
+    });
+
+	$(document).on("click", ".addReplay", function(){ 
+		 var $this = jQuery(this);
+         var subject_id = $("#subject_id").val();
+         var parent_id = $this.parent(".replyBox").prev().attr("data-parent-id");
+         var replayContent = $this.prev().val();
+
+        $.ajax({ 
+          async:false,
+          type: "POST", 
+          url : URL + "/commentAdd", 
+          dataType:'json',
+          data : 'id='+subject_id+'&parent_id='+parent_id+'&content='+replayContent+'&ifVerification=false', 
+          success: function(data){
+            if(data['flag'] == 0){
+              window.location.reload(); 
+            }else{
+              alert('失败了哦!');        
+            } 
+          }
+      });
+	}); 
+	
+    jQuery(".ding").click(function(){
+      var id =  jQuery(this).attr("data-id");
+      var $that = jQuery(this);
+      $.ajax({ 
+          async:false,
+          type: "post", 
+          async : false,
+          url : URL + "/ding", 
+          dataType:'json',//从php返回的值以 JSON方式
+          data: 'id='+id, 
+          success: function(data){
+            if(data['flag'] == 0){
+              $that.text(data['ding']);
+            }else{
+              alert('失败了哦!');        
+            } 
+          }
+      });
+    });
+
+    jQuery(".cai").click(function(){
+      var id =  jQuery(this).attr("data-id");
+      var $that = jQuery(this);
+      $.ajax({ 
+          async:false,
+          type: "post", 
+          async : false,
+          url : URL + "/cai", 
+          dataType:'json',//从php返回的值以 JSON方式
+          data: 'id='+id, 
+          success: function(data){
+            if(data['flag'] == 0){
+             $that.text(data['cai']);
+            }else{
+              alert('失败了哦!');        
+            } 
+          }
+      });
+    });
+    
+</script>
+
+{/block}

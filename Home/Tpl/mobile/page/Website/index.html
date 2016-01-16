@@ -1,0 +1,20 @@
+<{extends file="../Public/base.html"}>
+<{block name="head" append}>
+<link rel="stylesheet" href="__ROOT__/Home/Tpl/default/css-src/website.css" />
+<{/block}>
+<{block name="content"}>
+<div class="wrap">
+  <div class="main-body web-site">
+    <{section loop=$result name=result}> 
+        <div class="clearfix radius" style="margin-bottom:10px; padding:6px;">
+            <p class="title"><{$result[result].name}></p>
+            <ul class="website">
+              <{section loop=$result[result].web name=web}> 
+                <li><a href="<{$result[result].web[web].url}>" target="_blank"><{$result[result].web[web].name}></a></li>
+              <{/section}>
+            </ul>
+          </div>
+    	<{/section}>
+  </div>
+</div>
+<{/block}>

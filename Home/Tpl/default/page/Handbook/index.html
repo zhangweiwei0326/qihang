@@ -1,0 +1,43 @@
+<include file="Public:meta_all"/>
+<body>
+<script type="text/javascript"> 
+$(document).ready(function(e) {
+	$(".handbook-side li a").click(function(){
+		var id = $(this).attr("data-id");
+		var title = $(this).text();
+		var URL = "__URL__";
+		var url = URL + "/getContent";
+		
+		$.post(url,{id : id},function(data){
+			$('.handbook-content .handbook-conten-inside .handbook-content-title').html(title);
+			$('.handbook-content .handbook-conten-inside .handbook-content-text').html(data);
+		});
+	});	
+});
+</script>
+<include file="Public:head" />
+<div class="wrap">
+		<div class="main-body handbook">
+				<aside>
+						<div class="handbook-side radius">
+								<ul>
+										<volist name="handbook" id="handbook">
+												<li><span class="icon"></span><span>
+												<a href="#" data-id="{$handbook['id']}">{$handbook['title']}</a></span></li>
+										</volist>
+								</ul>
+						</div>
+				</aside>
+				<section>
+						<div class="handbook-content radius">
+						   <div class="handbook-conten-inside">
+						    <h1 class="handbook-content-title">css浏览器常见兼容性问题解决方法</h1>
+							<div class="handbook-content-text"></div>
+							</div>
+						 </div>
+				</section>
+		</div>
+</div>
+<include file="Public:footer" />
+</body>
+</html>

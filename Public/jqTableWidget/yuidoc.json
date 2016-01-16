@@ -1,0 +1,11 @@
+{
+    "name": "JS API",
+    "description": "The Foo API: a library for doing X, Y, and Z",
+    "version": "1.2.5",
+    "url": "http://lihuazhai.com/",
+    "options": {
+        "linkNatives": "true",
+    	"attributesEmit": "true",
+        "outdir": "../../yuidocOut"
+    }
+}

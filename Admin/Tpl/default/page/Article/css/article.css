@@ -1,0 +1,26 @@
+/* ----------------  article --------------- */
+.tagChoice{float:left;margin-left:5px;}
+#newtag{float:left;margin-left:5px;}
+#removeAddTag{margin-left:5px;cursor:pointer;}
+
+/* ===================文章======================== */
+.articleList{margin-right:260px;float:left;}
+.sidebarRight{width:250px;float:right;margin-left:-260px;}
+.sidebarRight input{width:auto;}
+.articleList input[type="checkbox"]{margin-right:8px;}
+
+/* cate-list */
+.cate-list{margin-left:5px;}
+.cate-list li{margin-bottom:5px;}
+.cate-list li .name{font-size:15px;}
+.cate-list li .operate{margin-left:6px;}
+.cate-list li .operate a{margin-left:3px;}
+.cate-list li .operate a:hover{color:red;}
+.cate-change{}
+.article-add{margin-top:10px;}
+.summary{height:80px;}
+.title-text{font-weight:bold;font-size:20px;}
+.article-detail h1{text-align:center;}
+.article-detail .info{text-align:right;padding:0px 10px;}
+.article-detail .content{text-indent:30px;padding:10px;}
+.article-update .input-title,.article-add .input-title{width:500px;}s

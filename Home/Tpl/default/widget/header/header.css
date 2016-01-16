@@ -1,0 +1,114 @@
+.header {
+	background-color: #0069cc;
+	color: #FFF;
+	background: #0069cc url(./images/topfixed_bg.png) repeat-x left bottom;
+	height: 3.8rem
+}
+.header a {
+	color: #FFF
+}
+.header a:hover {
+	text-decoration: none
+}
+.nav-main {
+	height: 3.8rem;
+	line-height: 38px;
+	line-height: 3.8rem;
+	width: 100%;
+	overflow: hidden
+}
+.nav-main ul {
+	margin-left: 10px
+}
+.nav-main li {
+	float: left
+}
+.nav-main li a {
+	display: block;
+	padding: 0px 10px;
+	color: #FFF;
+	font-family: "Microsoft YaHei";
+}
+.nav-main li a:hover {
+	background: #0095F7;
+	text-decoration: none
+}
+.logo {
+	font-family: Microsoft YaHei, Arial, Helvetica, sans-serif;
+	font-size: 1.6rem;
+	display: inline-block;
+	color: #555;
+	float: left;
+	margin: 0px 20px 0px 0px;
+	-moz-transition: all 0.2s linear 0s;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.125)
+}
+.m-nav {
+	display: none;
+	line-height: 36px;
+	width: 100%;
+	overflow: hidden
+}
+.m-nav .logo {
+	display: block;
+	width: 100%;
+	text-align: center;
+	font-size: 1.2em
+}
+.m-nav a.nenu {
+	position: absolute;
+	right: 5px;
+	display: block;
+	text-transform: uppercase
+}
+.m-nav ul {
+	display: none;
+	background: #0069cc
+}
+.m-nav li {
+	float: left
+}
+.m-nav li a {
+	display: block;
+	padding: 0px 10px;
+	color: #FFF;
+	font: 14px "Microsoft YaHei";
+	line-height: 36px
+}
+.m-nav li a:hover {
+	background: #0095F7;
+	text-decoration: none
+}
+.contact-way {
+	display: inline-block;
+	margin-left: 20px
+}
+.contact-way .contact-number {
+	color: #f89841;
+	font-weight: bold;
+	margin-left: 3px
+}
+.show-name {
+	position: absolute;
+	margin: 5px 8px auto auto;
+	top: 5px;
+	right: 0px
+}
+.shortcut-login {
+	margin-top: 5px;
+	position: absolute;
+	right: 0px;
+	top: 0px
+}
+.shortcut-login li {
+	float: left;
+	margin-right: 5px;
+	vertical-align: middle
+}
+.shortcut-login li span {
+	display: inline-block;
+	margin-top: 4px
+}
+.shortcut-login label {
+	display: inline-block
+}

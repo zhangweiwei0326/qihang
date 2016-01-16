@@ -1,0 +1,14 @@
+/*!----------------------------------
+* footer
+**----------------------------------*/
+.web-description { font-size: 1.6rem; }
+.contact-way { float: right; margin-right: 0.5rem }
+.contact-way .contact-number { color: #f89841; font-weight: bold; margin-left: 3px; }
+.footer { height: 150px; overflow: hidden; background: url("./images/footer_bg.jpg") repeat-x 0 0; color: #FFFFFF; clear: both; position: relative; }
+.footer a { color: #FFFFFF; }
+
+/* friendly-link */
+.footer .friendly-link { margin-top: 2.5rem; padding-left: 0.5rem; }
+.friendly-link li { float: left; margin-right: 10px; }
+.friendly-link a:hover { color: red; }
+.copy { padding-left: 0.5rem; }

@@ -1,0 +1,38 @@
+<{extends file="../Public/layout.html"}>
+<{block name="head" append}>
+<link rel="stylesheet" href="__ROOT__/Public/css/table.css" />
+<{/block}>
+
+<{block name="content"}>
+<div class="mainContent">
+	<ul class="btn-list">
+		<li>
+			<a href="__URL__/add" class="btn btn-primary">添加新项目</a>
+		</li>
+	</ul>
+	<table class="lhz-table">
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>名称</td>
+				<td>添加时间</td>
+				<td>计划完成时间</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody>
+		<{foreach item=project from=$list}>
+			<tr>
+				<td>
+				<input type="checkbox" value="{$project['id']}">
+				</td>
+				<td><a href="__URL__/showDetail/?id=<{$project['id']}>"><{$project['title']}> </a></td>
+				<td> 发表于：<font color="red"><{$project['add_date']}></font></td>
+				<td>计划完成时间：<font color="red"><{$project['plan_end_date']}></font></td>
+				<td><span><a class="edit" href="__URL__/edit?id=<{$project['id']}>">修改</a> <a class="shortcutdel" onClick="if(confirm('确实要删除此条记录吗?')) return true;else return false;" href="__URL__/del?id=<{$project['id']}>">删除</a></span></td>
+			</tr>
+		 <{/foreach}>
+		</tbody>
+	</table>
+</div>
+<{/block}>

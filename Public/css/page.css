@@ -1,0 +1,12 @@
+/* ------------ lhz-page-分页样式 ------------ */
+.lhz-page { margin: 10px 3px; }
+.lhz-page { height: 26px; line-height: 26px; }
+.lhz-page a { display: inline-block; border: 1px solid #dedede; color: #333; cursor: pointer; height: 20px; line-height: 20px; margin: 0 2px; padding: 0 5px; }
+.lhz-page a:hover { background-color: #09f; text-decoration: none; color: #fff }
+.lhz-page .currentPage { background: none repeat scroll 0 0 #FFF; border: 1px solid #FFF; color: #2F2F2F; font-weight: bold; }
+.lhz-page .pagenumber { text-align: center; background-color: White; color: Black; }
+.lhz-page .pagenumberselected { background-color: #16387D; color: White; }
+.lhz-page select { border: 1px solid #D7D7D7; margin-bottom: auto; padding: 2px; width: auto; }
+.lhz-page span { margin-left: 5px; }
+.lhz-page input[type="text"] { width: 26px; }
+.lhz-page span b { margin: 0px 2px; }

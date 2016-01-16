@@ -1,0 +1,200 @@
+<{extends file="../Public/layout.html"}>
+<{block name="head" append}>
+<link rel="stylesheet" href="__ROOT__/Public/css/table.css" />
+<script type="text/javascript">
+	$(document).ready(function() {
+		var hash = location.hash;
+		//var lastUrl = hash.substring(hash.lastIndexOf('#module=')+8);
+		if(hash) {
+			var urlArr = hash.split("#");
+			var pullTypeTemp = urlArr[2];
+			var pullType = pullTypeTemp.substring(pullTypeTemp.indexOf("=") + 1);
+
+			var pullUrlTemp = urlArr[1];
+			var pullUrl = pullUrlTemp.substring(pullUrlTemp.indexOf("=") + 1);
+
+			if(pullType == "ajax") {
+				$("#sideBarRight .iframes").load(pullUrl);
+			} else {
+				var html = '<iframe src="' + pullUrl + '" frameborder="0" width="100%" height="630px"></iframe>';
+				$("#sideBarRight .iframes").html(html)
+			}
+		}
+
+		$("#add_new").click(function() {
+			$("#name").attr("value", "");
+			$("#username").attr("value", "");
+			$("#password").attr("value", "");
+			$("#account-id").attr("value", "");
+			$('#addModal').modal(true);
+		});
+
+		$("#to_add").live("click", function() {
+			var name = $("#name").val();
+			var username = $("#username").val();
+			var password = $("#password").val();
+			var id = $("#account-id").val();
+
+			if(id > 0) {
+				$.ajax({
+					url : '__URL__/update',
+					type : 'POST',
+					data : $("#add-form").serialize(),
+					timeout : 1000,
+					dataType : "json",
+					success : function(result) {
+						if(result.status == 0) {
+							$('#addModal').modal(false)
+							location.reload();
+						} else {
+							$("#prompt").html(result.msg);
+						}
+					}
+				});
+
+			} else {
+				$.ajax({
+					url : '__URL__/add',
+					type : 'POST',
+					data : $("#add-form").serialize(),
+					dataType : "json",
+					timeout : 1000,
+					success : function(result) {
+						if(result.status == 0) {
+							$('#addModal').modal(false)
+							location.reload();
+						} else {
+							$("#prompt").html(result.msg);
+						}
+					}
+				});
+
+			}
+
+		});
+
+		$(".to_edit").live("click", function() {
+			var id = $(this).attr("data-userId");
+			var name = $(this).parent().parent().find(".name").text();
+			var website = $(this).parent().parent().find(".website").val();
+			var username = $(this).parent().parent().find(".username").text();
+			var password = $(this).parent().parent().find(".password").text();
+			//赋原值
+			$("#website option[value='" + website + "']").attr("selected", "selected");
+			$("#name").val(name);
+			$("#username").val(username);
+			$("#password").val(password);
+			$("#account-id").val(id);
+			$("#addModal .modal-header h3").html("编辑账户");
+			//显示弹框
+			$('#addModal').modal(true)
+		});
+
+		$("#checked_btm").live("click", function() {
+			var name = $(this).parent().find("input[name='name']").val();
+			var id = $(this).parent().find("input[name='id']").val();
+			$.ajax({
+				url : '__URL__/cateEdit',
+				type : 'POST',
+				data : {
+					name : name,
+					id : id
+				},
+				dataType : 'html',
+				timeout : 1000,
+				success : function(result) {
+					alert(result);
+					location.reload();
+				}
+			});
+		});
+
+		$("#cancel_btn").live("click", function() {
+			$(this).parent("p").remove();
+		});
+	});
+
+</script>
+<{/block}>
+
+<{block name="content"}>
+<div class="mainContent web">
+	<ul class="btn-list">
+		<li>
+			<a href="javascript:void(0)" id="add_new" class="btn btn-primary" >添加新账户</a>
+		</li>
+	</ul>
+	<div class="two-column-layout web-url">
+		<div class="column webUrl">
+			<table class="lhz-table">
+			   <{section loop=$result name=result}>
+					<tr>
+						<td>名称：<span class="name"><{$result[result].name}> </span></td>
+						<td>网站：
+						<input type="hidden" class="website" value="{$result['website']}" />
+						<span class="webname"><{$result[result].webname}> </span></td>
+						<td>用户名：<span class="username"><{$result[result].username}></span></td>
+						<td>密码：<span class="password"><{$result[result].password}></span></td>
+						<td><a href="javascript:void(0)" data-userId="<{$result[result].id}>" class="to_edit">修改</a></td>
+					</tr>
+				 <{/section}>
+			</table>
+		</div>
+		<div class="column web-nav"></div>
+	</div>
+</div>
+<div class="modal hide fade" id="addModal">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+			&times;
+		</button>
+		<h3>新增账户</h3>
+	</div>
+	<form action="" method="post" class="form-horizontal" id="add-form">
+		<div class="modal-body">
+			<div class="lhz-form label-8em">
+				<div class="lhz-form-group">
+					<label for="name">选择网站：</label>
+					<div class="input-part">
+						<select name="website" id="website">
+								<option value="0">选择网站</option>
+							<volist name="weblist" id="web">
+								<option value="{$web['id']}">{$web['name']}</option>
+							</volist>
+						</select>
+					</div>
+				</div>
+				<div class="lhz-form-group">
+					<label for="name">名称：</label>
+					<div class="input-part">
+						<input name="name" type="text" class="input-title" id="name">
+						<b class="require-red">*</b>
+					</div>
+				</div>
+				<div class="lhz-form-group">
+					<label for="username">用户：</label>
+					<div class="input-part">
+						<input name="username" type="text" class="input-title" id="username">
+						<b class="require-red">*</b>
+					</div>
+				</div>
+				<div class="lhz-form-group">
+					<label for="password">密码：</label>
+					<div class="input-part">
+						<input name="password" type="text" class="input-title" id="password">
+						<b class="require-red">*</b>
+					</div>
+				</div>
+				<p id="prompt"></p>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<input name="id" type="hidden" id="account-id">
+			<input name="add" type="button" class="btn btn-primary" id="to_add" value="提交">
+			<button class="btn" data-dismiss="modal" aria-hidden="true">
+				关闭
+			</button>
+		</div>
+	</form>
+</div>
+<{/block}>

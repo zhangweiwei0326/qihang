@@ -1,0 +1,19 @@
+/* !----------------------------------
+* acticle
+**---------------------------------- */
+/* acticle */
+.article-title { margin-bottom: 10px; }
+.article-title, .article-title a { font: bold 22px "Microsoft YaHei"; color: #333; }
+.article-content { padding: 10px 0px; color: #333332; line-height: 180%; }
+.article-content ol { margin-left: 40px; list-style-type: decimal }
+.article-content li { display: list-item }
+
+.go-back { margin-bottom: 10px; text-align: right; padding-right: 28px; }
+.go-back a:link { color: #333; text-decoration: none; }
+.go-back a:hover { color: #BA2626; }
+/* detai */
+.detail { background: #f9f9f9; }
+.toReply { margin-left: 143px; }
+.replyBox { margin-left: 143px; }
+.replyBox textarea { width: 484px }
+.ding, .cai { padding-top: 10px; text-decoration: none; }

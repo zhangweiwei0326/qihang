@@ -1,0 +1,43 @@
+<div class="mainContent">
+	<form name="formActicle" action="__URL__/del" method="post">
+		<div class="btn-list">
+			<a href="__URL__/add?type=actual" class="btn btn-primary">添加实际开销</a>
+			<a href="__URL__/addMore" class="btn btn-primary">批量添加实际开销</a>
+			<a href="__URL__/add?type=plan" class="btn">添加计划开销</a>
+			<a href="__URL__/add?type=income" class="btn">添加收入</a>
+			<a href="javascript:document.formActicle.submit();" class="btn">批量删除</a>
+			<input type="submit" name="delet" class="btn" value="批量删除" />
+		</div>
+		<table width="100%" class="lhz-table tableCenter">
+			<thead>
+				<tr>
+					<td>
+					<input type="checkbox" value="">
+					</td>
+					<td>名称</td>
+					<td>金额</td>
+					<td>实际金额</td>
+					<td>计划使用时间</td>
+					<td>添加时间</td>
+				</tr>
+			</thead>
+			<tbody>
+				<volist name="list" id="money">
+					<tr>
+						<td>
+						<input type="checkbox" value="{$money['id']}">
+						</td>
+						<td><a href="__URL__/detail?id={$money['id']}">{$money['name']}</a></td>
+						<td>{$money['plan_expense']}</td>
+						<td>{$money['actual_expense']}</td>
+						<td>{$money['plan_user_date']}</td>
+						<td>{$money['add_date']}</td>
+					</tr>
+				</volist>
+			</tbody>
+		</table>
+	</form>
+	<div>
+		余额{$balance}
+	</div>
+</div>

@@ -1,0 +1,53 @@
+<{extends file="../Public/base.html"}>
+<{block name="head" append}>
+<link rel="stylesheet" href="__ROOT__/Home/Tpl/default/css-src/user.css" />
+<script type="text/javascript" src="__ROOT__/Public/widget/lhz/validator/validator.js"></script>
+<script type="text/javascript">
+$(function() {
+var v = new Validator("registerForm");
+//console.log(v.formId);
+});
+</script>
+<{/block}>
+<{block name="content"}>
+<div class="wrap">
+  <div class="container">
+    <div class="register clearfix">
+      <div class="left-sidebar">
+        <h1>梨花寨，建站技术交流互助平台。</h1>
+        <p>欢迎新同学加入！</p>
+      </div>
+      <div class="right-sidebar">
+        <form action="" method="post" id="registerForm">
+          <ul>
+            <li class="form-item">
+              <label><span class="icon-must">*</span>用户名：</label>
+              <input name="username" type="text" data-validator="required" data-desc="用户名" />
+            </li>
+            <li class="form-item">
+              <label><span class="icon-must">*</span>密码：</label>
+              <input name="password" type="text" />
+            </li>
+            <li class="form-item">
+              <label><span class="icon-must">*</span>确认密码：</label>
+              <input name="password2" type="text" />
+            </li>
+            <li class="form-item">
+              <label><span class="icon-must">*</span>邮箱：</label>
+              <input name="email" type="text" data-validator="email" />
+              <span class="note">用于找回密码</span> </li>
+            <li>
+            <li class="form-item">
+              <label>昵称：</label>
+              <input name="nickname" type="text" /> </li>
+            <li>
+              <label></label>
+              <input name="add" type="submit" value="提交" class="btn btn-primary" />
+            </li>
+          </ul>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<{/block}>

@@ -1,0 +1,72 @@
+<{extends file="../Public/base.html"}>
+<{block name="head" append}>
+<link type="text/css" rel="stylesheet" href="__ROOT__/Lib/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="__ROOT__/Lib/syntaxhighlighter/styles/shThemeDefault.css"/>
+<link rel="stylesheet" href="__ROOT__/Home/Tpl/default/page/Article/css/article.css" />
+<{/block}>
+
+<{block name="content"}>
+<div class="wrap"> 
+  <div class="tag-show inner">
+    		<{section loop=$taglist name=tag}>
+			<a href="###" data-tagId="<{$taglist[tag].id}>"><{$taglist[tag].name}></a>
+		<{/section}>
+    <volist name="taglist" id="tag">
+      <a href="###" data-tagId="<{$tag['id']}>"><{$tag['name']}></a>
+    </volist>
+  </div>
+  <div class="main-body clearfix">
+
+      <div class="mainContent">
+      <div class="innerContent">
+        <div class="list border">
+	       <{section loop=$list name=article}>
+	         <article class="list-image-text">
+    	        <div class="list-text clearfix">
+                <div class="img">
+                  <a href="__URL__/detail/?id=<{$list[article].id}>" target="_blank"><img src="__ROOT__/Home/Tpl/default/page/Article/images/<{$smarty.section.article.index}>.jpg"/></a>
+                </div>
+                 <header class="list-title">
+                    <h2><{if $smarty.section.article.index lt 2}><span style="color:red;">[最新]</span><{/if}><{if $list[article].is_original == 1 }><span style="display: none;">[原创]</span><{else}> <{/if}>
+                    <a href="__URL__/detail/?id=<{$list[article].id}>" target="_blank"><{$list[article].title}></a></h2>
+                </header>
+                <p class="info">
+                  <span class="info-cate"><{$list[article].typeName}></span>
+                  <span class="line">|</span>
+                  <span class="info-time"><font><{$list[article].add_date}></font></span>
+                  <span class="line">|</span>
+                  <span class="info-view"><font><{$list[article].click_count}></font></span>
+                </p>
+                 <p class="summary"><{if $list[article].summary == null }><{$list[article].summary}><{else}><{$list[article].summary}><{/if}></p>
+              </div>
+	          </article>
+	       <{/section}>
+
+          <div class="ad"></div>
+
+          <div class="lhz-page"><{$page}></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="sideBar">
+    	<{include  file="../../widget/side/side.html"}>
+    </div>
+  </div>
+
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript">
+  var path = "__ROOT__/Lib";
+  SyntaxHighlighter.config.clipboardSwf = '__ROOT__/Lib/syntaxhighlighter/scripts/clipboard.swf';
+  SyntaxHighlighter.all() 
+</script>
+<script type="text/javascript" src="__ROOT__/Home/Tpl/default/page/Article/js/index.js"></script>
+</div>
+<{/block}>

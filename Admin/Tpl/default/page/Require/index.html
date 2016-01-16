@@ -1,0 +1,40 @@
+<{extends file="../Public/layout.html"}>
+
+<{block name="head" append}>
+<link rel="stylesheet" href="__ROOT__/Public/css/list.css" />
+<{/block}>
+
+<{block name="content"}>
+<div class="mainContent">
+  <form name="formActicle" action="__URL__/del" method="post">
+    <div class="btn-list">
+      <a href="__URL__/add" class="btn btn-primary">添加新需求</a>
+      <a href="javascript:document.formActicle.submit();" class="btn">批量删除</a>
+      <input type="submit" name="delet" class="btn" value="批量删除" />
+    </div>
+    <div class="posts-list">
+	 <{foreach item=require from=$list}>
+        <div class="post-item">
+          <div class="post-title">
+            <input type="checkbox" name="id[]" value="{$require['id']}" />
+            <a href="__URL__/detail/?id=<{$require['id']}>"><{$require['title']}></a>
+          </div>
+          <div class="post-info">
+            <span>类别：<{$require['typeName']}></span>
+            <span class="padding-3">
+              作者： <font color="red">admin</font>
+            </span>
+            <span class="padding-3">
+              发表于： <font color="red"><{$require['add_date']}></font>
+            </span>
+          </div>
+          <div class="post-body">
+            链接地址:
+            <a href="{$require['url']}" target="_blank" ><{$require['url']}></a>
+          </div>
+        </div>
+  	 <{/foreach}>
+    </div>
+  </form>
+</div>
+<{/block}>

@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>SRE邮件签名生成器</title>
+<meta content="梨花寨，lihuazhai.com，前端，html，css，js，jquery,php，教程，插件，开源" name="Keywords">
+<meta content="梨花寨（lihauzhai.com）是一个前端技术分享平台。包括前端开发的技巧总结、 经验分享，网站推广运营技巧，视频教程录制发布，插件组件开发。" name="Description">
+<link rel="stylesheet" href="/imgSign/style.css" type="text/css"/>
+</head>
+<body>
+	<div id="J_Tip">
+	</div>
+	<section class="avatar">
+		<header>
+			<h2>
+				头像设置&nbsp;[
+				<a href="#" class="j_goHelp">
+					?
+				</a>
+				]
+			</h2>
+		</header>
+		<content>
+			<div class="avatarHolder" id="J_Avatar" style="">
+				<div class="avatarMask">
+				</div>
+				<p class="avatarNotice">
+					将图片拖入左侧虚线框[
+					<a href="#" class="j_goHelp">
+						?
+					</a>
+					]或 使用
+					<a href="#" id="J_FileUp">
+						普通方式
+					</a>
+					<input type="file" />
+					上传图片
+					<br />
+					鼠标拖拽：移动
+					<br />
+					方向键：微调
+					<br />
+					shift+方向键：快速移动
+					<br />
+					-（减号）键：缩小
+					<br />
+					+（加号）键：放大
+					<br />
+					Esc键：重置
+					<br />
+					Del键：删除
+				</p>
+				<p class="avatarUse">
+				</p>
+			</div>
+		</content>
+	</section>
+	<section class="info">
+		<header>
+			<h2>
+				信息设置
+			</h2>
+		</header>
+		<content>
+			<div style="display:none;">
+				<label>类型：</label><input type=checkbox name="chkMobileShow" checked="checked" id="chkMobileShow"/> <label for="chkMobileShow">隐藏手机号.<label> 
+			</div>
+			<div class="nameInfo">
+				<label>
+					花名：
+				</label>
+				<input type="text" maxlength="4" value="花名" onclick="this.select()" data-reg="[\w\W]{2,4}"/>
+				<br />
+				<label>
+					真名：
+				</label>
+				<input type="text" maxlength="10" data-step="1" value="真名" onclick="this.select()" data-reg="[\w\W]{2,10}" />
+				<br />
+			</div>
+			<div class="extraInfo">
+				<label>
+					部门：
+				</label>
+                <input class="depts" data-start="120" data-end="277" maxlength="25" value="一级部门 - 二级部门 - 三级部门" " onclick="this.select()" />
+                <input style="display:none;" data-start="120" data-end="240" value="备用" />
+<!--				<input class="dept" data-start="120" data-end="240" type="text" data-mode="dept-base" maxlength="8" data-head="" data-reg="^[\w\W]{1,8}$" value="一级部门" onclick="this.select()"/>-<input class="dept" data-step="1" data-start="120" maxlength="8" data-end="240" type="text" data-mode="dept-extend" data-reg="^[\w\W]{1,8}$" value="二级部门" onclick="this.select()"/>-->
+				<br />注：一级部门（如技术保障）开始，层级不超过3级<br />
+                格式：一级部门 - 二级部门 - 三级部门<br />
+				<label>
+					电话：
+				</label>
+				<input class="tel" data-start="120" data-end="236" data-head="电话：" maxlength="20" value="0571-88155188-12345" onclick="this.select()"
+				data-reg="" type="text" />
+				格式建议：0571-88155188-12345 或 13812341234<br />
+				<div id="theMobile">
+				<label>
+					手机：
+				</label>
+				<input id="mobile" data-start="120" data-end="236" type="text" data-head="手机：" value="" onclick="this.select()"
+				data-reg="^[0-9]{11}$" />
+				<br />
+				</div>
+				<label>
+					邮箱：
+				</label>
+				<input class="mail" id="mail" data-start="120" data-end="280" type="text" data-head="邮箱：" onclick="this.select()"
+				value="Email" data-reg="^[\w\-\.]+" maxlength="18" data-tail="@taobao.com"
+				/>@<select id="suffix">
+                <option value="@taobao.com">taobao.com</option>
+                <option value="@alibaba-inc.com">alibaba-inc.com</option>
+                <option value="@hichina.com">hichina.com</option>
+                <option value="@alyun-inc.com">alyun-inc.com</option>
+                <option value="@alipay.com">alipay.com</option>
+                <option value="@service.alibaba.com">service.alibaba.com</option>
+                <option value="@member.alibaba.com">member.alibaba.com
+
+</option>
+                </select>
+			</div>
+		</content>
+	</section>
+	<section class="preview">
+		<header>
+			<h2>
+				图片预览
+				<button id="J_Reset" type="button" style="margin:0 6px 0 230px;">
+					 重 置 
+				</button><button id="J_Save" type="button">
+					生成图片
+				</button>
+			</h2>
+		</header>
+		<content>
+			<canvas id="J_Sign" width="630" height="120">
+			</canvas>
+			<!--<div id="J_Drop" style="width:700px;height:700px;border:1px solid
+			#f00;" draggable=true border="1px solid #f00"></div>-->
+		</content>
+	</section>
+	<!--
+	<section class="video">
+		<video poster="images/video.png" controls="controls">
+			<source src="http://fed.ued.tmall.net/lab/signmaker/help.ogv" />
+			<source src="http://fed.ued.tmall.net/lab/signmaker/help.mp4" />
+		</video>
+	</section>
+	-->
+	<footer>
+		<address>
+			SRE-研发支撑-AONE提供支持 &copy;2013
+		</address>
+	</footer>
+	<script src="/imgSign/msign.js"></script>
+</body>
+</html>

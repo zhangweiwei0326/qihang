@@ -1,0 +1,6 @@
+/* ===================layout================== */
+
+/* ----------two-column-layout---------- */
+.two-column-layout:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.two-column-layout .column { width: 48%; float: left; }
+.two-column-layout .column-right { width: 48%; float: right; }

@@ -1,0 +1,21 @@
+/*!----------------------------------
+* creatHtml
+**----------------------------------*/
+.left {
+	width: 50%;
+	float: left;
+	height: 600px;
+	border: 1px #dedede solid;
+}
+.right {
+	width: 48%;
+	float: left;
+	height: 600px;
+	border: 1px #dedede solid;
+}
+.createHtml {
+	margin-top: 5px;
+}
+.fl-lt {
+	float: left;
+}

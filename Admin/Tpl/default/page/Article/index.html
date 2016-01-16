@@ -1,0 +1,119 @@
+<{extends file="../Public/layout.html"}>
+
+<{block name="head" append}>
+<link rel="stylesheet" href="__ROOT__/Public/css/list.css" />
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/page/Article/css/article.css" />
+<{/block}>
+
+<{block name="content"}>
+<script type="text/javascript">
+	var CONFIG = {
+	    'url': '__URL__'
+	};
+ $(document).ready(function() { 
+
+	$(".post-title a").die().live("click",function(){
+	  var urlStr = $(this).attr("href");
+	  var url = urlStr.substring(urlStr.lastIndexOf('#module=')+8);
+	  $("#sideBarRight .iframes").load(url);
+	});
+	
+	$(".page a").die().live("click",function(){
+	   var urlStr = $(this).attr("href");
+	   var url = urlStr.substring(urlStr.lastIndexOf('#module=')+8);
+	   $("#sideBarRight .iframes").load(url);	  
+	});
+	
+	/*$(".btn-list a").die().live("click",function(){
+		var urlStr = $(this).attr("href");
+		var url = urlStr.substring(urlStr.lastIndexOf('#module=')+8);
+		var html = '<iframe src="'+url+'" frameborder="0" width="100%" height="630px"></iframe>';
+		$("#sideBarRight .iframes").html(html);
+	});
+	*/
+	 
+   $("#checked_btm").live("click",function() {
+	  var name = $(this).parent().find("input[name='name']").val();
+	  var id = $(this).parent().find("input[name='id']").val();	  
+      $.ajax({
+    	url: '__URL__/cateEdit',
+    	type: 'POST',
+    	data:{ name:name,id:id},
+    	dataType: 'html',
+    	timeout: 1000,
+    	success: function(result){alert(result); location.reload() }
+    	});
+    });
+  
+	$("#cancel_btn").live("click",function() {
+	  $(this).parent("p").remove();
+	});
+  
+	$(".changeCate select option").click(function(){
+	  var cateId = $(this).val();
+	  var arr = new Array();　//创建一个数组	  	  
+	 $(".articleList form input[name='id[]']:checked").each(function(){
+		arr. push($(this).val());
+	 });
+	 $.post('__URL__/changeCate',{ids:arr,cateId:cateId},function(result){
+		 // alert(result)
+		 location.reload() 
+	  });
+	});
+	
+});
+</script>
+<div class="mainContent clearfix">
+  <div class="sidebarRight">
+    <div class="title-common">目录管理</div>
+    <ul class="cate-list">
+        <{section loop=$category name=category}>
+        <li>
+          <input type="hidden" name="id" value="<{$category[category].id}>" />
+          <a href="?id=<{$category[category].id}>" class="name"><{$category[category].name}> </a> <span class="operate" style="font-size:11px;"> <a class="edit" href="javascript:void(0);">修改</a> <a class="shortcutdel" onClick="if(confirm('确实要删除此条记录吗？')) return true;else return false;" href="__URL__/cateDel?id=<{$category[category].id}>">删除</a></span> </li>
+         <{/section}>
+    </ul>
+    <form name="categoryAdd" action="__URL__/categoryAdd" method="post">
+      <input type="text" name="name" style="margin-right:3px;  margin-bottom: 0px;" />
+      <input type="submit" name="add" value="新增" class="btn" />
+    </form>
+  </div>
+  <div class="articleList">
+      <div class="btn-list"> 
+	      <a href="__URL__/add" class="btn btn-primary">添加新文章</a> 
+	      <a href="###" class="btn" id="to_delete">批量删除</a>
+	      <a href="###" class="btn" id="unpublished">未发布文章</a> 
+       </div>
+	    <div class="radius mg-bot-10 padding-5">
+	      <input type="text" name="keyName" placeholder="输入关键字搜索" class="input-search"/>
+	      <input type="button" value="搜索" id="to_search" class="btn"/>
+	    </div>
+
+    <div class="article-list">
+      <ul class="posts-list">
+	   <{section loop=$list name=article}>
+         <li class="post-item">
+            <div class="post-title">
+              <input type="checkbox" name="id[]" value="<{$list[article].id}>" />
+              <if condition="$article['is_original'] eq 1 ">[原创]<else /></if><a href="__URL__/showDetail/?id=<{$list[article].id}>" data-href="__APP__/Set/index#type=ajax"  data-type="ajax"><{$list[article].title}> </a>
+            </div>
+            <div class="post-info"> <span style="padding-right:3px;">是否显示：
+            <{if $list[article].ifShow eq 1}>显示<{else}><font color="red">不显示</font><{/if}></span><span style="padding-right:3px;">类别：<{$list[article].typeName}> </span> <span>作者：<font color="red">admin</font> </span> <span>发表于：<font color="red"> <{$list[article].add_date}></font></span> <span>点击：<font color="red"> <{$list[article].click_count}></font></span> </div>
+            <div class="post-body"><{$list[article].summary}></div>
+          </li>
+	    <{/section}>
+      </ul>
+      <div class="lhz-page"><{$page}></div>
+      </div>
+    <div class="cate-change mg-top-10"> 移动到:
+      <select name="cateList">
+        <option>选择目录</option>
+		   <{section loop=$category name=category}>
+		     <option value="<{$category[category].id}>"><{$category[category].name}></option>
+		   <{/section}>
+      </select>
+    </div>
+  </div>
+</div>
+<script charset="utf-8" src="__ROOT__/Admin/Tpl/default/page/Article/js/Article_index.js"></script>
+<{/block}>

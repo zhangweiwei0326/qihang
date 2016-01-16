@@ -1,0 +1,31 @@
+<{extends file="../Public/layout.html"}>
+<{block name="content"}>
+<include file="./Admin/Tpl/default/Public/meta_form.html"/>
+<div class="mainContent">
+	<div class="lhz-form">
+		<form action="__URL__/cate_update" method="post">
+			<ul>
+				<li>
+					<label>名称：</label>
+					<div class="input-part">
+						<input name="name" type="text" value="<{$list['name']}>" style="width:300px;" />
+					</div>
+				</li>
+				<li>
+					<label>类别：</label>
+					<div class="input-part">
+						<input name="type" type="text" value="<{$list['type']}>" style="width:300px;" />
+					</div>
+				</li>
+				<li>
+					<div class="from-footer">
+						<input name="id" type="hidden" value="<{$list['id']}>" />
+						<input name="update" type="submit" value="发布" class="btn btn-primary" />
+						<a href="javascript:window.history.go(-1);" class="btn">返回</a>
+					</div>
+				</li>
+			</ul>
+		</form>
+	</div>
+</div>
+<{/block}>

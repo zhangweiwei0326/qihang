@@ -1,0 +1,121 @@
+<{extends file="../Public/layout.html"}>
+<{block name="head" append}>
+<link rel="stylesheet" href="__ROOT__/Public/css/form.css" />
+<script charset="utf-8" src="__ROOT__/Lib/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="__ROOT__/Lib/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+var editor;
+KindEditor.ready(function(K) {
+	editor = K.create('textarea[name="content"]', {
+		resizeType : 1,
+		allowPreviewEmoticons : true,
+		allowFileManager : true,
+		allowImageUpload : true
+	});
+});				
+</script>
+<{/block}>
+<{block name="content"}>
+<div class="mainContent">
+  <div class="article-update from-subimt-btns-fixed">
+    <form action="__URL__/update" method="post" class="lhz-form">
+      <div class="form-item">
+        <label class="form-label" for="inputEmail">标题：</label>
+        <div class="control-label">
+          <input name="title" type="text" value="<{$list['title']}>" class="input-title input-widht800"  />
+        </div>
+      </div>
+      <div class="form-item">
+        <label class="form-label" for="inputEmail">类别：</label>
+        <div class="control-label">
+          <select name="cateId" style="float:left;">
+           	<{section loop=$category name=category}>
+           	  <{if $category[category].id eq  $list['cateId'] }>
+              <option value="<{$category[category].id}>" selected ='selected'><{$category[category].name}></option>
+               <{else}>
+              <option value="<{$category[category].id}>"><{$category[category].name}></option>
+              <{/if}>
+             <{/section}>
+          </select>
+
+          <label style="float:left;margin-left:5px;">标签：</label>
+          <div class="tagChoice">
+            <if condition='$taglist neq "" '>
+             <select name="tag" style="float:left;margin-left:5px;">
+	           	<{section loop=$taglist name=tag}>
+	           	  <{if $taglist[tag].id eq  $list['tag'] }>
+	              <option value="<{$taglist[tag].id}>" selected ='selected'><{$taglist[tag].name}></option>
+	               <{else}>
+	              <option value="<{$taglist[tag].id}>"><{$taglist[tag].name}></option>
+	              <{/if}>
+	             <{/section}>
+             </select> 
+             <a href="####" id="to_add_tag" style="float:left;padding-left:10px;display:none;">新建标签</a>
+            <else /> 
+             <input name="tag" type="text" />
+            </if>
+          </div>
+
+        </div>
+      </div>
+      <div class="form-item">
+        <label class="form-label" for="inputEmail">概述：</label>
+        <div class="control-label">
+          <textarea name="summary" class="summary width-500"><{$list['summary']}></textarea>
+        </div>
+      </div>
+      <div class="form-item">
+        <label class="form-label" for="inputEmail">内容：</label>
+        <div class="control-label">
+          <textarea id="editor_id" name="content" style="width:960px;height:550px;"><{$list['content']}></textarea>
+        </div>
+      </div>
+            <div class="form-item">
+        <label class="form-label">是否对外显示：</label>
+        <div class="control-label">
+         <{if $list['ifShow'] eq 1 }>显示
+            <input type="radio" name="ifShow" value="1" checked />
+            不显示
+            <input type="radio" name="ifShow" value="0" />
+            <{else}>
+            显示
+            <input type="radio" name="ifShow" value="1" />
+            不显示
+            <input type="radio" name="ifShow" value="0" checked />
+          <{/if}>
+        </div>
+      </div>
+
+    <div class="form-item">
+        <label class="form-label">是否原创：</label>
+        <div class="control-label">
+          <{if $list['is_original'] eq 1 }> 原创
+            <input type="radio" name="is_original" value="1" checked />
+            不原创
+            <input type="radio" name="is_original" value="0" />
+              <{else}>
+            原创
+            <input type="radio" name="is_original" value="1" />
+            不原创
+            <input type="radio" name="is_original" value="0" checked />
+           <{/if}>
+        </div>
+      </div>
+
+      <div class="form-item">
+        <label class="form-label">消费积分：</label>
+        <div class="control-label">
+          <input name="expense_credit" type="text" value="<{$list['expense_credit']}>" class="input-title" style="20px;" />
+        </div>
+      </div>
+      <div class="form-actions">
+        <div class="btn-list">
+          <input name="id" type="hidden" value="<{$list['id']}>" />
+          <input name="update" type="submit" class="btn btn-primary" value="发布" />
+          <a href="javascript:window.history.go(-1);" class="btn">返回</a> </div>
+      </div>
+    </form>
+  </div>
+</div>
+<{/block}>>

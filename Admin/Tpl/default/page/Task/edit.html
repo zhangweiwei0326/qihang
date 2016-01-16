@@ -1,0 +1,199 @@
+<{extends file="../Public/layout.html"}>
+<{block name="head" append}>
+<script charset="utf-8" src="__PUBLIC__/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="__PUBLIC__/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="__PUBLIC__/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript">
+		var editor;
+		KindEditor.ready(function(K) {
+			editor = K.create('textarea[name="description"]', {
+				resizeType : 1,
+				allowPreviewEmoticons : true,
+				allowFileManager : true,
+				allowImageUpload : true,
+				items : ['source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste', 'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript', 'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/', 'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage', 'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak', 'anchor', 'link', 'unlink', '|', 'about']
+			});
+		});
+	</script>
+<{/block}>
+<{block name="content"}>
+	<div class="mainContent task-edit ">
+		<div class="lhz-form">
+			<form action="__URL__/updateForm" method="post" class="form-horizontal">
+				<div class="lhz-form-group">
+					<label class="control-label" for="title">标题：</label>
+					<div class="input-part">
+						<input name="title" type="text" value="<{$list['title']}>" class="input-title input-xxlarge" id="title" />
+					</div>
+				</div>
+				<div class="lhz-form-group">
+					<label class="control-label" for="project">所属项目：</label>
+					<div class="input-part">
+						<select name="projectId">
+						 <{foreach item=project from=$projectList}>
+								<{if $list['projectId'] eq $project['id']}>
+									<option value="<{$project['id']}>" selected><{$project['title']}></option>
+									<{else}>
+									<option value="<{$project['id']}>"><{$project['title']}></option>
+								<{/if}>
+							 <{/foreach}>
+						</select>
+					</div>
+				</div>
+				<div class="lhz-form-group">
+					<ul>
+						<li>
+							<label class="control-label" for="project">类型：</label>
+							<div class="input-part">
+								<select name="type">
+									<{if $list['type'] eq 'daily'}>
+										<option value="daily" selected>普通任务</option>
+										<{else}>
+										<option value="daily">普通任务</option>
+									<{/if}>
+									<{if $list['type'] eq 'bug'}>
+										<option value="bug" selected>bug修复</option>
+										<{else}>
+										<option value="bug">bug修复</option>
+									<{/if}>
+								</select>
+							</div>
+						</li>
+						<li>
+							<label class="control-label" for="project">优先级：</label>
+							<div class="input-part">
+								<select name="priority">
+								   <{if $list['priority'] eq 'P1'}>
+										<option value="p1" selected>P1</option>
+										<{else}>
+										<option value="p1">P1</option>
+									<{/if}>
+									<{if $list['priority'] eq 'P2'}>
+										<option value="p2" selected>P2</option>
+										<{else}>
+										<option value="p2">P2</option>
+									<{/if}>
+									<{if $list['priority'] eq 'P3'}>
+										<option value="p3" selected>P3</option>
+										<{else}>
+										<option value="p3">P3</option>
+									<{/if}>
+									<{if $list['priority'] eq 'P4'}>
+										<option value="p4" selected>P4</option>
+										<{else}>
+										<option value="p4">P4</option>
+									<{/if}>
+								</select>
+							</div>
+						</li>
+						<li>
+							<label class="control-label" for="project">状态：</label>
+							<div class="input-part">
+								<select name="status">
+									<{if $list['status'] eq 'new'}>
+										<option value="new" selected>新提交</option>
+										<{else}>
+										<option value="new">新提交</option>
+									<{/if}>
+									<{if $list['status'] eq 'ing'}>
+										<option value="ing" selected>进行中</option>
+										<{else}>
+										<option value="ing">进行中</option>
+									<{/if}>
+									<{if $list['status'] eq 'pause'}>
+										<option value="pause" selected>暂停中</option>
+										<{else}>
+										<option value="pause">暂停中</option>
+									<{/if}>
+									<{if $list['status'] eq 'finished'}>
+										<option value="finished" selected>已完成</option>
+										<{else}>
+										<option value="finished">已完成</option>
+									<{/if}>
+									<{if $list['status'] eq 'closed'}>
+										<option value="closed" selected>已关闭</option>
+										<{else}>
+										<option value="closed">已关闭</option>
+									<{/if}>
+								</select>
+							</div>
+						</li>
+						<li>
+							<label class="control-label" for="project">完成比例：</label>
+							<div class="input-part">
+								<select name="percent">
+								    <{if $list['percent'] eq '0'}>
+										<option value="0" selected>0%</option>
+										<{else}>
+										<option value="0">0%</option>
+									<{/if}>
+									<{if $list['percent'] eq '10'}>
+										<option value="10" selected>10%</option>
+										<{else}>
+										<option value="10">10%</option>
+									<{/if}>
+									<{if $list['percent'] eq '20'}>
+										<option value="20" selected>20%</option>
+										<{else}>
+										<option value="20">20%</option>
+									<{/if}>
+									<{if $list['percent'] eq '30'}>
+										<option value="30" selected>30%</option>
+										<{else}>
+										<option value="30">30%</option>
+									<{/if}>
+									<{if $list['percent'] eq '40'}>
+										<option value="340" selected>40%</option>
+										<{else}>
+										<option value="40">40%</option>
+									<{/if}>
+									<{if $list['percent'] eq '50'}>
+										<option value="50" selected>50%</option>
+										<{else}>
+										<option value="50">50%</option>
+									<{/if}>
+									<{if $list['percent'] eq '60'}>
+										<option value="60" selected>60%</option>
+										<{else}>
+										<option value="60">60%</option>
+									<{/if}>
+									<{if $list['percent'] eq '70'}>
+										<option value="70" selected>70%</option>
+										<{else}>
+										<option value="70">70%</option>
+									<{/if}>
+									<{if $list['percent'] eq '80'}>
+										<option value="80" selected>80%</option>
+										<{else}>
+										<option value="80">80%</option>
+									<{/if}>
+									<{if $list['percent'] eq '90'}>
+										<option value="90" selected>90%</option>
+										<{else}>
+										<option value="90">90%</option>
+									<{/if}>
+									<{if $list['percent'] eq '100'}>
+										<option value="100" selected>100%</option>
+										<{else}>
+										<option value="100">100%</option>
+									<{/if}>
+								</select>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="lhz-form-group">
+					<label class="control-label" for="project">描述：</label>
+					<div class="input-part">
+						<textarea id="editor_id" name="description" style="width:700px;height:400px;"><{$list['description']}></textarea>
+					</div>
+				</div>
+				<div class="form-actions">
+					<input name="id" type="hidden" value="<{$list['id']}>" />
+					<input name="update" type="submit" class="btn btn-primary"  value="提交" />
+					<a href="javascript:window.history.go(-1);" class="btn">返回</a>
+				</div>
+			</form>
+		</div>
+	</div>
+<{/block}>

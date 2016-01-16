@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>search</title>
+<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+<link rel="stylesheet" type="text/css" href="../css/common.css" />
+</head>
+
+<body>
+
+<div class="ao-search">
+	<ul>
+        <li><span for="id">PRID：</span>
+            <input type="text" class="width-36" value="" name="id" >
+        </li> 
+        <li><span for="title">需求标题：</span>
+            <input type="text" value="" class="width-250" name="title" style="">
+        </li>
+        <li><span for="productLineId">产品线：</span>
+            <input type="text" value=""  class="width-200" id="productLineName">
+        </li>	
+        <li><span for="teamIds">团队：</span>							
+            <input type="text" value="" onclick="selectTeam()" class="width-200" id="teamNamesInput">
+        </li>	
+	</ul>
+	<ul>
+		<li><span for="status">状态：</span>			
+			<select class="width-70" name="status" id="status"><option value="">请选择</option><option value="IN_AUDIT">审批中</option><option value="NEW">新建</option><option value="TO_TECH">待技术接手</option><option value="TO_DEV">待进入开发</option><option value="IN_DEV">开发中</option><option value="HOLD">HOLD</option><option value="SENT_BACK">已退回</option><option value="FINISHED">已完成</option><option value="CANCELED">已取消</option></select>
+		</li>
+		<li><span for="priority">优先级：</span>
+			<select class="" name="priority" id="priority"><option value="">请选择</option><option value="P1">P1-高</option><option value="P2">P2</option><option value="P3">P3-低</option></select>
+		</li>
+		<li><span for="requester">需求方：</span>
+			<input type="text" value="" class="input-xlarge ui-autocomplete-input" id="requester_autocomplete" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+		</li>
+		<li><span for="pd">PD：</span>
+			<input type="text" value="" class="width-80 ui-autocomplete-input" id="pd_autocomplete" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+		</li>
+	</ul>
+</div>
+
+</body>
+</html>

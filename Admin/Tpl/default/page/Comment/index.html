@@ -1,0 +1,117 @@
+<{extends file="../Public/layout.html"}>
+<{block name="head" append}>
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/page/Comment/css/comment.css" />
+<script type="text/javascript"> 
+  $(document).ready(function() {                
+    $("#comment_del").click(function(){
+      $("form:eq(0)").attr("action", "__URL__/del").submit();
+    })
+     
+    $("#comment_check").click(function(){
+      $("form:eq(0)").attr("action", "__URL__/check").submit();
+    })
+        
+    $("#cancel_check").click(function(){
+      $("form:eq(0)").attr("action", "__URL__/cancel").submit();
+    })
+    
+    $(".showReply").click(function(){
+      $(this).parents(".comment-body").next().toggle();   
+    });
+    
+    $(".reply").click(function(){ 
+      var obj = $(this).parent().parent();
+    
+      var article_id = obj.find("input[name='article_id']").val();
+      var comment_parent = obj.find("input[name='comment_parent']").val();
+      var content = obj.find("textarea[name='content']").val();
+      
+        $.post('__URL__/reply',{article_id:article_id,comment_parent:comment_parent,content:content},function(result){
+        location.reload() 
+            });
+    
+    });
+  }); 
+</script>
+<{/block}>
+
+<{block name="content"}>
+<form name="" action="" method="post">
+  <div class="operateBtnList">
+    <span>
+      <a href="#" class="btn" id="comment_del">批量删除</a>
+    </span>
+    <span>
+      <a href="#" class="btn btn-primary" id="comment_check">审核</a>
+    </span>
+    <span>
+      <a href="#" class="btn" id="cancel_check">取消通过</a>
+    </span>
+  </div>
+  <!--comment-list start-->
+  <div class="comment-list">
+    <{foreach from=$list item=comment}>
+      <div class="comment-item">
+        <div class="comment-title">
+          <input type="checkbox" name="id[]" value="<{$comment['id']}>" />
+          <span class="user-name">来自匿名网友</span>
+          <span>
+            审核：
+            <eq name="comment['passed']" value="1">
+              已通过
+              <else/>
+              <span style="color: red;">未通过</span>
+            </eq>
+          </span>
+          <span class="date-time">
+            评论于： <font color="red"><{$comment['add_date']}></font>
+          </span>
+        </div>
+        <div class="comment-body">
+          <{$comment['content']}>
+          <span style="padding:3px;" class="showReply">
+            <a href="#">答复</a>
+          </span>
+        </div>
+        <div class="comment-reply">
+          回复评论：
+          <input type="hidden" value="<{$comment['article_id']}>" name="article_id">
+          <input type="hidden" value="<{$comment['id']}>" name="comment_parent">
+          <textarea class="content" maxlength="100" name="content" ></textarea>
+          <div class="comment-btns">
+            <input type="button" value="发布" class="reply btn btn-primary" name="add" ></div>
+        </div>
+      </div>
+      <{foreach from=$comment['child'] item="sub"}>
+        <div class="comment-item item-sub">
+          <div class="comment-title">
+            <input type="checkbox" name="id[]" value="<{$sub['id']}>" />
+            <span class="user-name">来自匿名网友</span>
+            <span>
+              审核：
+              <eq name="sub['passed']" value="1">
+                已通过
+                <else/>
+                <span style="color: red;">未通过</span>
+              </eq>
+            </span>
+            <span class="date-time">
+              评论于： <font color="red"><{$sub['add_date']}></font>
+            </span>
+          </div>
+          <div class="comment-body"><{$sub['content']}></div>
+          <div class="comment-reply" style="display:none;">
+            回复评论：
+            <input type="hidden" value="<{$sub['article_id']}>" name="article_id">
+            <input type="hidden" value="<{$sub['id']}>" name="comment_parent">
+            <textarea value="请在这里发表您个人看法，发言时请遵守法纪注意文明!" class="content" maxlength="280" name="content" id="commentText"></textarea>
+            <div class="comment-btns">
+              <input type="button" value="发布" class="reply btn btn-primary" name="add" ></div>
+          </div>
+        </div>
+      <{/foreach}>
+    <{/foreach}>
+  </div>
+  <!--comment-list end-->
+</form>
+<{/block}>>

@@ -1,0 +1,30 @@
+<include file="./Admin/Tpl/default/Public/meta_form.html"/>
+<div class="mainContent">
+<form action="__URL__/updata" method="post">
+  <ul>
+    <li>
+     <label>名称：</label>
+      <input name="name" type="text" value="{$list['name']}" style="width:400px;" />
+    </li>
+    <li>
+      <label>金额：</label>
+      <input name="plan_expense" type="text" value="{$list['plan_expense']}" style="width:400px;" />
+    </li>
+     <li>
+      <label>实际金额：</label>
+      <input name="actual_expense" type="text" value="{$list['actual_expense']}" style="width:400px;" />
+    </li>
+    <li>
+      <label>计划使用时间：</label> 
+      <input name="plan_user_date" type="text" class="Wdate" value="{$list['plan_user_date']}" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+    </li>
+    <li>
+      <div class="btn-list">
+        <input name="id" type="hidden" value="{$list['id']}" />
+        <input name="updata" type="submit" class="btn btn-primary" value="保存" />
+        <a href="javascript:window.history.go(-1);" class="btn">返回</a> 
+        </div>
+    </li>
+  </ul>
+</form>
+</div>

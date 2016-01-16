@@ -1,0 +1,29 @@
+<{extends file="../Public/base.html"}>
+<link rel="stylesheet" href="__ROOT__/Public/css/form.css" />
+<link rel="stylesheet" href="__ROOT__/Home/Tpl/default/css/user.css" />
+<{/block}>
+<{block name="content"}>
+<div class="wrap">
+  <div class="main-body">
+    <div class="login-box">
+      <form action="__APP__/User/login" method="post" class="lhz-form">
+          <div class="form-item">
+            <label>用户名：</label>
+            <div class="form-content">
+              <input name="username" type="text" />
+            </div>
+          </div>
+          <div class="form-item">
+            <label>密&nbsp;&nbsp;码：</label>
+            <div class="form-content">
+             <input name="password" type="password" />
+             </div>
+          </div>
+         <div class="form-action">
+            <input name="login" type="submit" value="提交" />
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+<{/block}>

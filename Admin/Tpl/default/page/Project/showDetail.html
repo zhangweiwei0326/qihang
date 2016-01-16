@@ -1,0 +1,176 @@
+<{extends file="../Public/layout.html"}>
+<{block name="head" append}>
+<script language="javascript" type="text/javascript" src="__ROOT__/Admin/Tpl/default/page/js/table.js"></script>
+<script language="javascript" type="text/javascript" src="__PUBLIC__/jqTableWidget/jqTableWidget_simple.js"></script>
+<script>
+	$(document).ready(function() {
+		$("#createTask").click(function() {
+			var projectId = $("#projectId").val();
+			$("#task_projectId").val(projectId);
+			$("#myModal").show();
+		});
+		$("#myTaskList").click(function() {
+		    var URL = "__ROOT__/admin.php/Task";
+		    var APP = "__APP__";
+		    var ROOT = "__ROOT__"; 
+
+			function alertTest(obj){
+		      var str = JSON.stringify(obj)           
+		      alert(str); //用于测试      	   	
+		    }
+			var filterKeepJson = {"filterSearch":[{
+					"id":"status",
+					"defaultName": "",
+					"defaultCondition": "equal",
+					"idSerial": 1,
+					"defaultOption": ""             
+				   }]};
+	
+				jQuery("#task_box").jqTableWidget({ 
+			   		frame_id : 'task_box',
+			   		setting : setting,
+					filterKeep : filterKeepJson,
+					treeShow :{
+					  enable:true,
+					  data:{"pId":"pId","showKey":"title"}
+					},
+			   		data_url : URL + "/showData",
+			   		data_key : 'id',
+			   		add_url : URL + "/add_ajax",
+			   		del_url : URL + "/del",
+			   		edit_url : URL + "/update",
+			   		close_url : URL + "/close",
+					save_filter_url : URL + "/save_fliter",
+					pageSize : '20',
+			   		edit_switch : 'on',
+			   		do_switch : 'on',
+					callbacks :{
+			          addSub : addSub,
+					  editTask : editTask
+			        }
+			    });
+
+			    function addSub(id){  		
+					var parentTaskId = id;
+					jQuery("#taskPid").val(parentTaskId);		
+					location.href='__URL__/Add/?id='+id;
+				}
+				function editTask(id){  				
+					location.href='__URL__/edit/?id='+id;
+				}
+				$("#myTaskListBox").show();
+		}); 
+	});
+</script>
+<{/block}>
+<{block name="content"}>
+<div class="mainContent">
+		<ul class="btn-list">
+			<li>
+				<a href="__URL__/edit/?id=<{$list['id']}>" class="btn btn-primary">修改</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" id="createTask" class="btn btn-primary">创建任务</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" id="myTaskList" class="btn btn-primary">任务列表</a>
+			</li>
+			<li>
+				<a href="javascript:window.history.go(-1);" class="btn">返回</a>
+			</li>
+		</ul>
+		<h1><{$list['title']}></h1>
+		<input type="hidden" value="<{$list['id']}>" id="projectId" />
+		<ul>
+			<li>
+				<span style="padding-right:3px;">类别：<{$list['typeName']}></span><span>作者：<font color="red">admin</font> </span><span> 发表于：<font color="red">
+				<{$list['add_date']}></font></span><span> 点击：<font color="red"><{$list['click_count']}></font></span>
+			</li>
+		</ul>
+		<div class="text">
+			<{$list['content']}>
+		</div>
+</div>
+
+
+<div id="myTaskListBox" style="display:none;">
+    <div id="task_box">正在载入数据...</div>
+</div>
+
+
+<div class="modal hide fade" id="myModal" style="display:none;">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+			&times;
+		</button>
+		<h3>创建新任务</h3>
+	</div>
+	<form action="__APP__/Task/add" method="post">
+		<input type="hidden" value="" name="projectId" id="task_projectId" />
+		<div class="modal-body">
+			<ul class="lhz-form">
+				<li>
+					<label>标题:</label>
+					<div class="input-part">
+						<input type="text" name="title" value="" style="width: 400px;" />
+					</div>
+				</li>
+				<li>
+					<label for="project">类型：</label>
+					<div class="input-part">
+						<select name="type" id="type">
+							<option value="daily">普通任务</option>
+							<option value="bug">bug修复</option>
+						</select>
+					</div>
+				</li>
+				<li>
+					<label for="project">优先级：</label>
+					<div class="input-part">
+						<select name="priority" id="priority">
+							<option value="p1">P1</option>
+							<option value="p2">P2</option>
+							<option value="p3">P3</option>
+							<option value="p4">P4</option>
+						</select>
+					</div>
+				</li>
+				<li>
+					<label class="control-label" for="project">状态：</label>
+					<div class="input-part">
+						<select name="status">
+							<option value="new">新提交</option>
+							<option value="ing">进行中</option>
+							<option value="pause">暂停中</option>
+							<option value="finished">已完成</option>
+							<option value="closed">已关闭</option>
+						</select>
+					</div>
+				</li>
+				<li>
+					<label class="control-label" for="project">计划开始：</label>
+					<div class="input-part">
+						<input name="plan_start_date" type="text" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+					</div>
+				</li>
+				<li>
+					<label class="control-label" for="project">计划完成：</label>
+					<div class="input-part">
+						<input name="plan_end_date" type="text" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+					</div>
+				</li>
+				<li>
+					<label>内容:</label>
+					<div class="input-part">
+						<textarea name="content" style="width: 400px;  height: 200px;"></textarea>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">关闭</a>
+			<input type="submit" name="add" value="提交" class="btn btn-primary"  />
+		</div>
+	</form>
+</div>
+<{/block}>

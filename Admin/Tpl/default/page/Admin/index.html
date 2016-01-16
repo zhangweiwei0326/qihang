@@ -1,0 +1,119 @@
+<{extends file="../Public/layout.html"}>
+<{block name="head" append}>
+<link rel="stylesheet" href="__ROOT__/Public/css/table.css" />
+<{/block}>
+<{block name="content"}>
+<div class="mainContent">
+	<div class="two-column-layout">
+		<div class="column webUrl">
+			<table class="lhz-table">
+				<thead>
+					<tr>
+						<td>
+							<input type="checkbox" value=""></td>
+						<td>ID</td>
+						<td>名称</td>
+						<td>级别</td>
+						<td>描述</td>
+						<td>操作</td>
+					</tr>
+				</thead>
+				<tbody>
+				   <{section loop=$list name=skill}>
+						<tr>
+							<td>
+								<input type="checkbox" value="{$skill['id']}"></td>
+							<td><{$list[skill].id}></td>
+							<td><{$list[skill].name}></td>
+							<td><{$list[skill].level}></td>
+							<td><{$list[skill].describe}></td>
+							<td>
+								<a href="javascript:void(0)" onClick="showMdal(<{$list[skill].id}>)">修改</a>
+							</td>
+						</tr>
+					   <{/section}>
+				</tbody>
+			</table>
+		</div>
+		<div class="column column-right">
+			<div id="cate">
+				<div class="title-common">新增技能</div>
+				<div class="lhz-form">
+					<form name="addSkill" action="__URL__/addSkill" method="post">
+						<ul>
+							<li>
+								<label>名称：</label>
+								<input type="text" name="name" />
+							</li>
+							<li>
+								<label>等级：</label>
+								<input type="text" name="level" />
+							</li>
+							<li>
+								<label>描述：</label>
+								<input type="text" name="describe" />
+							</li>
+							<li>
+								<input type="submit" name="add" value="新增" class="btn btn-primary" />
+							</li>
+						</ul>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="myModal" class="modal hide fade">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h3>编辑</h3>
+	</div>
+	<form action="__URL__/update" method="post">
+		<div class="modal-body">
+			<p>One fine body…</p>
+		</div>
+		<div class="modal-footer">
+			<input type="submit" name="add" value="更新" class="btn btn-primary" />
+			<a href="javascript:void(0)" data-dismiss="modal" class="btn">关闭</a>
+		</div>
+	</form>
+</div>
+
+<script type="text/javascript">
+		$(document).ready(function() {
+			var hash = location.hash;
+			//var lastUrl = hash.substring(hash.lastIndexOf('#module=')+8);
+
+			if(hash) {
+				var urlArr = hash.split("#");
+				var pullTypeTemp = urlArr[2];
+				var pullType = pullTypeTemp.substring(pullTypeTemp.indexOf("=") + 1);
+
+				var pullUrlTemp = urlArr[1];
+				var pullUrl = pullUrlTemp.substring(pullUrlTemp.indexOf("=") + 1);
+
+				if(pullType == "ajax") {
+					$("#sideBarRight .iframes").load(pullUrl);
+				} else {
+					var html = '<iframe src="' + pullUrl + '" frameborder="0" width="100%" height="630px"></iframe>';
+					$("#sideBarRight .iframes").html(html)
+				}
+			};
+
+		});
+
+	</script>
+
+<script type="text/javascript">
+		function showMdal(skillId) {
+			$.get('__URL__/edit', {
+				id : skillId
+			}, function(data) {
+				var html = '<ul>' + '<li><label>名称：</label><input type="hidden" name="id" value="' + data.id + '" /><input type="text" name="name" value="' + data.name + '" /></li>' + '<li><label>级别：</label><input type="text" name="level" value="' + data.level + '" /></li>' + '<li><label>描述：</label><input type="text" name="describe" value="' + data.describe + '" /></li>' + '</ul>';
+				$("#myModal .modal-body").html(html);
+				$('#myModal').modal('show');
+			}, 'json');
+		};
+	</script>
+
+<{/block}>

@@ -1,0 +1,42 @@
+<{extends file="../Public/layout.html"}>
+<{block name="head" append}>
+<link rel="stylesheet" href="__ROOT__/Public/css/table.css" />
+<{/block}>
+
+<{block name="content"}>
+<div class="mainContent">
+	<form name="formActicle" action="__URL__/del" method="post">
+		<div class="btn-list">
+			<a href="__URL__/add" class="btn btn-primary">添加手册</a>
+			<a href="javascript:document.formActicle.submit();" class="btn">批量删除</a>
+			<input type="submit" name="delet" class="btn" value="批量删除" />
+		</div>
+		<table width="100%" class="lhz-table">
+			<thead>
+				<tr>
+					<td>
+					<input type="checkbox" value="">
+					</td>
+					<td>ID</td>
+					<td>标题</td>
+					<td>所属手册</td>
+					<td>添加时间</td>
+				</tr>
+			</thead>
+			<tbody>
+				  <{section loop=$list name=handbook}>
+					<tr>
+						<td>
+						<input type="checkbox" value="<{$list[handbook].id}>">
+						</td>
+						<td><{$list[handbook].id}></td>
+						<td><a href="__URL__/detail?id=<{$list[handbook].id}>"><{$list[handbook].title}></a></td>
+						<td><{$list[handbook].typeName}></td>
+						<td><{$list[handbook].add_date}></td>
+					</tr>
+				  <{/section}>
+			</tbody>
+		</table>
+	</form>
+</div>
+<{/block}>

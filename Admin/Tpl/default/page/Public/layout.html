@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<{block name="head"}>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>梨花寨－前端教程，开源分享，插件开发</title>
+<meta content="梨花寨，lihuazhai.com，前端，html，css，js，jquery,php，教程，插件，开源" name="Keywords">
+<meta content="梨花寨（lihauzhai.com）是一个前端技术分享平台。包括前端开发的技巧总结、 经验分享，网站推广运营技巧，视频教程录制发布，插件组件开发。" name="Description">
+<!--正式-->
+<!--
+<link rel="stylesheet" href="__PUBLIC__/css/reset.min.css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.min.css" />
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/css/admin.min.css" />
+-->
+<link rel="stylesheet" href="__ROOT__/Public/css/reset.css" />
+<link rel="stylesheet" href="__ROOT__/Public/css/button.css" />
+<link rel="stylesheet" href="__ROOT__/Public/css/common.css" />
+
+<!-- <link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/css/admin.css" /> -->
+
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/css/common.css" />
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/css/index.css" />
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/css/node.css" />
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/css/plugin.css" />
+
+<script type="text/javascript" src="__ROOT__/Lib/Juicer/juicer.js"></script>
+<script language="javascript" type="text/javascript" src="__ROOT__/Lib/jquery/jquery.js"></script>
+<script language="javascript" type="text/javascript" src="__ROOT__/Lib/jquery/jquery.cookie.js"></script>
+<script language="javascript" type="text/javascript" src="__ROOT__/Admin/Tpl/default/js/admin.js"></script>
+<{/block}>
+</head>
+<body>
+<div id="wrap">
+	<div id="header">
+		<div class="logo"></div>
+		<div class="topNav">
+	        <span><a href="http://localhost__ROOT__/" target="_blank">本地前台主页</a></span>
+	        <span><a href="http://www.lihuazhai.com" target="_blank">前台主页</a></span>
+	        <span>欢迎<span style="padding:0px 3px;"><{$smarty.session.nickname}></span>
+	        <span><a href="__APP__/Login/logout">退出</a></span>
+	   </span>
+	 </div>
+	</div>
+
+	<div id="main">
+	  <div id="sideBarLeft">
+			  <div class="nav-sidebar">
+			   <div class="nav-title">
+			        <a href="javascript:void(0)"><span class="icon icon-user"></span>管理中心</a> 
+			        <div class="nav-gap"></div>
+			    </div>
+			   <ul class="menu">
+			      <li><a href="__APP__/Set/index">网站设置</a></li>
+			      <li><a href="__APP__/Category/index" >导航、分类</a></li>
+			    <li><a href="__APP__/Admin/index"  >技能管理</a></li>  
+			    <li><a href="__APP__/FriendlyLink/index" >友情链接</a></li>
+			    </ul> 
+
+			           
+			  <div class="nav-title">
+			       <a href="javascript:void(0)"><span class="icon icon-project"></span>项目管理</a> 
+			        <div class="nav-gap"></div>
+			    </div>     
+			    <ul class="menu">
+
+			      <li><a href="__APP__/Article/index">文章管理</a></li>
+			      <li><a href="__APP__/Comment/index">留言管理</a></li>
+			      <li><a href="__APP__/Require/index">需求管理</a></li>
+			      <li><a href="__APP__/Project/index">项目管理</a></li>
+			      <li><a href="__APP__/Task/index">任务管理</a></li>
+			      <li><a href="__APP__/Website/index">网址收藏</a></li>
+			      <li><a href="__APP__/Movie/index">电影管理</a></li>
+			      <li><a href="__APP__/Fitment/index">装修管理</a></li>
+			    </ul>
+
+			    
+			    <div class="nav-title">
+			        <a href="javascript:void(0)"><span class="icon icon-filter"></span>工具</a> 
+			        <div class="nav-gap"></div>
+			    </div>   
+			    <ul class="menu">
+			        <li><a href="__APP__/Account/index">账户</a></li>
+			        <li><a href="__APP__/Money/index">理财</a></li>
+			        <li><a href="__APP__/Handbook/addHandbook">手册目录</a></li>
+			        <li><a href="__APP__/Handbook/index">手册详情</a></li>
+			        <li><a href="__APP__/Plan/index">日程管理</a></li>
+			    </ul>
+
+			     <div class="nav-title">
+			        <a href="javascript:void(0)"><span class="icon icon-user"></span>用户中心</a> 
+			        <div class="nav-gap"></div>
+			    </div>
+			   <ul class="menu">
+			    <li><a href="__APP__/Rbac/index">用户列表</a></li>
+				<li><a href="__APP__/Rbac/role">角色列表</a></li>
+				<li><a href="__APP__/Rbac/node">节点列表</a></li>
+				<li><a href="__APP__/Rbac/addRole">添加角色</a></li>
+				 <li><a href="__APP__/Rbac/addNode">添加节点</a></li>	  
+			    </ul>
+			    
+			   <div class="nav-title">
+			        <a href="javascript:void(0)"><span class="icon icon-filter"></span>自定义过滤器</a> 
+			        <div class="nav-gap"></div>
+			    </div>   
+			    <ul class="filter-list">
+			      <volist name="report_defines" id="report_define">
+			      	<!--<li><a href="__URL__/loadFilter/?id={$report_define['id']}" >{$report_define['name']}</a><span class="icon delete"></span></li>-->
+			        <li><a href="__APP__/Task/index" ><{$report_define['name']}></a><span class="icon delete"></span></li>
+			  	  </volist>
+			    </ul>
+			    
+			</div>
+	  </div>
+
+	  <div id="sideBarRight">
+
+	    <div class="tabA bgA">
+	      <ul id="B_history" class="clearfix">
+	        <li id="tab_default" class="current"><span><a hidefocus="true" href="__APP__/Index/index" >主页</a></span></li>
+	      </ul>
+	    </div>
+
+	    <div class="iframes">
+	      <div id="ifr-panel_default">
+		    <{block name="content"}>
+				Default Content
+		    <{/block}>
+	      </div>
+	    </div>
+	    
+	  </div>
+	<!-- sideBarRight end -->
+
+	</div>
+</div>
+
+</body>
+</html>

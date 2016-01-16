@@ -1,0 +1,63 @@
+<{extends file="../Public/layout.html"}>
+<{block name="head" append}>
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/page/Task/css/task.css" />
+<script language="javascript" type="text/javascript" src="__ROOT__/Admin/Tpl/default/page/Task/js/table.js"></script>
+<script language="javascript" type="text/javascript" src="__PUBLIC__/jqTableWidget/jqTableWidget_simple.js"></script>
+<script type="text/javascript"> 
+    var URL = "__URL__";
+    var APP = "__APP__";
+    var ROOT = "__ROOT__"; 
+$(document).ready(function(){	 	
+	function alertTest(obj){
+      var str = JSON.stringify(obj)           
+      alert(str); //用于测试      	   	
+    }
+	var filterKeepJson = {"filterSearch":[{
+			"id":"status",
+			"defaultName": "",
+			"defaultCondition": "equal",
+			"idSerial": 1,
+			"defaultOption": ""             
+		   }]};
+	
+	jQuery("#task_box").jqTableWidget({ 
+   		frame_id : 'task_box',
+   		setting : setting,
+		filterKeep : filterKeepJson,
+		treeShow :{
+		  enable:true,
+		  data:{"pId":"pId","showKey":"title"}
+		},
+   		data_url : URL + "/showData",
+   		data_key : 'id',
+   		add_url : URL + "/add_ajax",
+   		del_url : URL + "/del",
+   		edit_url : URL + "/update",
+   		close_url : URL + "/close",
+		save_filter_url : URL + "/save_fliter",
+		pageSize : '20',
+   		edit_switch : 'on',
+   		do_switch : 'on',
+		callbacks :{
+          addSub : addSub,
+		  editTask : editTask
+        }
+    });
+}); 
+
+function addSub(id){  		
+	var parentTaskId = id;
+	jQuery("#taskPid").val(parentTaskId);		
+	location.href='__URL__/Add/?id='+id;
+}
+function editTask(id){  				
+	location.href='__URL__/edit/?id='+id;
+}
+</script>
+<{/block}>
+<{block name="content"}>
+<div class="task-list">
+  <a href="__URL__/Add" class="btn btn-primary" style='margin-left:10px;'>添加任务</a>
+  <div id="task_box">正在载入数据...</div>
+</div>
+<{/block}>

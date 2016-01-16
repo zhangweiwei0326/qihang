@@ -1,0 +1,47 @@
+<{extends file="../Public/layout.html"}>
+<{block name="head" append}>
+  <link rel="stylesheet" href="__ROOT__/Public/css/form.css" />
+<{/block}>
+<{block name="content"}>
+<div class="mainContent">
+添加节点
+  <form action="{:u('Admin/Rbac/addNodeHandle')}" method="post" class="lhz-form">
+    <div class="form-item">
+        <label class="form-label" for="inputEmail"><{$type}>名称：</label>
+        <div class="form-content">
+           <input type="text" name="name" value=""/>
+        </div>
+    </div>
+
+    <div class="form-item">
+        <label class="form-label" for="inputEmail"><{$type}>描述：</label>
+        <div class="form-content">
+           <input type="text" name="title" value=""/>
+        </div>
+    </div>
+
+    <div class="form-item">
+        <label class="form-label" for="inputEmail"><{$type}>是否开启：</label>
+        <div class="form-content">
+            开启<input type="radio" name="status" value="1" checked />
+            不开启<input type="radio" name="status" value="0" />
+        </div>
+    </div>
+
+    <div class="form-item">
+        <label class="form-label" for="inputEmail"><{$type}>排序：</label>
+        <div class="form-content">
+            <input type="text" name="sort" value="1"/>
+        </div>
+    </div>
+
+    <div class="form-action">
+      <input type="hidden" name="pid" value="{$pid}" />
+      <input type="hidden" name="level" value="{$level}" />
+      <input type="submit" value="添加" class="btn btn-primary" />
+      <input type="button" class="btn" value="返回" onClick="javascript:window.history.go(-1);" />   
+    </div>
+    
+  </form>
+</div>
+<{/block}>

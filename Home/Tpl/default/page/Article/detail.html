@@ -1,0 +1,187 @@
+<{extends file="../Public/base.html"}>
+<{block name="head" append}>
+<link type="text/css" rel="stylesheet" href="__ROOT__/Lib/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="__ROOT__/Lib/syntaxhighlighter/styles/shThemeDefault.css"/>
+<link rel="stylesheet" href="__ROOT__/Home/Tpl/default/widget/comment/comment.css" />
+<link rel="stylesheet" href="__ROOT__/Home/Tpl/default/page/Article/css/Article.css" />
+<{/block}>
+<{block name="content"}>
+  <div class="main-body clearfix">
+    <div class="mainContent article">
+      <div class="innerContent" style="border: 1px #ccc solid;box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2); padding:10px;background: #fff; ">
+        <article>
+          <h1 class="article-title"><{$list['title']}></h1>
+          <div class="info">
+            <span class="info-cate"><{$list['typeName']}></span>
+            <span class="line">|</span>
+            <span class="info-time"> <font><{$list['add_date']}></font>
+            </span>
+            <span class="line">|</span>
+            <span class="info-view">
+              <font><{$list['click_count']}></font>
+            </span>
+          </div>
+          <div class="article-content"><{$list['content']}></div>
+          <div class="ad"></div>
+          <div class="go-back">
+            <a href="javascript:window.history.go(-1);" class="btn">返回</a>
+          </div>
+
+          <div class="ad">
+        	<a href="http://count.chanet.com.cn/click.cgi?a=485933&d=247934&u=&e=" target="_blank"><IMG SRC="http://file.chanet.com.cn/image.cgi?a=485933&d=247934&u=&e=" width="728" height="90" border="0"></a>
+          </div>
+          
+          <div class="nextlog">
+            <p>
+              上一篇：
+              <a href="__URL__/detail/?id=<{$listPrev['id']}>"><{$listPrev['title']}></a>
+            </p>
+            <p>
+              下一篇：
+              <a href="__URL__/detail/?id=<{$listNext['id']}>"><{$listNext['title']}></a>
+            </p>
+          </div>
+        </article>
+
+        <{include  file="../../widget/comment/comment.html" type='article'}>
+		
+        <!--comment-list start-->
+        <ul class="comment-list">
+          <{section loop=$comment name=comment}>
+            <li class="comment-item">
+              <div class="comment-item-date">
+                <span class="date-time"><{$comment[comment].add_date}></span>
+                <span class="bull">•</span>
+              </div>
+              <div class="comment-item-content">
+                <div class="comment-user-msg">
+                  <div class="avatar">
+                    <img width="40" height="40" src="http://tp2.sinaimg.cn/1224685661/50/5616000618/0"></div>
+                  <span class="user-name">匿名网友</span>
+                </div>
+                <div class="comment-body">
+                  <p><{$comment[comment].content}></p>
+                </div>
+                <div class="clearfix"></div>
+                  <a href="###" class="toReply" data-parent-id="<{$comment[comment].id}>" data-opened="0">回复</a>
+                  
+                <ul class="operation">
+                  <li>
+                    <a href="javascript:;" class="ding" data-id="<{$comment[comment].id}>"><{$comment[comment].ding}></a>
+                  </li>
+                  <li>
+                    <a href="javascript:;" class="cai" data-id="<{$comment[comment].id}>"><{$comment[comment].cai}></a>
+                  </li>
+                </ul>
+                <div style="clear:both;"></div>
+                <{section loop=$comment[comment].sub_comment name=sub}>
+                  <p style="color: #F00; margin-left:155px; margin-top:5px;">
+                    <span>回复：</span>
+                    <{$comment[comment].sub_comment[sub].content}>
+                  </p>
+                <{/section}>
+              </div>
+            </li>
+          <{/section}>
+        </ul>
+        <!--comment-list end--> 
+
+        </div>
+    </div>
+    
+    <div class="sideBar" style="background: #fff;">
+		<{include  file="../../widget/side/side.html"}>
+    </div>
+  </div>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript">
+  var path = "__ROOT__/Lib";
+  SyntaxHighlighter.config.bloggerMode = true;
+  SyntaxHighlighter.config.clipboardSwf = '__ROOT__/Lib/syntaxhighlighter/scripts/clipboard.swf';
+  SyntaxHighlighter.all() 
+</script>
+<script type="text/javascript" src="__ROOT__/Home/Tpl/default/widget/comment/comment.js"></script>
+<script charset="utf-8" src="__ROOT__/Lib/kindeditor/plugins/insertVideo/ckplayer/ckplayer.js"></script>
+<script charset="utf-8" src="__ROOT__/Lib/kindeditor/plugins/insertVideo/callCkplayer.js"></script>
+
+<script type="text/javascript">
+ var URL = "__URL__";
+ $(function(){
+    jQuery(".toReply").click(function(){
+      //var id =  jQuery(this).attr("data-id");
+      var $this = jQuery(this);
+      if($this.attr("data-opened") == "0"){
+        var html = '<div class="replyBox"><textarea></textarea> <input type="button" class="addReplay" value="提交"/></div>';
+        $this.after(html);
+        $this.attr("data-opened","1");
+      }else if($this.attr("data-opened") == "1"){
+ 		$this.next(".replyBox").toggle();
+      }
+    });
+	$(document).on("click", ".addReplay", function(){ 
+		 var $this = jQuery(this);
+         var subject_id = $("#subject_id").val();
+         var parent_id = $this.parent(".replyBox").prev().attr("data-parent-id");
+         var type =  'article';
+         var replayContent = $this.prev().val();
+        $.ajax({ 
+          async:false,
+          type: "POST", 
+          url : URL + "/commentAdd", 
+          dataType:'json',
+          data : 'id='+subject_id+'&parent_id='+parent_id+'&content='+replayContent+'&type='+type+'&ifVerification=false', 
+          success: function(data){
+            if(data['flag'] == 0){
+              window.location.reload(); 
+            }else{
+              alert('失败了哦!');        
+            } 
+          }
+      });
+	}); 
+    jQuery(".ding").click(function(){
+      var id =  jQuery(this).attr("data-id");
+      var $that = jQuery(this);
+      $.ajax({ 
+          async:false,
+          type: "post", 
+          url : URL + "/ding", 
+          dataType:'json',//从php返回的值以 JSON方式
+          data: 'id='+id, 
+          success: function(data){
+            if(data['flag'] == 0){
+              $that.text(data['ding']);
+            }else{
+              alert('失败了哦!');        
+            } 
+          }
+      });
+    });
+    jQuery(".cai").click(function(){
+      var id =  jQuery(this).attr("data-id");
+      var $that = jQuery(this);
+      $.ajax({ 
+          async:false,
+          type: "post", 
+          url : URL + "/cai", 
+          dataType:'json',//从php返回的值以 JSON方式
+          data: 'id='+id, 
+          success: function(data){
+            if(data['flag'] == 0){
+             $that.text(data['cai']);
+            }else{
+              alert('失败了哦!');        
+            } 
+          }
+      });
+    });
+})
+</script>
+<{/block}>

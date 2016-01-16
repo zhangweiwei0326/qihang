@@ -1,0 +1,100 @@
+<{extends file="../Public/layout.html"}>
+<{block name="head" append}>
+<script charset="utf-8" src="__PUBLIC__/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="__PUBLIC__/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="__PUBLIC__/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript">
+		var editor;
+		KindEditor.ready(function(K) {
+			editor = K.create('textarea[name="description"]', {
+				resizeType : 1,
+				allowPreviewEmoticons : true,
+				allowFileManager : true,
+				allowImageUpload : true,
+				items : ['source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste', 'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript', 'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/', 'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage', 'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak', 'anchor', 'link', 'unlink', '|', 'about']
+			});
+		});
+	</script>
+<{/block}>
+<{block name="content"}>
+	<div class="mainContent">
+		<div class="lhz-form label-8em">
+			<form action="" method="post" class="form-horizontal">
+				<div class="lhz-form-group">
+					<label for="title">标题：</label>
+					<div class="input-part">
+						<input name="title" type="text" class="input-title input-xxlarge" id="title" /><b class="require-red">*</b>
+					</div>
+				</div>
+				<div class="lhz-form-group">
+					<label for="project">所属项目：</label>
+					<div class="input-part">
+						<select name="projectId">
+							<{foreach from=$projectList item=project}> 
+								<option value="<{$project['id']}>"><{$project['title']}></option>
+							<{/foreach}> 
+						</select><b class="require-red">*</b>
+					</div>
+				</div>
+				<div class="lhz-form-group">
+					<ul>
+						<li>
+							<label for="project">类型：</label>
+							<div class="input-part">
+								<select name="type">
+									<option value="daily">普通任务</option>
+									<option value="bug">bug修复</option>
+								</select>
+							</div>
+						</li>
+						<li>
+							<label for="project">优先级：</label>
+							<div class="input-part">
+								<select name="priority">
+									<option value="p1">P1</option>
+									<option value="p2">P2</option>
+									<option value="p3">P3</option>
+									<option value="p4">P4</option>
+								</select>
+							</div>
+						</li>
+						<li>
+							<label for="project">状态：</label>
+							<div class="input-part">
+								<select name="status">
+									<option value="new">新提交</option>
+									<option value="ing">进行中</option>
+									<option value="pause">暂停中</option>
+									<option value="finished">已完成</option>
+									<option value="closed">已关闭</option>
+								</select>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="lhz-form-group">
+					<label for="project">计划开始时间：</label>
+					<div class="input-part">
+						<input name="plan_start_date" type="text" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+					</div>
+				</div>
+				<div class="lhz-form-group">
+					<label for="project">计划完成时间：</label>
+					<div class="input-part">
+						<input name="plan_end_date" type="text" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+					</div>
+				</div>
+				<div class="lhz-form-group">
+					<label for="project">描述：</label>
+					<div class="input-part">
+						<textarea id="editor_id" name="description" style="width:700px;height:400px;"></textarea>
+					</div>
+				</div>
+				<div class="form-actions btn-list">
+					<input name="add" type="submit" class="btn btn-primary"  value="发布" />
+					<input type="button" class="btn" value="返回" onClick="javascript:window.history.go(-1);" />
+				</div>
+			</form>
+		</div>
+	</div>
+<{/block}>

@@ -1,0 +1,100 @@
+/* -----lhz-table------ */
+.lhz-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+.lhz-table th, .lhz-table td {
+  padding: 3px;
+  border: 1px #DEDEDE solid;
+  vertical-align: middle;
+}
+.lhz-table thead th, .lhz-table thead td {
+  text-align: center;
+  font-weight: bold;
+  color: #555555;
+  background-color: #F5F5F5;
+  background-image: -moz-linear-gradient(center top, #ffffff, #e6e6e6);
+  background-repeat: repeat-x;
+}
+.lhz-table tbody td a {
+  color: #035A89;
+  font-weight: bold;
+}
+.lhz-table tbody td a:hover {
+  color: red;
+  text-decoration: underline;
+}
+.lhz-table tr.even {
+  background: none repeat scroll 0 0 #F6F6F6;
+}
+.lhz-table-condensed th, .lhz-table-condensed td {
+  border-left: 0px;
+  border-right: 0px;
+}
+.lhz-table-condensed thead th {
+  border-top: 0px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+.nowrap th, .nowrap td {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+
+/* show-field */
+.show-field {
+  margin-bottom: 10px;
+}
+.show-field legend + .two-column {
+  margin-top: 5px;
+}
+.show-field .two-column:after {
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+.show-field .two-column .item-list:first-child {
+  float: left;
+  margin-left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 48%;
+}
+.show-field .two-column .item-list:last-child {
+  float: left;
+  margin-right: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 48%;
+}
+.show-field .item-list {
+  overflow: hidden;
+}
+.show-field .item-list label {
+  display: inline-block;
+  width: 20%;
+  float: left;
+  font-weight: bold;
+  text-align: right;
+}
+.show-field .item-list .field-value {
+  display: inline-block;
+  float: left;
+  max-width: 75%;
+  overflow: hidden;
+  padding-left: 3px;
+  white-space: nowrap;
+}
+.show-field .two-column .item-list .field-value {
+  max-width: 42%;
+}
+.show-field .borderTop {
+  border-top: 1px solid #DEDEDE;
+  margin-top: 5px;
+  padding-top: 5px;
+}

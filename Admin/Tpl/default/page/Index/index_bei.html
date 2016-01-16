@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>梨花寨－前端教程，开源分享，插件开发</title>
+<meta content="梨花寨，lihuazhai.com，前端，html，css，js，jquery,php，教程，插件，开源" name="Keywords">
+<meta content="梨花寨（lihauzhai.com）是一个前端技术分享平台。包括前端开发的技巧总结、 经验分享，网站推广运营技巧，视频教程录制发布，插件组件开发。" name="Description">
+<link rel="stylesheet" href="__PUBLIC__/css/reset.css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.css" />
+
+
+<!-- <link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/css/admin.css?20111111" /> -->
+
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/css-src/comment.css?20111111" />
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/css-src/login.css?20111111" />
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/css-src/index.css?20111111" />
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/css-src/article.css?20111111" />
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/css-src/comment.css?20111111" />
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/css-src/node.css?20111111" />
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/css-src/task.css?20111111" />
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/css-src/plugin.css?20111111" />
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/css-src/website.css?20111111" />
+
+
+<script language="javascript" type="text/javascript" src="__PUBLIC__/js/jquery.js?20111111"></script>
+<script language="javascript" type="text/javascript" src="__PUBLIC__/js/jquery.cookie.js?20111111"></script>
+<script language="javascript" type="text/javascript" src="__PUBLIC__/bootstrap/js/bootstrap.js?20111111"></script>
+<script language="javascript" type="text/javascript" src="__ROOT__/Admin/Tpl/default/js/admin.js?20111111"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    	var hash = location.hash;
+    	//var lastUrl = hash.substring(hash.lastIndexOf('#module=')+8);
+    	
+    	if(hash){
+    		var urlArr = hash.split("#");	
+    		var pullTypeTemp = urlArr[2];	
+    		var pullType = pullTypeTemp.substring(pullTypeTemp.indexOf("=")+1);
+    		
+    		var pullUrlTemp = urlArr[1];	
+    		var pullUrl = pullUrlTemp.substring(pullUrlTemp.indexOf("=")+1);			
+    		
+    		if(pullType == "ajax"){
+    			$("#sideBarRight .iframes").load(pullUrl);
+    		}else{	
+    			$("#sideBarRight .iframes iframe").attr("src",pullUrl) 
+    		}	
+    	}
+   
+      $(".nav-sidebar .menu li a").click(function(event){
+  		//openPage($(event.target));
+  		  openPage(event.target);
+  	   });
+
+  });
+</script>
+<style>
+body {
+    height: 100%; overflow:hidden;
+}
+</style>
+</head>
+<body>
+<div id="wrap">
+<div id="header">
+	<div class="logo"></div>
+	<div class="topNav">
+        <span><a href="http://localhost__ROOT__/" target="_blank">本地前台主页</a></span>
+        <span><a href="http://www.lihuazhai.com" target="_blank">前台主页</a></span>
+        <span>欢迎<span style="padding:0px 3px;">{$_SESSION['nickname']}</span>
+        <span><a href="__APP__/Login/logout">退出</a></span>
+   </span>
+ </div>
+</div>
+<div id="main">
+<div id="sideBarLeft">
+    <div class="nav-sidebar">
+       <div class="nav-title">
+            <a href="javascript:void(0)"><span class="icon icon-user"></span>管理中心</a> 
+            <div class="nav-gap"></div>
+        </div>
+       <ul class="menu">
+          <li><a href="#module=__APP__/Set/index#type=iframe" data-href="__APP__/Set/index" data-type="iframe" >网站设置</a></li>
+          <li><a href="#module=__APP__/Category/index#type=iframe" data-href="__APP__/Category/index" data-type="iframe">导航、分类</a></li>
+        <li><a href="#module=__APP__/Admin/index#type=iframe" data-href="__APP__/Admin/index" data-type="iframe" >技能管理</a></li>  
+        <li><a href="#module=__APP__/FriendlyLink/index#type=iframe" data-href="__APP__/FriendlyLink/index" data-type="iframe" >友情链接</a></li>
+        </ul> 
+
+               
+      <div class="nav-title">
+           <a href="javascript:void(0)"><span class="icon icon-project"></span>项目管理</a> 
+            <div class="nav-gap"></div>
+        </div>     
+        <ul class="menu">
+
+          <li><a href="#module=__APP__/Article/index#type=iframe" data-href="__APP__/Article/index" data-type="iframe" >文章管理</a></li>
+          <li><a href="#module=__APP__/Comment/index#type=iframe" data-href="__APP__/Comment/index" data-type="iframe" >留言管理</a></li>
+          <li><a href="#module=__APP__/Require/index#type=iframe" data-href="__APP__/Require/index" data-type="iframe" >需求管理</a></li>
+          <li><a href="#module=__APP__/Project/index#type=iframe" data-href="__APP__/Project/index" data-type="iframe" >项目管理</a></li>
+          <li><a href="#module=__APP__/Task/index#type=iframe" data-href="__APP__/Task/index" data-type="iframe" >任务管理</a></li>
+          <li><a href="#module=__APP__/Website/index#type=iframe" data-href="__APP__/Website/index" data-type="iframe" >网址收藏</a></li>
+          <li><a href="#module=__APP__/Plan/index#type=iframe" data-href="__APP__/Movie/index" data-type="iframe" >电影管理</a></li>
+          <li><a href="#module=__APP__/Fitment/index#type=iframe" data-href="__APP__/Fitment/index" data-type="iframe" >装修管理</a></li>
+        </ul>
+
+        
+        <div class="nav-title">
+            <a href="javascript:void(0)"><span class="icon icon-filter"></span>工具</a> 
+            <div class="nav-gap"></div>
+        </div>   
+        <ul class="menu">
+            <li><a href="#module=__APP__/Money/index#type=iframe" data-href="__APP__/Account/index" data-type="iframe" >账户</a></li>
+            <li><a href="#module=__APP__/Money/index#type=iframe" data-href="__APP__/Money/index" data-type="iframe" >理财</a></li>
+            <li><a href="#module=__APP__/Handbook/addHandbook#type=iframe" data-href="__APP__/Handbook/addHandbook" data-type="iframe" >手册目录</a></li>
+            <li><a href="#module=__APP__/Handbook/index#type=iframe" data-href="__APP__/Handbook/index" data-type="iframe" >手册详情</a></li>
+            <li><a href="#module=__APP__/Plan/index#type=iframe" data-href="__APP__/Plan/index" data-type="iframe" >日程管理</a></li>
+        </ul>
+
+         <div class="nav-title">
+            <a href="javascript:void(0)"><span class="icon icon-user"></span>用户中心</a> 
+            <div class="nav-gap"></div>
+        </div>
+	   <ul class="menu">
+	    <li><a href="#module=__APP__/Rbac/index#type=iframe" data-href="__APP__/Rbac/index" data-type="iframe">用户列表</a></li>
+		<li><a href="#module=__APP__/Rbac/role#type=iframe" data-href="__APP__/Rbac/role" data-type="iframe" >角色列表</a></li>
+		<li><a href="#module=__APP__/Rbac/node#type=iframe" data-href="__APP__/Rbac/node" data-type="iframe" >节点列表</a></li>
+		<li><a href="#module=__APP__/Rbac/addRole#type=iframe" data-href="__APP__/Rbac/addRole" data-type="iframe" >添加角色</a></li>
+		 <li><a href="#module=__APP__/Rbac/addNode#type=iframe" data-href="__APP__/Rbac/addNode" data-type="iframe" >添加节点</a></li>	  
+	    </ul>
+        
+       <div class="nav-title">
+            <a href="javascript:void(0)"><span class="icon icon-filter"></span>自定义过滤器</a> 
+            <div class="nav-gap"></div>
+        </div>   
+        <ul class="filter-list">
+          <volist name="report_defines" id="report_define">
+          	<!--<li><a href="__URL__/loadFilter/?id={$report_define['id']}" >{$report_define['name']}</a><span class="icon delete"></span></li>-->
+            <li><a href="#module=__APP__/Task/index#type=iframe" >{$report_define['name']}</a><span class="icon delete"></span></li>
+      	  </volist>
+        </ul>
+        
+  </div>
+</div>
+<div id="sideBarRight">
+  <div class="tabA bgA">
+    <ul id="B_history" class="clearfix">
+      <li id="tab_default" class="current"><span><a hidefocus="true" href="__APP__/Index/index" >主页</a></span></li>
+    </ul>
+  </div>
+  <div class="iframes">
+    <div id="ifr-panel_default">
+     <iframe scrolling="0" frameborder="0" id="mainIframe" width="100%" height="auto" src="__URL__/default.html" ></iframe>
+    </div>
+  </div>
+</div>
+</body>
+</html>

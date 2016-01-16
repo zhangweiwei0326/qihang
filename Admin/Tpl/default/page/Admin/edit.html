@@ -1,0 +1,56 @@
+<div>
+  <form action="__URL__/update" method="post">
+    <input type="hidden" name="id" value="{$list['id']}" />
+    <div class="show-field">
+      <div class="item-list">
+        <label>类别：</label>
+        <div class="field-value">
+          <select name="cate_id">
+            <volist name="website_cate" id="category">
+              <if condition="$category['id'] eq $list['cate_id']">
+                <option value="{$category['id']}" selected ='selected' >{$category['name']}</option>
+                <else />
+                <option value="{$category['id']}">{$category['name']}</option>
+              </if>
+            </volist>
+          </select>
+        </div>
+      </div>
+      <div class="item-list">
+        <label>网站名称：</label>
+        <div class="field-value">
+          <input type="text" name="name" value="{$list['name']}" />
+        </div>
+      </div>
+      <div class="item-list">
+        <label>url：</label>
+        <div class="field-value">
+          <input type="text" name="url" value="{$list['url']}" />
+        </div>
+      </div>
+
+      <div class="item-list">
+        <label class="control-label">是否对外显示：</label>
+        <div class="field-value">
+          <if condition="$list['is_public'] eq 1">
+            公开
+            <input type="radio" name="is_public" value="1" checked />
+            不公开
+            <input type="radio" name="is_public" value="0" />
+            <else />
+            公开
+            <input type="radio" name="is_public" value="1"  />
+            不公开
+            <input type="radio" name="is_public" value="0" checked/>
+          </if>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="btn-list">
+      <input type="submit" value="提交" name="add" class="btn" />
+      <a href="javascript:window.history.go(-1);" class="btn btn-primary">返回</a>
+    </div>
+  </form>
+</div>

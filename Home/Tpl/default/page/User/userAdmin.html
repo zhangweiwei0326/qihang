@@ -1,0 +1,106 @@
+<{extends file="../Public/base.html"}>
+<{block name="head" append}>
+<style>
+.register {
+	border: 1px #dedede solid;
+	border-radius: 5px;
+	background: #FFF;
+	padding: 10px;
+	margin-top: 20px;
+}
+.left-sidebar {
+	float: left;
+	width: 260px;
+	height: 300px;
+	border-right: 1px #E5E5E5 solid;
+	font-size: 14px;
+	padding-top: 50px;
+}
+.left-sidebar h1 {
+	font-size: 15px;
+	font-weight: normal;
+	text-align: center;
+}
+.left-sidebar p {
+	text-align: center;
+}
+.right-sidebar {
+	margin-left: 10px;
+	float: left;
+}
+.register ul {
+	margin-top: 10px;
+}
+.register ul li {
+	margin-bottom: 20px;
+}
+.register ul li label {
+	width: 100px;
+	text-align: right;
+}
+.register ul li input[type="text"] {
+	width: 200px;
+}
+.register label .icon-must {
+	color: #FF0000;
+	font-weight: 400px;
+	margin-right: 6px;
+	font-size: 14px;
+}
+.note {
+	margin-left: 10px;
+	color: #999;
+}
+</style>
+<{/block}>
+<{block name="content"}>
+<body>
+<include file="Public:head" />
+<div class="wrap">
+  <div class="container">
+    <div class="register clearfix">
+      <div class="left-sidebar">
+        <h1>梨花寨，建站技术交流互助平台。</h1>
+        <ul>
+          <li>个人信息</li>
+        </ul>
+      </div>
+      <div class="right-sidebar">
+        <form action="__APP__/User/updateUserMsg" method="post">
+          <ul>
+            <li>
+              <label>用户名：</label>
+              <input name="username" type="text" value="<{$list['username']}>" disabled="true" />
+            </li>
+            <li>
+              <label>积分：</label>
+              <input name="credit" type="text" value="<{$list['credit']}>" disabled="true" />
+            </li>
+            <li>
+              <label><span class="icon-must">*</span>邮箱：</label>
+              <input name="email" type="text" value="<{$list['email']}>" />
+              <span class="note">用于找回密码</span> </li>
+            <li>
+            <li>
+              <label>昵称：</label>
+              <input name="nickname" type="text" value="<{$list['nickname']}>" />
+            </li>
+            <li> <label>技能：</label>
+              <volist name="skillList" id="skill"> <span style="margin-right:10px;">
+                <input type="checkbox" name="skillId[]" value="<{$skill['id']}>">
+                <{$skill['name']}></span> </volist>
+            </li>
+            <li>
+              <label></label>
+              <input name="add" type="submit" value="提交" class="btn btn-primary" />
+            </li>
+          </ul>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<include file="Public:footer" />
+</body>
+</html>
+<{/block}>

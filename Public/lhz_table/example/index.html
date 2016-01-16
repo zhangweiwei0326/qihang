@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../jquery/jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="../skins/default/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../skins/default/css/lhz_table.css">
+	<script type="text/javascript" src="../lhz_table.js"></script>
+</head>
+<body>
+	<div id="table_id"></div>
+	<script type="text/javascript">
+		$(function() {
+			$("#table_id").lhz_table({
+				"getDataUrl" : './data.js'
+			});
+		});
+	</script>
+</body>
+</html>

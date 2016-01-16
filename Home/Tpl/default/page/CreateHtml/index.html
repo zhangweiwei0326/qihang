@@ -1,0 +1,85 @@
+<include file="Public:meta_all"/>
+<body>
+<load href="__ROOT__/Home/Tpl/default/css-src/createHtml.css" />
+<load href="__ROOT__/Home/Tpl/default/js-src/createHtml.js" />
+<script type="text/javascript" src="__ROOT__/Public/widget/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/widget/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<link type="text/css" rel="stylesheet" href="__ROOT__/Public/widget/syntaxhighlighter/styles/shCoreDefault.css"/>
+
+<link rel=stylesheet href="__ROOT__/Public/widget/codemirror/doc/docs.css">
+<link rel="stylesheet" href="__ROOT__/Public/widget/codemirror/lib/codemirror.css">
+<link rel="stylesheet" href="__ROOT__/Public/widget/codemirror/addon/hint/show-hint.css">
+<script src="__ROOT__/Public/widget/codemirror/lib/codemirror.js"></script>
+<script src="__ROOT__/Public/widget/codemirror/addon/hint/show-hint.js"></script>
+<script src="__ROOT__/Public/widget/codemirror/addon/hint/javascript-hint.js"></script>
+<script src="__ROOT__/Public/widget/codemirror/mode/javascript/javascript.js"></script>
+<script type="text/javascript">
+		SyntaxHighlighter.all();
+		var URL = "__URL__";
+		var APP = "__APP__";
+		var ROOT = "__ROOT__";
+</script>
+<div class="wrapOut createHtml">
+
+	<a href="__URL__/moduleListShow">模块列表</a>
+	<div class="left">
+
+		<div class="file-list">
+			<div class="fl-lt">
+				选中html文件：
+				<ul class="htmlList">
+					<volist name="htmlList" id="html">
+						<li>
+							<if condition="$html['name'] eq 'layout' ">
+								<input type='checkbox' value="{$html['filePath']}" checked="checked" disabled="disabled" data-name='{$html['file']}' />
+								<else />
+								<input type='checkbox' value="{$html['filePath']}" data-name='{$html['file']}' />
+							</if>
+							{$html['file']}
+							<a href="###" >编辑</a>
+						</li>
+					</volist>
+				</ul>
+
+			</div>
+			<div class="fl-lt">
+				选中css文件：
+				<ul class="cssList">
+					<volist name="cssList" id="css">
+						<li>
+							<if condition="$css['name'] eq 'layout' or $css['name'] eq 'reset' or $css['name'] eq 'common' ">
+								<input type='checkbox' value="{$css['filePath']}" checked="checked" disabled="disabled" data-name='{$css['file']}' />
+								<else />
+								<input type='checkbox' value="{$css['filePath']}" data-name='{$css['file']}' />
+							</if>
+							{$css['file']}
+							<a href="###" >编辑</a>
+						</li>
+					</volist>
+				</ul>
+
+			</div>
+		</div>
+		<!-- <pre class="brush: js;" contenteditable=ture>
+		function helloSyntaxHighlighter()
+  {
+    return "hi!";
+  }
+	</pre>
+	-->
+	<span class="hint"></span>
+	<input type="text" id="title" />
+	<textarea id="code" name="code">{$fileContent}</textarea>
+
+	<input type="button" value="保存" data-url='' id='saveFile' />
+	<input type='button' value='预览' />
+	<input type='button' value='合并css' id='buildCss' />
+	<input type='button' value='合并html' id='createHtml' />
+</div>
+<div class="right">
+	<iframe src="__URL__/showDemo" id="ifreamShow" width="650" height="400"></iframe>
+</div>
+</div>
+<include file="Public:footer" />
+</body>
+</html>

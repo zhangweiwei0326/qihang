@@ -1,0 +1,44 @@
+<{extends file="../Public/layout.html"}>
+<{block name="content"}>
+	<div class="mainContent">
+		<div class="lhz-form label-8em">
+			<form action="" method="post" class="form-horizontal">
+				<div class="lhz-form-group">
+					<label for="project">类别：</label>
+					<div class="input-part">
+						<select name="cate_id">
+							<{foreach from=$website_cate item=category}> 
+								<option value="<{$category['id']}>"><{$category['name']}></option>
+							<{/foreach}> 
+						</select>
+					</div>
+				</div>
+				<div class="lhz-form-group">
+					<label for="project">网站名称：</label>
+					<div class="input-part">
+						<input type="text" name="webname" value=""/><b class="require-red">*</b>
+					</div>
+				</div>
+				<div class="lhz-form-group">
+					<label for="project">url：</label>
+					<div class="input-part">
+						<input type="text" name="weburl" value=""/><b class="require-red">*</b>
+					</div>
+				</div>
+				<div class="lhz-form-group">
+					<label>是否对外显示：</label>
+					<div class="input-part">
+						公开
+						<input type="radio" name="is_public" value="1" checked />
+						不公开
+						<input type="radio" name="is_public" value="0" />
+					</div>
+				</div>
+				<div class="form-actions btn-list">
+					<input type="submit" value="提交" name="add" class="btn btn-primary" />
+					<input type="button" class="btn" value="返回" onClick="javascript:window.history.go(-1);" />
+				</div>
+			</form>
+		</div>
+	</div>
+<{/block}>

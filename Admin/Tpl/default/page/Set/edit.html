@@ -1,0 +1,37 @@
+<{extends file="../Public/layout.html"}>
+<{block name="content"}>
+<div class="mainContent">
+  <div class="ao-from">
+    <form action="__URL__/update" method="post">
+      <div class="control-group">
+        <label for="web_name">网站名称：</label>
+        <div class="controls">
+          <input type="text" name="web_name" value="<{$web_name}>"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label for="admin_email">email：</label>
+        <div class="controls">
+          <input type="text" name="admin_email" value="<{$admin_email}>"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label for="admin_tel">tel：</label>
+        <div class="controls">
+          <input type="text" name="admin_tel" value="<{$admin_tel}>"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label for="qq_group">qq交流群：</label>
+        <div class="controls">
+          <input type="text" name="qq_group" value="<{$qq_group}>"/>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <input type="submit" value="保存" name="update" class="btn btn-primary" />
+        <input type="button" class="btn" value="返回" onClick="javascript:window.history.go(-1);" />
+      </div>
+    </form>
+  </div>
+</div>
+<{/block}>

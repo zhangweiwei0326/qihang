@@ -1,0 +1,25 @@
+<include file="Public:meta"/>
+<title>梨花寨－前端教程，开源分享，插件开发</title>
+<meta content="梨花寨，lihuazhai.com，前端，html，css，js，jquery,php，教程，插件，开源" name="Keywords">
+<meta content="梨花寨（lihauzhai.com）是一个前端技术分享平台。包括前端开发的技巧总结、 经验分享，网站推广运营技巧，视频教程录制发布，插件组件开发。" name="Description">
+</head>
+<body>
+<div class="wrap"> 
+ <include file="Public:head"/>
+  <div class="main-body clearfix">
+  <div class="taskDetail">
+ <ul>
+	<li><label>标题：</label>{$list['title']}</li>
+	<li><label>所属项目：</label> {$list['project_id']}</li>
+	<li><label>类型：</label> {$list['type']}</li>
+	<li><label>描述：</label> {$list['description']}</li>
+	<li><label>完成比例：</label> {$list['percent']}</li>
+	<li><label>开始时间：</label> {$list['start_date']}</li>
+ </ul>
+ <a href="javascript:window.history.go(-1);" class="btn">返回</a> 
+ </div>
+  </div>
+  <include file="Public:footer" />
+ </div>  
+</body>
+</html>

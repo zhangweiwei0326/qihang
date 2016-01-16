@@ -1,0 +1,49 @@
+/* ================ commont =========================== */
+.operateBtnList {
+	margin-bottom: 10px;
+	padding: 8px;
+	border-bottom: 1px #E4E4E4 solid;
+}
+.operateBtnList > span {
+	padding-left: 5px;
+}
+.comment-list {
+	padding: 5px;
+}
+.comment-item {
+	margin-bottom: 8px;
+	border-bottom: 1px dashed #DEDEDE;
+}
+.item-sub {
+	margin-left: 15px;
+}
+.comment-item .comment-title {
+	margin-bottom: 12px;
+	color: #555;
+}
+.comment-item input[type="checkbox"] {
+	margin: 0 6px 0 0;
+}
+.comment-item .user-name {
+	margin-right: 10px
+}
+.comment-item .comment-body {
+	margin-bottom: 8px;
+	padding-left: 15px;
+	width: 100%;
+}
+.comment-reply {
+	display: none;
+	margin-left: 15px;
+}
+.comment-reply .content {
+	width: 500px;
+	margin-bottom: 8px;
+}
+.comment-reply .comment-btns {
+	margin-left: 62px;
+}
+.info li {
+	float: left;
+	margin-right: 20px;
+}

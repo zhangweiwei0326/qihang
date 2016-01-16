@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <{block name="head"}>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>梨花寨－前端教程，开源分享，插件开发</title>
+    <meta content="梨花寨，lihuazhai.com，前端，html，css，js，jquery,php，教程，插件，开源" name="Keywords">
+    <meta content="梨花寨（lihauzhai.com）是一个前端技术分享平台。包括前端开发的技巧总结、 经验分享，网站推广运营技巧，视频教程录制发布，插件组件开发。" name="Description">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <link rel="stylesheet" href="__ROOT__/Public/css/reset.css"/>
+    <link rel="stylesheet" href="__ROOT__/Public/css/common.css"/>
+    <link rel="stylesheet" href="__ROOT__/Public/css/button.css"/>
+    <link rel="stylesheet" href="__ROOT__/Public/css/page.css"/>
+    <link rel="stylesheet" href="__ROOT__/Home/Tpl/mobile/css/common.css"/>
+    <link rel="stylesheet" href="__ROOT__/Home/Tpl/mobile/widget/header/header.css"/>
+    <link rel="stylesheet" href="__ROOT__/Home/Tpl/mobile/widget/footer/footer.css"/>
+    <link rel="stylesheet" href="__ROOT__/Home/Tpl/mobile/css/plugin.css"/>
+    <link rel="stylesheet" href="__ROOT__/Home/Tpl/mobile/css/index.css"/>
+    <link rel="stylesheet" href="__ROOT__/Home/Tpl/mobile/css/article.css"/>
+    <link rel="stylesheet" href="__ROOT__/Home/Tpl/mobile/css/layout.css"/>
+    <script type="text/javascript" src="__ROOT__/Lib/jquery/jquery.js"></script>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js">
+    </script> <![endif]-->
+    <script type="text/javascript" src="__ROOT__/Public/js/common.js"></script>
+    <{/block}>
+</head>
+<body>
+<header class="header clearfix">
+    <{include file="../../widget/header/header.html"}>
+</header>
+<div class="wrap banner clearfix">
+    <div class="banner-lt">
+
+    </div>
+    <div class="banner-rt">
+
+    </div>
+</div>
+
+<div id="login" class="pop-dialog">
+    <div class="pop-dialog-title">
+        <span class="pop-dialog-title-text">登录</span>
+        <span class="pop-dialog-close" onClick="closePopBox()">×</span>
+    </div>
+    <div class="pop-dialog-content">
+        <div class="pop-dialog-login">
+            <form action="__APP__/User/login" method="post">
+                <ul>
+                    <li><input name="username" type="text" placeholder="用户名"/></li>
+                    <li><input name="password" type="password" placeholder="密码"/></li>
+                </ul>
+                <p style="text-align:right; width:200px;"><a href="/resetpassword" target="_blank" class="zg-link-gray">忘记密码？</a><input
+                        name="login" type="submit" value="登陆" class="btn btn-primary"/></p>
+            </form>
+        </div>
+        <div class="pop-dialog-content-right"><p style="font-weight:bold;">梨花寨前端技术交流平台欢迎大家！</p>
+
+            <p>本站内容包含:html,css,html5,css3,js,jquery等
+
+            <p></div>
+    </div>
+</div>
+<div class="pop-dialog-bg" style="opacity: 0.5; width: 1263px; height: 19080px;"></div>
+
+<{block name="content"}>
+Default Content
+<{/block}>
+
+<div class="footer">
+    <{include file="../../widget/footer/footer.html"}>
+</div>
+<script type="text/javascript">
+    var URL = "__URL__";
+    var APP = "__APP__";
+    var ROOT = "__ROOT__";
+
+    function closePopBox() {
+        console.log(123);
+        $(".pop-dialog").hide();
+        $(".pop-dialog-bg").hide();
+    }
+    $(document).ready(function () {
+        $(".toLogin").click(function () {
+            $("#login").show();
+            $(".pop-dialog-bg").show();
+        });
+    });
+    goTopEx("aopen_toTop");
+</script>
+</body>
+</html>

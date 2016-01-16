@@ -1,0 +1,15 @@
+/*================ node ===========================*/
+.node dl {
+	margin: 0px 10px 10px 0px;
+}
+.node dl dd {
+	margin-left: 20px;
+	display: inline-block;
+}
+.node-list {
+	margin-top: 10px;
+}
+.node-app {
+	font-weight: bold;
+	color: #03C;
+}

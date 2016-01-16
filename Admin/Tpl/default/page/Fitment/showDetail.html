@@ -1,0 +1,47 @@
+<{extends file="../Public/layout.html"}>
+<{block name="head" append}>
+<script charset="utf-8" src="__PUBLIC__/ckplayer/ckplayer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="__PUBLIC__/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="__PUBLIC__/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="__PUBLIC__/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="__PUBLIC__/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="__PUBLIC__/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="__PUBLIC__/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript" src="__PUBLIC__/syntaxhighlighter/scripts/shAutoloader.js"></script>
+
+<script type="text/javascript">
+ $(document).ready(function() { 
+ 	$(".btn-list a").live("click",function(){
+	   var urlStr = $(this).attr("href");
+	   var url = urlStr.substring(urlStr.lastIndexOf('#module=')+8);
+	   $("#sideBarRight .iframes").load(url);
+	});
+	
+	SyntaxHighlighter.config.bloggerMode = true;
+	SyntaxHighlighter.all()	
+ });
+</script>
+<style>
+.jj{width:50px;}
+</style>
+<{/block}>
+
+<{block name="content"}>
+<div class="mainContent">
+  <div class="article-detail">
+    <div class="btn-list"> <a href="__URL__/edit/?id={$list['id']}" class="btn btn-primary">修改此文章</a> <a href="javascript:window.history.go(-1);" class="btn">返回</a> </div>
+    <h1><{$list['title']}></h1>
+    <div class="info"><span style="padding-right:3px;">类别：<{$list['typeName']}></span><span>作者：<font color="red">admin</font> </span><span> 发表于：<font color="red"><{$list['add_date']}></font></span><span> 点击：<font color="red"><{$list['click_count']}></font></span> </div>
+    <div class="content"><{$list['content']}></div>
+    <a href="javascript:window.history.go(-1);" class="btn">返回</a>
+    <div class="nextlog">
+      <p>上一篇： <a href="__URL__/showDetail/?id={$listPrev['id']}">{$listPrev['title']}</a></p>
+      <p>下一篇： <a href="__URL__/showDetail/?id={$listNext['id']}">{$listNext['title']}</a></p>
+    </div>
+  </div>
+</div>
+
+<{/block}>

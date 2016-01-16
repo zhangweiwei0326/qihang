@@ -1,0 +1,22 @@
+<{extends file="../Public/base.html"}>
+<{block name="content"}>
+  <div class="container">
+    <div class="login_box">
+      <form action="__APP__/User/login" method="post">
+        <ul>
+          <li>
+            <label>用户名：</label>
+            <input name="username" type="text" />
+          </li>
+          <li>
+            <label>密&nbsp;&nbsp;码：</label>
+            <input name="password" type="password" />
+          </li>
+          <li>
+            <input name="login" type="submit" value="提交" />
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+<{/block}>

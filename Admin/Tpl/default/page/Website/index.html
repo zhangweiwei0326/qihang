@@ -1,0 +1,115 @@
+<{extends file="../Public/layout.html"}>
+<{block name="head" append}>
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/page/Website/css/website.css" />
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var hash = location.hash;
+			//var lastUrl = hash.substring(hash.lastIndexOf('#module=')+8);
+
+			if(hash) {
+				var urlArr = hash.split("#");
+				var pullTypeTemp = urlArr[2];
+				var pullType = pullTypeTemp.substring(pullTypeTemp.indexOf("=") + 1);
+
+				var pullUrlTemp = urlArr[1];
+				var pullUrl = pullUrlTemp.substring(pullUrlTemp.indexOf("=") + 1);
+
+				if(pullType == "ajax") {
+					$("#sideBarRight .iframes").load(pullUrl);
+				} else {
+					var html = '<iframe src="' + pullUrl + '" frameborder="0" width="100%" height="630px"></iframe>';
+					$("#sideBarRight .iframes").html(html)
+				}
+			}
+
+			$("#cate .edit").live("click", function() {
+				var name = $(this).parent().parent().find("a.name").text();
+				var id = $(this).parent().parent().find("input[name='id']").val();
+
+				var newHtml = '<p><input name="name" type="text" value="' + name + '" />';
+				newHtml += '<input type="hidden" name="id" value="' + id + '" />';
+				newHtml += '<a id="checked_btm" class="icon icon-checked" title="提交更新" href="javascript:void(0);"></a>';
+				newHtml += '<a id="cancel_btn" class="icon icon-cancel" title="撤消操作" href="javascript:void(0);"></a></p>';
+				$(this).parent().parent().after(newHtml);
+			});
+
+			$("#checked_btm").live("click", function() {
+				var name = $(this).parent().find("input[name='name']").val();
+				var id = $(this).parent().find("input[name='id']").val();
+				$.ajax({
+					url : '__URL__/cateEdit',
+					type : 'POST',
+					data : {
+						name : name,
+						id : id
+					},
+					dataType : 'html',
+					timeout : 1000,
+					success : function(result) {
+						alert(result);
+						location.reload();
+					}
+				});
+			});
+
+			$("#cancel_btn").live("click", function() {
+				$(this).parent("p").remove();
+			});
+		});
+
+	</script>
+<{/block}>
+
+<{block name="content"}>
+	<div class="mainContent web">
+		<a href="__URL__/add" data-href="__URL__/add" data-type="iframe" class="btn btn-primary">添加新网址</a>
+		<div class="two-column-layout web-url">
+			<div class="column webUrl">
+				<!--    <ul class="li-fl web-site">
+				<volist name="list" id="website">
+				<li>
+				<input type="checkbox" name="id[]" value="{$website['id']}"  />
+				<a href="__URL__/edit/?id={$website['id']}">{$website['name']}</a> </li>
+				</volist>
+				</ul>-->
+				<{foreach item='ret' from=$result}>
+					<{if $ret['web'] eq null}>
+						<{else}>
+						<div class="clearfix mg-bot-10">
+							<p class="title">
+								<{$ret['name']}>
+							</p>
+							<ul class="li-fl web-site">
+								<{foreach from=$ret['web'] item="web"}>
+									<li>
+										<input type="checkbox" name="id[]" value="<{$website['id']}>"  />
+										<a href="__URL__/edit/?id=<{$web['id']}>"><{$web['name']}></a>
+									</li>
+								<{/foreach}>
+							</ul>
+						</div>
+					<{/if}>
+				<{/foreach}>
+			</div>
+			<div class="column web-nav">
+				<div id="cate">
+					<div class="title-common">
+						目录管理
+					</div>
+					<ul class="cate-list">
+						<{foreach item='category' from=$website_cate}>
+ 							<li>
+								<input type="hidden" name="id" value="<{$category['id']}>" />
+								<a href="?id=<{$category['id']}>" class="name"><{$category['name']}></a><span class="operate" style="font-size:11px;"> <a class="edit" href="javascript:void(0);">修改</a> <a class="shortcutdel" onClick="if(confirm('确实要删除此条记录吗？')) return true;else return false;" href="__URL__/cateDel?id=<{$category['id']}>">删除</a></span>
+							</li>
+						<{/foreach}>
+					</ul>
+					<form name="categoryAdd" action="__URL__/categoryAdd" method="post">
+						<input type="text" name="name" style="margin-right:3px;  margin-bottom: 0px;" />
+						<input type="submit" name="add" value="新增" class="btn" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+<{/block}>

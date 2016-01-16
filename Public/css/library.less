@@ -1,0 +1,64 @@
+/*---定义---*/
+.border-radius (@radius: 5px) {
+    border-radius: @radius;
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+}
+
+/* ================start-待引用 ================= */
+.margin (@argument: 10px) {
+    margin:@argument;
+}
+.padding (@argument: 10px) {
+    padding:@argument;
+}
+
+
+.mg-upDown (@argument: 10px) {
+    margin:0px @argument;
+}
+.mg-top (@argument: 10px) {
+     margin-top:@argument;
+}
+.mg-rt (@argument: 10px) {
+     margin-right:@argument;
+}
+.mg-bot (@argument: 10px) {
+     margin-bottom:@argument;
+}
+.mg-lt (@argument: 10px) {
+     margin-left:@argument;
+}
+
+/* =================调用=================== */
+.radius{
+  border: 1px solid #DBDCDC;
+  .border-radius(6px);
+}
+
+.margin-5{
+  .margin(5px);
+}
+
+.padding-5{
+  .padding(5px);
+}
+.padding-10{
+  .padding();
+}
+.padding-3{
+  .padding(3px);
+}
+
+
+
+
+.mg-top-10 { 
+  .mg-top(10px); 
+}
+.mg-bot-10 { 
+  .mg-bot(10px); 
+}
+
+
+

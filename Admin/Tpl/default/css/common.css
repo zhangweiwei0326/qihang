@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+/*
+提交按钮位置固定到页面底部*/
+.from-subimt-btns-fixed {
+	padding-bottom: 60px;
+}
+.from-subimt-btns-fixed  .form-actions {
+	position: fixed;
+	bottom: -20px;
+	width: 78%;
+}
+
+/*搜索框*/
+.input-search {
+	width: 380px;
+}

@@ -1,0 +1,145 @@
+<{extends file="../Public/base.html"}>
+<{block name="head" append}>
+<link type="text/css" rel="stylesheet" href="__ROOT__/Lib/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="__ROOT__/Lib/syntaxhighlighter/styles/shThemeDefault.css"/>
+
+<link rel="stylesheet" href="__ROOT__/Home/Tpl/default/widget/comment/comment.css" />
+<link rel="stylesheet" href="__ROOT__/Home/Tpl/default/page/Index/css/index.css" />
+<{/block}>
+<{block name="content"}>
+<div class="wrap">
+	<div class="main-body clearfix">
+		<div class="mainContent">
+			<div class="innerContent">
+				<div class="recommend">
+					<div class="left">
+						<{section loop=$hotList start=0 max=1 name=article}>
+							<a href="__APP__/Article/detail/?id=<{$hotList[article].id}>">
+							 <img src="__ROOT__/Home/Tpl/default/page/Article/images/recommend_left.png" />
+							 <h4><{$hotList[article].title}></h4>
+							</a>
+						<{/section}>
+					</div>
+					<div class="right">
+						<ul>
+							<{section loop=$hotList start=1 max=4 name=article}>
+							   <li>
+								<a href="__APP__/Article/detail/?id=<{$hotList[article].id}>">
+								 <img src="__ROOT__/Home/Tpl/default/page/Article/images/recommend_right_<{$smarty.section.article.index}>.jpg" />
+								 <h4><{$hotList[article].title}></h4>
+								</a>
+								</li>
+							<{/section}>
+						</ul>
+					</div>
+				</div>
+
+				<div class="ranklist">
+					<div class="left">
+						<h3 class="module-title"><strong>热门排行</strong></h3>
+						<ul>
+							<{section loop=$hotList start=1 name=article}>
+								<li><p class="text-muted" style="display: none;"><span class="post-comments">评论 (26)</span></p>
+								<span class="label label-<{$smarty.section.article.index}>"><{$smarty.section.article.index}></span>
+								<a href="__APP__/Article/detail/?id=<{$hotList[article].id}>" class="ellipsis" target="_blank"><{$hotList[article].title}></a>
+								</li>
+							<{/section}>
+						</ul>
+					</div>
+					<div class="right">
+						<h3 class="module-title"><strong>最新需求</strong></h3>
+						<ul>
+							<{section loop=$commentAll start=1 name=comment}>
+								<li><p class="text-muted" style="display: none;"><span class="post-comments">评论 (26)</span></p>
+								<span class="label label-<{$smarty.section.comment.index}>"><{$smarty.section.comment.index}></span>
+								<a href="__APP__/Require/detail/?id=<{$commentAll[comment].id}>" class="ellipsis" target="_blank"><{$commentAll[comment].content}></a>
+								</li>
+							<{/section}>
+						</ul>
+					</div>
+				</div>
+
+				<div class="list border" style="margin-top:20px; ">
+			       <{section loop=$list name=article}>
+		            <article class="post list-image-text">
+						<div class="list-text clearfix">
+		                    <div class="img">
+			                  <a href="__APP__/Article/detail/?id=<{$list[article].id}>" target="_blank"><img src="__ROOT__/Home/Tpl/default/page/Article/images/<{$smarty.section.article.index}>.jpg"/></a>
+			                </div>
+				            <header class="list-title"><{if $smarty.section.article.index lt 2}><span style="color:red;">[最新]</span><{/if}>
+						     <{if $list[article].is_original == 1 }>[原创]<{else}> <{/if}>
+							<a href="__APP__/Article/detail/?id=<{$list[article].id}>" target="_blank"><{$list[article].title}></a>
+							</header>
+				            <p class="info">
+						        <span class="info-cate">类别：<{$list[article].typeName}></span>
+						        <span class="line">|</span>
+						        <span class="info-author" style="display:none;"><font>admin</font></span>
+						        <span class="info-time"><font><{$list[article].add_date}></font></span>
+						        <span class="line">|</span>
+						        <span class="info-view"><font><{$list[article].click_count}></font></span>
+					        </p>
+					        <{if $list[article].summary == null }>
+								<{$list[article].summary}>
+							<{else}>
+								<{$list[article].summary}>
+							<{/if}>
+						</div>
+			          </article>
+			       <{/section}>
+				   
+				   <div class="lhz-page"><{$page}></div>
+				   
+				</div>
+
+				<{include  file="../../widget/comment/comment.html" type='all'}>
+
+		        <div class="ad">
+		        </div>
+			</div>
+		</div>
+		<div class="sideBar">
+			<{include  file="../../widget/side-index/side-index.html"}>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript">
+  var path = "__ROOT__/Lib";
+  SyntaxHighlighter.config.clipboardSwf = '__ROOT__/Lib/syntaxhighlighter/scripts/clipboard.swf';
+  SyntaxHighlighter.all() 
+</script>
+
+<script type="text/javascript" src="__ROOT__/Home/Tpl/default/widget/comment/comment.js"></script>
+<script type="text/javascript" src="__ROOT__/Home/Tpl/default/page/Index/js/index.js"></script>
+	<script type="text/javascript">
+	    jQuery("#add_comment").click(function(){
+	      var id = 0;
+	      var verify =  jQuery("#verify").val();
+	      var type =  jQuery("#type").val();
+	      var content =  jQuery("#commentText").val();
+	      $.ajax({ 
+	          type: "post", 
+	          url : URL + "/requireAdd", 
+	          dataType:'json',//从php返回的值以 JSON方式
+	          data: 'id='+id+'&content='+content+'&verify='+verify+'&type='+type, 
+	          success: function(data){ 
+  			    console.log(data);
+	            if(data['flag'] == 0){
+	              alert('发布成功!'); 
+	              window.location.reload(); 
+	            }else{
+	              alert('验证码错误!');        
+	            } 
+	          }
+	      });
+    	});
+	</script>
+<{/block}>

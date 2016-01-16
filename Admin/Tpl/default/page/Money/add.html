@@ -1,0 +1,68 @@
+<include file="./Admin/Tpl/default/Public/meta_form.html"/>
+<div class="mainContent">
+  <div class="ao-from">
+    <form action="" method="post">
+     <input type="hidden" value="{$type}" />
+      <div class="control-group">
+        <label for="name">名称：</label>
+        <div class="controls">
+          <input name="name" type="text" />
+        </div>
+      </div>
+      
+      <if condition="$type neq 'income' ">
+       <div class="control-group">
+        <label for="category">类别：</label>
+        <div class="controls">
+            <select name="category">
+                <option value="1">日常开销</option>
+                <option value="2">衣服</option>
+            </select>
+        </div>
+      </div>
+      </if>     
+      
+       <div class="control-group">
+        <label for="is_income">是进账吗？：</label>
+        <div class="controls"> 是的
+          <input type="radio" name="is_income" value="1" <if condition="$type eq 'income' "> checked </if> />
+          不是哦
+          <input type="radio" name="is_income" value="0" <if condition="$type neq 'income' ">checked </if>  />
+        </div>
+      </div>
+      
+      <if condition="$type eq 'plan' ">
+        <div class="control-group">
+        <label for="plan_expense">预计金额：</label>
+        <div class="controls">
+          <input name="plan_expense" type="text" />
+        </div>
+      </div>  
+      <div class="control-group">
+        <label for="plan_expense">计划使用时间：</label>
+        <div class="controls">
+          <input name="plan_user_date" type="text" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+        </div>
+      </div>         
+    <else />
+        <div class="control-group">
+        <label for="actual_expense">实际金额：</label>
+        <div class="controls">
+          <input name="actual_expense" type="text" />
+        </div>
+      </div>       
+      <div class="control-group">
+        <label for="actual_use_date">实际使用时间：</label>
+        <div class="controls">
+          <input name="actual_use_date" type="text" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+        </div>
+      </div>    
+    </if>
+
+       <div class="modal-footer">
+        <input name="add" type="submit" value="发布" class="btn btn-primary" />
+        <input type="button" class="btn" value="返回" onClick="javascript:window.history.go(-1);" />
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<{extends file="../Public/layout.html"}>
+<{block name="content"}>
+<link rel="stylesheet" href="__ROOT__/Admin/Tpl/default/page/Movie/css/movie.css" />
+	<div class="mainContent movie">
+		<form name="formActicle" action="__URL__/del" method="post">
+			<div class="btn-list">
+				<a href="__URL__/add" class="btn btn-primary">新增</a>
+				<a href="javascript:document.formActicle.submit();" class="btn">批量删除</a>
+				<input type="submit" name="delet" class="btn" value="批量删除" />
+			</div>
+			<div class="column webUrl">
+				<p style="color:#F00">
+					还未看的
+				</p>
+				<div class="clearfix">
+					<p class="title">
+						动作片
+					</p>
+					<ul class="li-fl movie-site">
+					<{foreach from=$list_noSeen key=k item=money}>
+						<li>
+							<input type="checkbox" value="<{$money['id']}>" name="id[]">
+							<a href="__URL__/detail?id=<{$money['id']}>"><{$money['name']}></a>
+						</li>
+					<{/foreach}>
+					</ul>
+				</div>
+				<p style="color:#F00">
+					已经看过的
+				</p>
+				<div class="clearfix">
+					<p class="title">
+						爱情片
+					</p>
+					<ul class="li-fl movie-site">
+					<{foreach from=$list_seen key=k item=money}>
+						<li>
+							<input type="checkbox" value="<{$money['id']}>" name="id[]">
+							<a href="__URL__/detail?id=<{$money['id']}>"><{$money['name']}></a>
+						</li>
+					<{/foreach}>
+					</ul>
+				</div>
+			</div>
+		</form>
+	</div>
+<{/block}>

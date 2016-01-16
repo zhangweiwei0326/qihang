@@ -1,0 +1,54 @@
+<{extends file="../Public/layout.html"}>
+<{block name="head" append}>
+<link rel="stylesheet" href="__ROOT__/Public/css/form.css" />
+<link rel="stylesheet" href="__ROOT__/Home/Tpl/default/page/User/css/user.css" />
+<script type="text/javascript" src="__ROOT__/Public/validator/validator.js"></script>
+<script type="text/javascript">
+  $(function() {
+    var v = new Validator("addUser");  
+  });
+</script>
+<{/block}>
+<{block name="content"}>
+<div class="mainContent">
+    <form action="__URL__/addUserHandle" method="post" id="addUser" class="lhz-form">
+        <div class="form-item">
+          <label class="form-label" for="email"><span class="icon-must">*</span>邮箱：</label>
+          <div class="form-content">
+            <input name="email" type="text" data-validator="email" data-desc="邮箱" id="email" class="" placeholder="输入您常用的邮箱" />
+            <span class="note" style="display: none;">用于找回密码</span> </li>
+          </div>
+        </div>
+
+        <div class="form-item">
+          <label class="form-label" for="password"><span class="icon-must">*</span>密码：</label>
+          <div class="form-content">
+            <input name="password" type="password" data-validator="pwd" data-desc="密码" id="password" class=""  placeholder="密码由6-20个英文字母、数字或符号组成" />
+          </div>
+        </div>
+
+        <div class="form-item">
+          <label class="form-label" for="password2"><span class="icon-must">*</span>确认密码：</label>
+          <div class="form-content">
+            <input name="password2" type="password" data-validator="confirm" data-desc="密码" id="password2" class="" placeholder="再次输入密码确认" />
+          </div>
+        </div>
+
+        <div class="form-item">
+          <label class="form-label" for="role"><span class="icon-must">*</span>角色：</label>
+          <div class="form-content">
+             <select name="role_id[]">
+                <{foreach item='v' from=$role}>
+                   <option value="<{$v['id']}>"><{$v['name']}></option>
+                <{/foreach}>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-action">
+          <input name="add" type="submit" value="提交" class="btn btn-primary" />
+          <input type="button" class="btn" value="返回" onClick="javascript:window.history.go(-1);" />
+        </div>
+    </form>
+</div>
+<{/block}>

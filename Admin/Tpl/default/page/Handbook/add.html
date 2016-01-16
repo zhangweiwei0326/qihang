@@ -1,0 +1,65 @@
+<include file="./Admin/Tpl/default/Public/meta_form.html"/>
+<script type="text/javascript">
+var editor;
+KindEditor.ready(function(K) {
+	editor = K.create('textarea[name="content"]', {
+		resizeType : 1,
+		allowPreviewEmoticons : true,
+		allowFileManager : true,
+		allowImageUpload : true,
+		items : [
+			'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+			'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+			'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+			'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+			'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+			'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
+			'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+			'anchor', 'link', 'unlink', '|', 'about'
+		]
+	});
+});				
+</script>
+<div class="mainContent">
+  <div class="ao-from">
+    <form action="" method="post">
+      <div class="control-group">
+        <label for="title">名称：</label>
+        <div class="controls">
+          <input name="title" type="text" />
+        </div>
+      </div>
+	  <div class="control-group">
+        <label class="control-label" for="belong">所属手册：</label>
+        <div class="controls">
+          <select name="belong">
+            <volist name="handbookNameList" id="handbookName">
+                <option value="{$handbookName['id']}">{$handbookName['name']}</option>
+            </volist>
+          </select>
+        </div>
+      </div>
+	  <div class="control-group">
+        <label class="control-label" for="pid">父级：</label>
+        <div class="controls">
+          <select name="pid">
+		   <option value="0">请选择</option>
+            <volist name="handbookList" id="handbook">
+                <option value="{$handbook['id']}">{$handbook['title']}</option>
+            </volist>
+          </select>
+        </div>
+      </div>
+      <div class="control-group">
+        <label for="content">内容：</label>
+        <div class="controls">
+          <textarea id="editor_id" name="content" style="width:700px;height:400px;"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <input name="add" type="submit" value="发布" class="btn btn-primary" />
+        <input type="button" class="btn" value="返回" onClick="javascript:window.history.go(-1);" />        
+      </div>
+    </form>
+  </div>
+</div>

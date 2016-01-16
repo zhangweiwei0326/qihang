@@ -1,0 +1,25 @@
+/*!----------------------------------
+* website
+**----------------------------------*/
+.website a {
+	color: #454545;
+}
+.website a:hover {
+	color: #3ea7cb;
+}
+.website li {
+	float: left;
+	width: 18%;
+	margin-right: 10px;
+}
+.web-site p.title {
+	font-size: 16px;
+	font-weight: bold;
+}
+@media screen and (max-width:780px) {
+	.website li {
+		float: left;
+		width: 48%;
+		margin-right: 10px;
+	}
+}

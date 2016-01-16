@@ -1,0 +1,87 @@
+<{extends file="../Public/base.html"}>
+<{block name="head" append}>
+<script charset="utf-8" src="__ROOT__/Public/kindeditor/kindeditor.js"></script>
+<script type="text/javascript">
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[id="description"]', {
+			resizeType : 1,
+			width : "100%",
+			height : 420,
+			allowPreviewEmoticons : true,
+			allowFileManager : true,
+			allowImageUpload : true,
+			items : ['source', '|', 'undo', 'redo', '|', 'preview', 'template', 'code', 'cut', 'copy', 'paste', 'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript', 'superscript', 'html',  'selectall', '|', 'fullscreen',  'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic',  'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'insertfile', 'table', 'hr', 'emoticons', 'pagebreak',  'link', 'unlink', '|', 'about']
+		});
+	});
+</script>
+<{/block}>
+
+<{block name="content"}>
+<div class="wrap require">
+	<div class="main-body">
+		<div class="mainContent">
+			<div class="innerContent">
+			<form action="__URL__/add" method="post">
+				<div class="lhz-form">
+					<ul>
+						<li>
+							<label class="yahei">标题：</label>
+							<div class="input-part">
+								<input type="text" name="title" style="width:96%;" />
+							</div>
+						</li>
+						<li>
+							<label class="yahei">描述：</label>
+							<div class="input-part">
+								<textarea id="description" name="content" ></textarea>
+							</div>
+						</li>
+						<li>
+				            <p style="margin-top:10px; text-align:right; padding-right:5px;">
+				              <span style="color:#999;">输入验证码，看不清可点击图片更换数字</span>
+				              <img src='__URL__/verify/' id="verifyImg" onclick="fleshVerify()" />
+				              <input type="text" name="verify" id="verify" style="width:45px; margin-left:5px;margin-right: 5px;" />
+				            </p>
+				        </li>
+						<li>
+							<div class="form-footer">
+								<input type="submit" value="提交" class="btn btn-primary" />
+								<span style="display:none;">注册会员可提交需求申请</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="sideBar">
+		<div class="posts-list">
+			<{section loop=$list name=require}>
+				<div class="post-item">
+					<div class="post-title">
+						<a href="__URL__/detail/?id=<{$list[require].id}>"><{$list[require].title}></a>
+					</div>
+					<div class="post-info">
+						<span class="padding-3" style="display:none;">
+							作者： <font color="red">admin</font>
+						</span>
+						<span class="padding-3">
+							发表于： <font color="red"><{$list[require].add_date}></font>
+						</span>
+					</div>
+					<div class="post-body"></div>
+				</div>
+			<{/section}>
+		</div>
+	</div>
+</div>
+<!-- main-body end -->
+</div>
+<script>
+    function fleshVerify(){ //重载验证码
+        var time = new Date().getTime();
+        document.getElementById('verifyImg').src= '__URL__/verify/'+time;
+    }
+</script>
+<{/block}>

@@ -1,0 +1,17 @@
+/*!----------------------------------
+* footer
+**----------------------------------*/
+.footer { position:absolute; left:0;bottom:0; width: 100%; height: 150px; overflow: hidden; background: url("./images/footer_bg.jpg") repeat-x 0 0; 
+ color: #FFFFFF; clear: both; }
+.footer a { color: #FFFFFF; }
+
+.bottom_nav { }
+.bottom_nav:after { :both; content: " "; display: block; height: 0; }
+.bottom_nav li { float: left; height: 30px; height: 3rem; line-height: 30px; line-height: 3rem; }
+.bottom_nav li a { color: #fff; margin-left: 12px; }
+
+.footer .friendly-link { margin-top: 25px; margin-top: 2.5rem; }
+
+/* friendly-link */
+.friendly-link li { float: left; margin-right: 10px; margin-right: 1rem; }
+.friendly-link a:hover { color: red; }

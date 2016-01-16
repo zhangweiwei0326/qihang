@@ -1,0 +1,31 @@
+<div class="inner" style="position: relative;">
+	<div class="nav-main">
+		<a href="__APP__/Index/index" class="logo">梨花寨</a>
+		<ul>
+		<{section loop=$navList name=nav}>
+			<li><a href="<{$navList[nav].url}>"><{$navList[nav].name}></a></li>
+		<{/section}>
+		</ul>
+  </div>
+
+  <div class="m-nav">		
+     <a href="__APP__/Index/index" class="logo">梨花寨</a>
+     <a href="#" class="nenu">nenu</a>
+		<ul class="clearfix">
+		<{section loop=$navList name=nav}>
+			<li><a href="<{$navList[nav].url}>"><{$navList[nav].name}></a></li>
+		<{/section}>
+		</ul>
+	</div>
+
+  <{if isset($smarty.session.email)}>
+  	<p class="show-name"><{$smarty.session.email}> 你好！<a href="__APP__/User/userAdmin" style="margin-right:10px;">个人中心</a> <a href="__APP__/User/logout">退出</a></p>
+  <{else}>
+      <div class="shortcut-login">
+        <ul>
+		  <li><span><a href="###" class="toLogin">登陆</a></span></li>
+          <li><span><a href="__APP__/User/register">注册</a></span></li>
+        </ul>
+    </div>
+  <{/if}>
+</div>

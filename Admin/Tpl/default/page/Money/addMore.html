@@ -1,0 +1,33 @@
+<include file="./Admin/Tpl/default/Public/meta_form.html"/>
+<div class="mainContent">
+  <form action="" method="post">
+    <ul>
+      <li>
+        <table>
+          <tr>
+            <td><label for="name">名称：</label>
+              <input name="name" type="text" id="name"/></td>
+            <td><label for="category">类别：</label>
+              <select name="category">
+                <option value="1">日常开销</option>
+                <option value="2">衣服</option>
+              </select></td>
+            <td><label for="is_income">是进账吗？：</label>
+              是的
+              <input type="radio" name="is_income" value="1" />
+              不是哦
+              <input type="radio" name="is_income" value="0" checked /></td>
+            <td><label for="actual_expense">实际金额：</label>
+              <input name="actual_expense" type="text" /></td>
+            <td><label for="actual_use_date">实际使用时间：</label>
+              <input name="actual_use_date" type="text" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" /></td>
+          </tr>
+        </table>
+      </li>
+    </ul>
+    <div class="modal-footer">
+      <input name="add" type="submit" value="发布" class="btn btn-primary" />
+      <input type="button" class="btn" value="返回" onClick="javascript:window.history.go(-1);" />
+    </div>
+  </form>
+</div>
