@@ -15,8 +15,9 @@ class WebsiteAction extends PublicAction {
 			$result[] = $value;
 		} 
 		$this->assign("result", $result);					
-        $this->pubHtml();			
-        $this->display();
+        $this->pubHtml();
+        $this->template('website','index');		
+        //$this->display();
     }
 }
 ?>

@@ -3,14 +3,16 @@
 **----------------------------------*/
 .website a {
 	color: #454545;
+	font-size: 14px;
 }
 .website a:hover {
 	color: #3ea7cb;
 }
 .website li {
 	float: left;
-	width: 18%;
+	width: 12%;
 	margin-right: 10px;
+	line-height: 1.5;
 }
 .web-site p.title {
 	font-size: 16px;

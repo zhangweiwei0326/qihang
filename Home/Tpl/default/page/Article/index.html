@@ -1,23 +1,11 @@
-<{extends file="../Public/base.html"}>
+<{extends file="../Public/layout.html"}>
 <{block name="head" append}>
 <link type="text/css" rel="stylesheet" href="__ROOT__/Lib/syntaxhighlighter/styles/shCore.css"/>
 <link type="text/css" rel="stylesheet" href="__ROOT__/Lib/syntaxhighlighter/styles/shThemeDefault.css"/>
 <link rel="stylesheet" href="__ROOT__/Home/Tpl/default/page/Article/css/article.css" />
 <{/block}>
-
 <{block name="content"}>
-<div class="wrap"> 
-  <div class="tag-show inner">
-    		<{section loop=$taglist name=tag}>
-			<a href="###" data-tagId="<{$taglist[tag].id}>"><{$taglist[tag].name}></a>
-		<{/section}>
-    <volist name="taglist" id="tag">
-      <a href="###" data-tagId="<{$tag['id']}>"><{$tag['name']}></a>
-    </volist>
-  </div>
-  <div class="main-body clearfix">
-
-      <div class="mainContent">
+    <div class="mainContent">
       <div class="innerContent">
         <div class="list border">
 	       <{section loop=$list name=article}>
@@ -41,9 +29,7 @@
               </div>
 	          </article>
 	       <{/section}>
-
           <div class="ad"></div>
-
           <div class="lhz-page"><{$page}></div>
         </div>
       </div>
@@ -52,8 +38,6 @@
     <div class="sideBar">
     	<{include  file="../../widget/side/side.html"}>
     </div>
-  </div>
-
 <script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shCore.js"></script>
 <script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushJScript.js"></script>
 <script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushCss.js"></script>
@@ -68,5 +52,4 @@
   SyntaxHighlighter.all() 
 </script>
 <script type="text/javascript" src="__ROOT__/Home/Tpl/default/page/Article/js/index.js"></script>
-</div>
 <{/block}>

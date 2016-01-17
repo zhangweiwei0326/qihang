@@ -44,11 +44,6 @@ html {
 	.nav-main .logo {
 		display: none;
 	}
-	.website li {
-		float: left;
-		width: 30%;
-		margin-right: 10px;
-	}
 	.show-name {
 		display: none;
 	}

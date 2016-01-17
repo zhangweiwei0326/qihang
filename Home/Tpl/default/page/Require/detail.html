@@ -1,13 +1,13 @@
-<{extends file="../Public/base.html"}>
+<{extends file="../Public/layout.html"}>
 <{block name="head" append}>
 <link rel="stylesheet" href="__ROOT__/Public/css/list.css" />
 <link rel="stylesheet" href="__ROOT__/Home/Tpl/default/widget/comment/comment.css" />
+<link rel="stylesheet" href="__ROOT__/Public/css/article.css" />
 <script type="text/javascript" src="__ROOT__/Home/Tpl/default/widget/comment/comment.js"></script>
 <{/block}>
 
 <{block name="content"}>
-<div class="wrap require-detail">
-	<div class="main-body">
+<div class="require-detail">
 		<div class="mainContent">
 			<div class="innerContent" style="border: 1px #DEDEDE solid; padding:10px;background: #fff; ">
 				<h1 class="article-title"><{$list['title']}></h1>
@@ -93,7 +93,6 @@
 				</div>
 				<!-- end 新需求列表-->
 			</div>
-		</div>
 	</div>
 	<script type="text/javascript">
 		var URL = "__URL__";

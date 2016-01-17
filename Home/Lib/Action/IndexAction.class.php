@@ -52,6 +52,7 @@ class IndexAction extends PublicAction {
         $this->cateShow();
 		$this->newShow();
 		$this->hotShow();
+		$this->showNewComment();
 		$this->commentAll();
 		$this->movieNew();		
 		$time = time();	//时间戳	
@@ -64,10 +65,16 @@ class IndexAction extends PublicAction {
         $list = $Dao->where('type = "acticle" and is_show = 1')
 					->select();
         $this->assign("category", $list);
+    }
+
+	//显示最近评论列表
+	public function showNewComment($id) {
+        header("Content-Type:text/html; charset=utf-8");		
+        $Dao = M("comments");
+        $list = $Dao->limit('2')->select();
+        $this->assign("newComment", $list);
     }	
 		
-
-
 	public function commentAll() {
         header("Content-Type:text/html; charset=utf-8");
         $Dao = M("requirement");  

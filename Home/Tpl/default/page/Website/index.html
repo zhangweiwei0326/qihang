@@ -1,10 +1,9 @@
-<{extends file="../Public/base.html"}>
+<{extends file="../Public/layout.html"}>
 <{block name="head" append}>
 <link rel="stylesheet" href="__ROOT__/Home/Tpl/default/page/Website/css/website.css" />
 <{/block}>
 <{block name="content"}>
-<div class="wrap">
-  <div class="main-body web-site">
+  <div class="web-site">
     <{section loop=$result name=result}> 
         <div class="clearfix radius" style="margin-bottom:10px; padding:6px;">
             <p class="title"><{$result[result].name}></p>
@@ -13,8 +12,7 @@
                 <li><a href="<{$result[result].web[web].url}>" target="_blank"><{$result[result].web[web].name}></a></li>
               <{/section}>
             </ul>
-          </div>
+        </div>
     	<{/section}>
   </div>
-</div>
 <{/block}>

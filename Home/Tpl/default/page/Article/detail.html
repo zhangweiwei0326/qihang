@@ -1,12 +1,11 @@
-<{extends file="../Public/base.html"}>
+<{extends file="../Public/layout.html"}>
 <{block name="head" append}>
 <link type="text/css" rel="stylesheet" href="__ROOT__/Lib/syntaxhighlighter/styles/shCore.css"/>
 <link type="text/css" rel="stylesheet" href="__ROOT__/Lib/syntaxhighlighter/styles/shThemeDefault.css"/>
 <link rel="stylesheet" href="__ROOT__/Home/Tpl/default/widget/comment/comment.css" />
-<link rel="stylesheet" href="__ROOT__/Home/Tpl/default/page/Article/css/Article.css" />
+<link rel="stylesheet" href="__ROOT__/Public/css/article.css" />
 <{/block}>
 <{block name="content"}>
-  <div class="main-body clearfix">
     <div class="mainContent article">
       <div class="innerContent" style="border: 1px #ccc solid;box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2); padding:10px;background: #fff; ">
         <article>
@@ -24,7 +23,7 @@
           <div class="article-content"><{$list['content']}></div>
           <div class="ad"></div>
           <div class="go-back">
-            <a href="javascript:window.history.go(-1);" class="btn">返回</a>
+            <a href="javascript:window.history.go(-1);" class="btn btn-primary">返回</a>
           </div>
 
           <div class="ad">
@@ -92,7 +91,6 @@
     <div class="sideBar" style="background: #fff;">
 		<{include  file="../../widget/side/side.html"}>
     </div>
-  </div>
 <script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shCore.js"></script>
 <script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushJScript.js"></script>
 <script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushCss.js"></script>

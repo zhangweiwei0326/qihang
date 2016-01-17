@@ -2,9 +2,10 @@
 * require
 **---------------------------------- */
 /*require-index*/
-.require .mainContent{ margin-left: -560px;}
-.require .sideBar{width: 540px;}
-.require .mainContent .innerContent{ margin-left: 560px;}
+.require .mainContent{ margin-left: -410px;}
+.require .sideBar{ width: 400px;}
+.require .mainContent .innerContent{ margin-left: 410px;}
+
 /*require-detail*/
 
 

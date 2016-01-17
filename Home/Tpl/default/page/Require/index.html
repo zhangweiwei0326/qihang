@@ -1,7 +1,8 @@
-<{extends file="../Public/base.html"}>
+<{extends file="../Public/layout.html"}>
 <{block name="head" append}>
 <link rel="stylesheet" href="__ROOT__/Public/css/form.css" />
 <link rel="stylesheet" href="__ROOT__/Public/css/list.css" />
+<link rel="stylesheet" href="__ROOT__/Home/Tpl/default/page/Require/css/require.css" />
 <script charset="utf-8" src="__ROOT__/Lib/kindeditor/kindeditor.js"></script>
 <script type="text/javascript">
 	var editor;
@@ -12,14 +13,13 @@
 			allowPreviewEmoticons : true,
 			allowFileManager : true,
 			allowImageUpload : true,
-			items : ['source', '|', 'undo', 'redo', '|', 'preview', 'template', 'code', 'cut', 'copy', 'paste', 'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript', 'superscript', 'html',  'selectall', '|', 'fullscreen',  'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic',  'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'insertfile', 'table', 'hr', 'emoticons', 'pagebreak',  'link', 'unlink', '|', 'about']
+			items : ['source', '|', 'undo', 'redo', '|', 'preview', 'template', 'code', 'cut', 'copy', 'paste', 'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript', 'superscript', 'html',  'selectall', '|', 'fullscreen',  'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic',  'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'hr', 'emoticons', 'pagebreak',  'link', 'unlink']
 		});
 	});
 </script>
 <{/block}>
 <{block name="content"}>
-<div class="wrap require">
-	<div class="main-body">
+<div class="require clearfix">
 		<div class="mainContent">
 			<div class="innerContent">
 				<form action="__URL__/add" method="post" class="lhz-form">
@@ -27,13 +27,13 @@
 						<div class="form-item">
 							<label class="form-label" for="inputEmail"><span class="icon-must">*</span>标题：</label>
 							<div class="form-content">
-								<input name="title" type="text" data-validator="required"  class="input-widht500" style="width:648px;" />
+								<input name="title" type="text" data-validator="required" style="width:648px;" />
 							</div>
 						</div>
 						<div class="form-item">
 							<label class="form-label" for="inputEmail"><span class="icon-must">*</span>描述：</label>
 							<div class="form-content">
-								<textarea id="description" name="content" ></textarea>
+								<textarea id="description" name="content" style="width:460px;height:550px;"></textarea>
 							</div>
 						</div>
 						<div class="form-action">        
@@ -48,7 +48,6 @@
 			</div>
 		</div>
 		<div class="sideBar">
-
 			<!-- 新需求列表-->
 			<div class="side-list">
 				<{section loop=$newList name=require}>
@@ -68,13 +67,9 @@
 				<{/section}>
 			</div>
 			<!-- end 新需求列表-->
-
 			<div class="ad">
-				<a href="http://count.chanet.com.cn/click.cgi?a=485933&d=316798&u=&e=" target="_blank"><IMG SRC="http://file.chanet.com.cn/image.cgi?a=485933&d=316798&u=&e=" width="280" height="252"  border="0"></a>
 			</div>
 		</div>
-	</div>
-	<!-- main-body end -->
 </div>
 <script>
     function fleshVerify(){ //重载验证码

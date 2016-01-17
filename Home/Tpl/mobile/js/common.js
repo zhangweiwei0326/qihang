@@ -2,10 +2,6 @@
  YUIDoc 会认这个
  */
 $(document).ready(function () {
-    if (document.body.clientWidth > 960) { //滚动变固定
-        $("#hotShow").switchToFixed();
-    }
-
     //tag搜索
     $(".tag-show a").click(function () {
         var tagId = $(this).attr("data-tagId");

@@ -36,12 +36,10 @@
 	<header class="header clearfix">
 	  <{include file="../../widget/header/header.html"}>
 	</header>    
-  <div class=" banner clearfix">
+  <div class="banner clearfix">
      <div class="banner-lt">
-
 	</div>
 	 <div class="banner-rt">
-
 	</div>
   </div>
 
@@ -66,10 +64,12 @@
 	</div>
 	<div class="pop-dialog-bg" style="opacity: 0.5; width: 1263px; height: 19080px;"></div>
 
-	<{block name="content"}>
-		Default Content
-	<{/block}>
-
+	<div class="main-body clearfix">
+		<{block name="content"}>
+			Default Content
+		<{/block}>
+	</div>
+	
 	<div class="footer">
 		<{include file="../../widget/footer/footer.html"}>
 	</div>

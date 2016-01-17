@@ -43,6 +43,7 @@ class ArticleAction extends PublicAction {
         $this->pubHtml();
         $this->tagList();
         $this->cateShow();
+        $this->commentAll();
 		$this->showNewComment();
 		$User = A("Index"); // 实例化UserAction控制器对象
         $hotList = $User->hotShow(); // 调用User模块的importUser操作方法
@@ -109,6 +110,7 @@ class ArticleAction extends PublicAction {
         $this->newShow();
 		$this->hotShow();
 		$this->showNewComment();
+		$this->commentAll();
         $this->showComment($id,'article');
         $this->template('article','detail');
        // $this->display('detail');
@@ -121,6 +123,15 @@ class ArticleAction extends PublicAction {
         $Dao = M("comments");
         $list = $Dao->limit('2')->select();
         $this->assign("newComment", $list);
+    }
+
+    //显示最新需求
+	public function commentAll() {
+        header("Content-Type:text/html; charset=utf-8");
+        $Dao = M("requirement");  
+        $commentAll = $Dao->order('add_date desc')->limit('6')->select();
+        $this->assign("commentAll", $commentAll);
+		return $commentAll;
     }
 	
 	public function toSearch(){

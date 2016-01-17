@@ -1,50 +1,67 @@
 <aside>
-    <div class="radius mg-bot-10 padding-10">
-        <div class="notice-right">
-        通知：百度招聘前端6名，男女不限，工作地上海，月薪10k~20k,有意速发简历~yangxiaoxu@baidu.com<br/>
-        </div>
-    </div>
-    <div>
-    	<h4 class="module-title"><strong>站内搜索</strong></h4>
-    	<div class="search-box">
-    		<form action="__URL__/toSearch" method="post">
-    			<input type="text" name="keyName" placeholder="输入关键字搜索" class="search-input"/>
-    			<input type="submit" value="搜索" class="search-btn"/>
-    		</form>
-    	</div>
-    </div>
+	<div class="radius mg-bot-10 padding-10">
+		<div class="notice-right">
+		通知：百度招聘前端6名，男女不限，工作地上海，月薪10k~20k,有意速发简历~yangxiaoxu@baidu.com<br/>
+		</div>
+	</div>
+	<div>
+		<h4 class="module-title"><strong>站内搜索</strong></h4>
+		<div class="search-box">
+			<form action="__URL__/toSearch" method="post">
+				<input type="text" name="keyName" placeholder="输入关键字搜索" class="search-input"/>
+				<input type="submit" value="搜索" class="search-btn"/>
+			</form>
+		</div>
+	</div>
 
-    <div class="ad" style="margin-bottom:10px;">
-    </div>
+	<div class="tag-show">
+		<ul>
+			<{section loop=$taglist name=tag}>
+				<li>
+					<a href="###" data-tagId="<{$taglist[tag].id}>"><{$taglist[tag].name}></a>
+				</li>
+			<{/section}>
+		</ul>
+	</div>
 
-    <div class="cate">
-    	<h4 class="module-title"><strong>文章分类</strong></h4>
-    	<ul>
-    		<{section loop=$category name=category}>
-    		<li><a href="__URL__/index/?id=<{$category[category].id}>"><{$category[category].name}></a></li>
-    		<{/section}>
-    	</ul>
-    </div>
+	<div class="ad ad-200" style="margin-bottom:10px;">
+	</div>
+	<div class="cate">
+		<h4 class="module-title"><strong>文章分类</strong></h4>
+		<ul>
+		<{section loop=$category name=category}>
+		<li><a href="__URL__/index/?id=<{$category[category].id}>"><span class="sidebar-icon"></span><{$category[category].name}></a></li>
+		<{/section}>
+		</ul>
+	</div>
+	<div class="mg-bot-10">
+		<h4 class="module-title"><strong>最新文章</strong></h4>
+		<ul class="hotShow dot">
+		<{section loop=$newList name=newList}>
+		<li><a href="__APP__/Article/detail/?id=<{$newList[newList].id}>" class="ellipsis" target="_blank"><{$newList[newList].title}></a></li>
+		<{/section}>
+		</ul>
+	</div>
 
-    <div class="mg-top-10">
-    	<h4 class="module-title"><strong>最新文章</strong></h4>
-    	<ul class="hotShow dot">
-    		<{section loop=$newList name=newList}>
-    		<li><a href="__APP__/Article/detail/?id=<{$newList[newList].id}>" class="ellipsis"><{$newList[newList].title}></a></li>
-    		<{/section}>
-    	</ul>
-    </div>
+	<div class="mg-top-10" id="hotShow">
+		<h4 class="module-title"><strong>热门排行</strong></h4>
+		<ul class="hotShow ul-decimal">
+		<{section loop=$hotList name=hotList}>
+			<li><a href="__APP__/Article/detail/?id=<{$hotList[hotList].id}>" class="ellipsis" target="_blank"><{$hotList[hotList].title}></a></li>
+		<{/section}>
+		</ul>
+	</div>
 
-    <div class="mg-top-10">
-    	<h4 class="module-title"><strong>热门排行</strong></h4>
-    	<ul class="hotShow ul-decimal">
-    		<{section loop=$hotList name=hotList}>
-    		<li><a href="__APP__/Article/detail/?id=<{$hotList[hotList].id}>" class="ellipsis" target="_blank"><{$hotList[hotList].title}></a></li>
-    		<{/section}>
-    	</ul>
-    </div>
-    
-    <div class="mg-top-10">
+	<div class="mg-top-10">
+		<h4 class="module-title"><strong>最新需求</strong></h4>
+		<ul class="hotShow ul-decimal">
+		<{section loop=$commentAll name=comment}>
+			<li><a href="__APP__/Require/detail/?id=<{$commentAll[comment].id}>" class="ellipsis" target="_blank"><{$commentAll[comment].content}></a></li>
+		<{/section}>
+		</ul>
+	</div>
+	
+	<div class="mg-top-10">
     	<h4 class="module-title"><strong>最新评论</strong></h4>
     	<ul class="hotShow dot">
     		<{section loop=$newComment name=comment}>
@@ -53,10 +70,20 @@
     	</ul>
     </div>
 
-    <!--cnzz tui-->
-    <script  type="text/javascript" c=gd  charset="utf-8"  src="http://tui.cnzz.net/cs.php?id=1000072029"></script>
-    <!--cnzz tui-->
+	<div class="ad">
+		<img src="__ROOT__/Home/Tpl/default/images/erweima.png" width="280px;" height="280px;"/>
+		<span>扫码手机访问</span>
+	</div>
 
-    <div class="ad" id="ad-index-side">
-    </div>
+	<div class="ad" id="ad-index-side">
+	</div>
+
+	<div class="radius mg-top-10" style="display:none;">
+		<h4 class="module-title">推荐电影</h4>
+		<ul class="hotShow ul-disc">
+		<{section loop="$movieNew" name="movieNew"}>
+		<li><a href="http://www.lihuazhai.com/movie/?p=<{$movieNew[movieNew].ID}>"  target="_blank"><{$movieNew[movieNew].post_title}></a></li>
+		<{/section}>
+		</ul>
+	</div>
 </aside>

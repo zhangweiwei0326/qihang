@@ -15,11 +15,9 @@
   SyntaxHighlighter.config.clipboardSwf = '__ROOT__/Lib/syntaxhighlighter/scripts/clipboard.swf';
   SyntaxHighlighter.all() 
 </script>
-<script type="text/javascript" src="__ROOT__/Home/Tpl/default/js-src/index.js"></script>
 <{/block}>
 
 <{block name="content"}>
-<script type="text/javascript" src="__ROOT__/Home/Tpl/default/js-src/index.js"></script>
 <div class="wrap"> 
   <div class="tag-show inner">
     <{section loop=$taglist name=tag}>
@@ -31,9 +29,9 @@
   </div>
   <div class="main-body clearfix">
       <div class="innerContent">
-        <div class="article-list border">
+        <div class="article-list">
 	       <{section loop=$list name=article}>
-            <ul>
+            <ul class="list-box-line">
               <li class="list-title"><{if $smarty.section.article.index lt 2}><span style="color:red;">[最新]</span><{/if}>
      <{if $list[article].is_original == 1 }>[原创]<{else}> <{/if}>
 	<a href="__URL__/detail/?id=<{$list[article].id}>" target="_blank"><{$list[article].title}></a>
