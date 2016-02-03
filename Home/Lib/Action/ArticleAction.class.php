@@ -168,6 +168,22 @@ class ArticleAction extends PublicAction {
 	    import('ORG.Util.Image');
 	    Image::buildImageVerify();
 	}
-	
+
+    //支持移动端拖拉载入下一页
+	Public function getArticleList(){
+        $from = $_GET["from"];
+        $pageCount = $_GET["pageCount"];
+        $Dao = M("article");
+        $list = $Dao->table('my_article article,my_category category')
+                ->where('article.cateId = category.id and article.ifShow = 1')
+                ->field('article.id as id,article.title,article.summary,article.is_original,article.add_date,article.click_count,category.name as typeName')
+                ->limit($from, $pageCount)
+                ->order('article.add_date desc')
+                ->select();
+        //print_r($list);
+        $data_json = json_encode($list);//转json数据
+        echo $data_json;
+	}
+
 }
 ?>

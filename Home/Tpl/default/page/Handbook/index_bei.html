@@ -3,7 +3,6 @@
 <link type="text/css" rel="stylesheet" href="__ROOT__/Lib/syntaxhighlighter/styles/shCore.css"/>
 <link type="text/css" rel="stylesheet" href="__ROOT__/Lib/syntaxhighlighter/styles/shThemeDefault.css"/>
 <link rel="stylesheet" href="__ROOT__/Home/Tpl/default/widget/comment/comment.css" />
-<link rel="stylesheet" href="__ROOT__/Home/Tpl/default/page/Handbook/css/handbook.css" />
 <script type="text/javascript">
 	$(document).ready(function(e) {
 		$(".handbook-side li a").click(function(){
@@ -19,31 +18,32 @@
 		});
 	});
 </script>
+<style>
+	body{
+		background: #f5f5d5;
+	}
+</style>
 <{/block}>
 <{block name="content"}>
-<div class="handbook clearfix">
-    <div class="main-box">
-        <div class="main-content">
-			<{section loop=$list name=handbook}>
-				<div id="<{$list[handbook].id}>" >
-					<h2 class="item-title"><{$list[handbook].title}></h2>
-					<div class="item-content"><{$list[handbook].content}></div>
+<div class="main-body handbook">
+		<aside>
+				<div class="handbook-side radius">
+						<ul>
+								<volist name="handbook" id="handbook">
+										<li><span class="icon"></span><span>
+										<a href="#" data-id="{$handbook['id']}">{$handbook['title']}</a></span></li>
+								</volist>
+						</ul>
 				</div>
-			<{/section}>
-        </div>
-    </div>
-    <div class="side-bar">
-        <aside>
-            <div class="handbook-cata">
-                <ul>
-					<{section loop=$list name=handbook}>
-						<li>
-							<a href="#<{$list[handbook].id}>" data-id="<{$list[handbook].id}>"><{$list[handbook].title}> </a>
-						</li>
-					<{/section}>
-                </ul>
-            </div>
-        </aside>
-    </div>
-</div> <!-- handbook end-->
+		</aside>
+		<section>
+				<div class="handbook-content radius">
+				   <div class="handbook-conten-inside">
+					<h1 class="handbook-content-title">css浏览器常见兼容性问题解决方法</h1>
+					<div class="handbook-content-text"></div>
+					</div>
+				 </div>
+		</section>
+</div>
+
 <{/block}>

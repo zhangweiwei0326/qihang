@@ -10,6 +10,7 @@
 <script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushSql.js"></script>
 <script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushXml.js"></script>
 <script type="text/javascript" src="__ROOT__/Lib/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/js/dragLoad.js"></script>
 <script type="text/javascript">
   var path = "__ROOT__/Lib";
   SyntaxHighlighter.config.clipboardSwf = '__ROOT__/Lib/syntaxhighlighter/scripts/clipboard.swf';
@@ -54,11 +55,33 @@
 			</li>
           </ul>
        <{/section}>
-
+        </div> <!--article-list end-->
+          <div class="pageLoading">加载中。。。</div>
           <div class="ad"></div>
-          <div class="lhz-page"><{$page}></div>
-        </div>
       </div>
   </div>
 </div>
+
+<script type="text/javascript">
+    //组装文章列表单个项
+    function domPackage(data){
+        var dom = "";
+        for (item in data) {
+            dom += '<ul class="list-box-line">' +
+                    '<li class="list-title"><span style="color:red;">[最新]</span><a href="__APP__/Article/detail/?id='+data[item].id+'" target="_blank">'+data[item].title+'</a></li>' +
+                    '<li><p class="info">' +
+                    '<span class="info-cate">类别： '+data[item].typeName+'</span>'+
+                    '<span class="line">|</span>'+
+                    '<span class="info-time"><font> '+data[item].add_date+'  </font></span>'+
+                    ' <span class="line">|</span>'+
+                    ' <span class="info-view"><font>  '+data[item].click_count+'</font></span>'+
+                    ' </p></li>' +
+                    '<li class="list-text">  '+data[item].summary+'</li>' +
+                    '</ul>';
+        }
+        return dom;
+    }
+    var APP = "__APP__";
+    $('.article-list').dragLoad({'url': APP + '/Article/getArticleList','loadingDom':$('.pageLoading'),'domPackageFunction':domPackage})
+</script>
 <{/block}>

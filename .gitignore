@@ -5,6 +5,7 @@
 *.config.php
 config.inc.online.php
 config.inc.php
+sftp-config.json
 
 # 忽略 build/ 目录下的所有文件
 upload/

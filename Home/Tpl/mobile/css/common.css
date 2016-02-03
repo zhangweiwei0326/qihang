@@ -37,6 +37,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
 	max-width: 1200px;
 }
 
+.list-box-line{ border-bottom: 1px #e5e5e5 solid; }
+
 /*comment*/
 .comment-box {
 	margin-bottom: 10px;
@@ -64,13 +66,26 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
 }
 
 /* tag */
+/*隐藏滚动条*/
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
 .tag-show {
 	height: 3.2rem;
 	line-height: 3.2rem;
 	border-top: 1px #e5e5e5 solid;
 	border-bottom: 1px #e5e5e5 solid;
-	overflow: hidden;
 	background: #f4f5f6;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    /* Sets up points to which scrolling
+       will snap along x-axis */
+    scroll-snap-points-x: repeat(100%);
+    /* Requires that scrolling always end at a snap point when
+       the operation completes (hard snap) */
+    scroll-snap-type: mandatory;
 }
 .tag-show a {
 	color: #505050;
@@ -108,9 +123,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
 }
 
 /* article-list */
-.article-list {
-	margin-top: -4px;
-}
 .article-list .list-title {
 	font-family: "Microsoft Yahei";
 	font-size: 1.8rem;
@@ -154,3 +166,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
 	line-height: 160%;
 	font-size: 1.4rem;
 }
+
+/*文字加载样式*/
+ .pageLoading{
+	text-align: center;
+	font-size: 18px;
+ 	margin-top: 10px;
+	 visibility:hidden;
+  }

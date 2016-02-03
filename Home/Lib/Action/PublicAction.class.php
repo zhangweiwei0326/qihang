@@ -302,7 +302,7 @@ class  PublicAction extends Action {
     *不分页
     */
     public function tagSearch(){
-    	header("Content-Type:text/html; charset=utf-8");	
+    	header("Content-Type:text/html; charset=utf-8");
     	$Dao = M("article");
     	$list = $Dao->Table('my_article article,my_category category')
     	->where('article.cateId = category.id and article.tag =  '.$_POST['tagId'].' and article.ifShow = 1')
@@ -312,6 +312,25 @@ class  PublicAction extends Action {
         //dump($list);
         $tpl_json = json_encode($list);//转json数据
         echo $tpl_json;
+    }
+
+    /**
+    *tag文章搜索
+    */
+    public function getTagList(){
+        header("Content-Type:text/html; charset=utf-8");
+        $tagId = intval($_GET["tagId"]);
+
+        $Dao = M("article");
+        $list = $Dao->Table('my_article article,my_category category')
+        ->where('article.cateId = category.id and article.tag =  '.$tagId.' and article.ifShow = 1')
+        ->field('article.id as id,article.title,article.summary,article.content,article.add_date,article.click_count,category.name as typeName')
+        ->order('article.add_date desc')
+        ->select();
+        //dump($list);
+		$this->pubHtml();
+        $this->assign ("list", $list);
+        $this->display("./Home/Tpl/default/page/Handbook/index.html");
     }
 }
 ?>
