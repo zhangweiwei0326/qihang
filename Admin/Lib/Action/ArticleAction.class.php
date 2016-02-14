@@ -156,6 +156,12 @@ class ArticleAction extends CommonAction {
 				} else {
 					$this->error('数据写入错误！');
 				}
+
+				if(isset($_POST['relation_id'])){
+                    $Dao = M("article_relation");
+                    $data['id_list'] = $lastInsId.','.$_POST['relation_id'];
+                    $Dao->add($data);
+                }
 			}
 		}
 	}
@@ -169,17 +175,41 @@ class ArticleAction extends CommonAction {
 			$this->error('删除失败！');
 		}
 	}
+
+    public function getRelationIdList($id){
+        $Dao = M("article_relation");
+        $relation_id_list = $Dao->where('id_list like "%'.$id.'%"')->select();
+        return $relation_id_list;
+    }
+
 	public function edit() {
 		$this->categoryList();
 		$this->tagList();
 		$article = M("article");
 		$id = (int) $_GET['id'];
 		$list = $article->where("id=$id")->find();
+        $relation_list = $this->getRelationIdList($id);
+        if(isset($relation_list[0]['id_list'])){
+            $list['relation_id_id'] = $relation_list[0]['id'];
+            $list['relation_id'] = $relation_list[0]['id_list'];
+        }
 		$this->assign("list", $list);		
 		$this->assign("title", '编辑');
 		$this->display();
 	}
 	public function update() {
+        if(!empty($_POST['relation_id'])){
+            $Dao = M("article_relation");
+            if(!empty($_POST['relation_id_id'])){
+                $id = $_POST['relation_id_id'];
+                $data['id_list'] = $_POST['relation_id'];
+                $Dao->where('id='.$id)->data($data)->save();
+            }else{
+                $data['id_list'] = $_POST['id'].','.$_POST['relation_id'];
+                $Dao->add($data);
+            }
+        }
+
 		$article = M("article");
 		if ($article->create()) {
 			if ($lastID = $article->save()) {

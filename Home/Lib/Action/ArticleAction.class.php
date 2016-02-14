@@ -105,6 +105,30 @@ class ArticleAction extends PublicAction {
         } else {
             echo '数据更新失败！';
         }
+
+        function getRelationIdList($id){
+            $Dao = M("article_relation");
+            $relation_id_list = $Dao->where('id_list like "%'.$id.'%"')->select();
+            return $relation_id_list;
+        }
+        $relation_id_list = getRelationIdList($id);
+
+        function getRelationArticle($idList){
+            $Dao = M("article");
+            $relation_list = $Dao->where('id in('.$idList.')')->field('id,title')->select();
+            return $relation_list;
+        }
+        //屏蔽文章自身id
+        function deleteSelfId($id,$str){
+          $strTemp  = preg_replace('/'.$id.'(,|$)/','',$str);
+          return  preg_replace('/(,)$/','',$strTemp);
+        }
+        if(isset($relation_id_list[0]["id_list"])){
+            $relationIds = deleteSelfId($id,$relation_id_list[0]["id_list"]);
+            $relationArticle = getRelationArticle($relationIds);
+            $this->assign("relationArticle", $relationArticle);
+        }
+
         $this->pubHtml();
         $this->cateShow();
         $this->newShow();

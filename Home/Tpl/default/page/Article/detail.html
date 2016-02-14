@@ -4,12 +4,6 @@
 <link type="text/css" rel="stylesheet" href="__ROOT__/Lib/syntaxhighlighter/styles/shThemeDefault.css"/>
 <link rel="stylesheet" href="__ROOT__/Home/Tpl/default/widget/comment/comment.css" />
 <link rel="stylesheet" href="__ROOT__/Public/css/article.css" />
-<style>
-
-    body{
-        background: #f5f5d5;
-    }
-</style>
 <{/block}>
 <{block name="content"}>
     <div class="mainContent article">
@@ -47,6 +41,14 @@
             </p>
           </div>
         </article>
+
+          <div class="relationList clearfix">
+              <ul>
+                  <{section loop=$relationArticle name=article}>
+                    <li><span><a href="__APP__/Article/detail/?id=<{$relationArticle[article].id}>"><{$relationArticle[article].title}></a></span></li>
+                  <{/section}>
+              </ul>
+          </div>
 
         <{include  file="../../widget/comment/comment.html" type='article'}>
 		

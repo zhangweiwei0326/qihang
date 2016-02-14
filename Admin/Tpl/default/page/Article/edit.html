@@ -59,6 +59,15 @@ KindEditor.ready(function(K) {
 
         </div>
       </div>
+
+      <div class="form-item">
+        <label class="form-label" for="inputEmail">关联文章：</label>
+        <div class="form-content">
+            <input name="relation_id_id" type="hidden" value="<{$list['relation_id_id']}>" />
+            <input name="relation_id" type="text" value="<{$list['relation_id']}>" />
+        </div>
+      </div>
+
       <div class="form-item">
         <label class="form-label" for="inputEmail">概述：</label>
         <div class="control-label">

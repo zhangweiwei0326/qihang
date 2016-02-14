@@ -22,3 +22,21 @@
 .replyBox { margin-left: 143px; }
 .replyBox textarea { width: 484px }
 .ding, .cai { padding-top: 10px; text-decoration: none; }
+
+/*相关文章样式*/
+.relationList li{
+    display: block;
+    float: left;
+    width: 25%;
+    height: 200px;
+}
+.relationList span{
+    display: block;
+    border: 1px #d2d2d2 solid;
+    margin: 10px;
+    height: 100%;
+}
+.relationList a{
+    display: block;
+    padding: 10px;
+}
