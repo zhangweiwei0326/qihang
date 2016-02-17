@@ -66,7 +66,7 @@
 			                </div>
 				            <header class="list-title"><{if $smarty.section.article.index lt 2}><span style="color:red;">[最新]</span><{/if}>
 						     <{if $list[article].is_original == 1 }>[原创]<{else}> <{/if}>
-							<a href="__APP__/Article/detail/?id=<{$list[article].id}>" target="_blank"><{$list[article].title}></a>
+							<a href="__APP__/Article/detail/?id=<{$list[article].id}>" target="_blank"><{$list[article].title}></a> <a href="###" data-id="<{$list[article].id}>">收藏</a>
 							</header>
 				            <p class="info">
 						        <span class="info-cate">类别：<{$list[article].typeName}></span>

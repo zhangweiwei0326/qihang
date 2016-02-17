@@ -13,7 +13,7 @@ $(document).ready(function () {
                 for (var i = 0; i < data.length; i++) {
                     var articleItem = ['<ul class="list-box-line">',
                         '<li class="list-title">',
-                            '<a href="' + APP + '/Article/showDetail/?id=' + data[i].id + '" target="_blank">' + data[i].title + '</a>',
+                            '<a href="' + APP + '/Article/detail/?id=' + data[i].id + '" target="_blank">' + data[i].title + '</a>',
                         '</li>',
                         '<li>',
                         '<p class="info">',

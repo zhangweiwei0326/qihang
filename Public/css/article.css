@@ -1,8 +1,9 @@
 /* !----------------------------------
 * acticle
 **---------------------------------- */
+/* acticle */
 .article { }
-.article-title { margin-bottom: 10px; }
+.article-title { margin: 10px 0; }
 .article-title, .article-title a { font: bold 22px "Microsoft YaHei"; color: #333; }
 .article-content { padding: 10px 0; font-size: 20px; font-size: 2rem; color: #333332; line-height: 180%; }
 .article-content ol { margin-left: 40px; list-style-type: decimal }
