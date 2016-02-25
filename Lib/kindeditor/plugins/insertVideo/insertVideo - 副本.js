@@ -80,16 +80,28 @@ KindEditor.plugin('insertVideo', function(K) {
 								autostart : autostartBox[0].checked ? 'true' : 'false',
 								loop : 'true'
 							});*/
-						var autoStart = autostartBox[0].checked ? '1' : '0';	
+						var autoStart = autostartBox[0].checked ? '1' : '0';
 
-						var	html = '<div id="ckplayerOutBox">';
-							html += '<span id="ckplayerBoxUrl" style="display:none;">'+url+'</span>';
-							html += '<span id="ckplayerAutoStart" style="display:none;">'+autoStart+'</span>';
-							html += '<span style="color:red;">发布后视频将显示在此处:</span><br/>';
-							html += '<img class="plugin-insertVideo-img" id="videoImg" src="'+ self.basePath +'/themes/common/blank.gif" style="width:'+width+'px; height:'+height+'px"/>';
-							html += '</div>';
-					
-							self.insertHtml(html).hideDialog();
+
+						/*---by lihuahzai.com---*/
+						if(true){
+							var	html = '<embed src="'+kindPath+'/kindeditor/plugins/insertVideo/ckplayer/ckplayer.swf" flashvars="f='+url+'" '+
+				 					'quality="high" width="'+width+'" height="'+height+'" align="middle" allowScriptAccess="always" allowFullscreen="true" type="application/x-shockwave-flash"></embed>';										
+						}else{
+							var timestamp = new Date().getTime();//时间戳，解决一个页面多个播放器id重复问题
+							var	html = '<div id="a1_'+timestamp+'" class="plugin-insertVideo-img" style="width:'+width+'px;height:'+height+'px">';
+								//html += '<span style="color:red;">发布后视频将显示在此处,可点击预览视频效果</span><br/>';
+								html += '<img src="'+ self.basePath +'/themes/common/blank.gif" style="width:'+width+'px; height:'+height+'px"/>';
+								html += '</div>';
+								html += '<script type="text/javascript" src="'+kindPath+'/kindeditor/plugins/insertVideo/ckplayer/ckplayer.js" charset="utf-8"></script>';
+								html += '<script type="text/javascript">';
+								html += 'flashvars={f:"'+url+'",p:"'+autoStart+'"};';
+								html += 'CKobject.embedSWF("'+kindPath+'/kindeditor/plugins/insertVideo/ckplayer/ckplayer.swf","a1_'+timestamp+'","ckplayer_a1_'+timestamp+'", "'+width+'", "'+height+'", flashvars);';
+								html += '</script>';
+						}
+	
+						self.appendHtml(html).hideDialog();
+						/*---by lihuahzai.com end---*/
 					}
 				}
 			}),

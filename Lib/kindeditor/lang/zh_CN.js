@@ -8,7 +8,6 @@
 *******************************************************************************/
 
 KindEditor.lang({
-	insertVideo : '插入视频',
 	source : 'HTML代码',
 	preview : '预览',
 	undo : '后退(Ctrl+Z)',
@@ -129,6 +128,7 @@ KindEditor.lang({
 	'media.autostart' : '自动播放',
 	'media.upload' : '上传',
 	'media.viewServer' : '文件空间',
+	insertVideo : '插入视频',
 	'insertVideo.url' : 'URL',
 	'insertVideo.width' : '宽度',
 	'insertVideo.height' : '高度',

@@ -228,7 +228,7 @@ K.basePath = _getBasePath();
 K.options = {
 	designMode : true,
 	fullscreenMode : false,
-	filterMode : true,
+	filterMode : false,
 	wellFormatMode : true,
 	shadowMode : true,
 	loadStyleMode : true,
@@ -258,10 +258,10 @@ K.options = {
 		'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
 		'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
 		'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
-		'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen',
+		'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
 		'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
 		'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
-		'flash', 'media','insertVideo', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+		'flash', 'media', 'insertfile', 'insertVideo','table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
 		'anchor', 'link', 'unlink', '|', 'about'
 	],
 	noDisableItems : ['source', 'fullscreen'],

@@ -11,8 +11,7 @@
 // http://google-code-prettify.googlecode.com/
 
 KindEditor.plugin('code', function(K) {
-	var self = this,
-		name = 'code';
+	var self = this, name = 'code';
 	self.clickToolbar(name, function() {
 		var lang = self.lang(name + '.'),
 			html = ['<div style="padding:10px 20px;">',

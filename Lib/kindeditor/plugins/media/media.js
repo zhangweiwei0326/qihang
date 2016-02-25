@@ -21,7 +21,7 @@ KindEditor.plugin('media', function(K) {
 				'<div style="padding:20px;">',
 				//url
 				'<div class="ke-dialog-row">',
-				'<label for="keUrl" style="width:60px;">ddddd' + lang.url + '</label>',
+				'<label for="keUrl" style="width:60px;">' + lang.url + '</label>',
 				'<input class="ke-input-text" type="text" id="keUrl" name="url" value="" style="width:160px;" /> &nbsp;',
 				'<input type="button" class="ke-upload-button" value="' + lang.upload + '" /> &nbsp;',
 				'<span class="ke-button-common ke-button-outer">',
@@ -162,7 +162,7 @@ KindEditor.plugin('media', function(K) {
 		},
 		'delete' : function() {
 			self.plugin.getSelectedMedia().remove();
-			// [IE] É¾³ıÍ¼Æ¬ºóÁ¢¼´µã»÷Í¼Æ¬°´Å¥³ö´í
+			// [IE] åˆ é™¤å›¾ç‰‡åç«‹å³ç‚¹å‡»å›¾ç‰‡æŒ‰é’®å‡ºé”™
 			self.addBookmark();
 		}
 	};

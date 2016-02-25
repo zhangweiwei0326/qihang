@@ -153,7 +153,7 @@ KindEditor.plugin('flash', function(K) {
 		},
 		'delete' : function() {
 			self.plugin.getSelectedFlash().remove();
-			// [IE] É¾³ıÍ¼Æ¬ºóÁ¢¼´µã»÷Í¼Æ¬°´Å¥³ö´í
+			// [IE] åˆ é™¤å›¾ç‰‡åç«‹å³ç‚¹å‡»å›¾ç‰‡æŒ‰é’®å‡ºé”™
 			self.addBookmark();
 		}
 	};
