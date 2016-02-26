@@ -1,106 +1,88 @@
 <{extends file="../Public/layout.html"}>
 <{block name="head" append}>
-<style>
-.register {
-	border: 1px #dedede solid;
-	border-radius: 5px;
-	background: #FFF;
-	padding: 10px;
-	margin-top: 20px;
-}
-.left-sidebar {
-	float: left;
-	width: 260px;
-	height: 300px;
-	border-right: 1px #E5E5E5 solid;
-	font-size: 14px;
-	padding-top: 50px;
-}
-.left-sidebar h1 {
-	font-size: 15px;
-	font-weight: normal;
-	text-align: center;
-}
-.left-sidebar p {
-	text-align: center;
-}
-.right-sidebar {
-	margin-left: 10px;
-	float: left;
-}
-.register ul {
-	margin-top: 10px;
-}
-.register ul li {
-	margin-bottom: 20px;
-}
-.register ul li label {
-	width: 100px;
-	text-align: right;
-}
-.register ul li input[type="text"] {
-	width: 200px;
-}
-.register label .icon-must {
-	color: #FF0000;
-	font-weight: 400px;
-	margin-right: 6px;
-	font-size: 14px;
-}
-.note {
-	margin-left: 10px;
-	color: #999;
-}
-</style>
+  <link type="text/css" rel="stylesheet" href="__ROOT__/Home/Tpl/default/page/User/css/user.css"/>
+  <script language="javascript" type="text/javascript" src="__ROOT__/Home/Tpl/default/page/User/js/user.js"></script>
 <{/block}>
 <{block name="content"}>
 <body>
-<include file="Public:head" />
-<div class="wrap">
-  <div class="container">
     <div class="register clearfix">
-      <div class="left-sidebar">
-        <h1>梨花寨，建站技术交流互助平台。</h1>
-        <ul>
-          <li>个人信息</li>
+
+      <div class="sideBar-left" >
+        <h3>梨花寨，建站技术交流互助平台。</h3>
+        <ul id="user-nav">
+          <li><a href="##" data-key="person-msg">个人信息</a></li>
+          <li><a href="##" data-key="article-list">我的收藏</a></li>
         </ul>
       </div>
-      <div class="right-sidebar">
-        <form action="__APP__/User/updateUserMsg" method="post">
-          <ul>
-            <li>
-              <label>用户名：</label>
-              <input name="username" type="text" value="<{$list['username']}>" disabled="true" />
-            </li>
-            <li>
-              <label>积分：</label>
-              <input name="credit" type="text" value="<{$list['credit']}>" disabled="true" />
-            </li>
-            <li>
-              <label><span class="icon-must">*</span>邮箱：</label>
-              <input name="email" type="text" value="<{$list['email']}>" />
-              <span class="note">用于找回密码</span> </li>
-            <li>
-            <li>
-              <label>昵称：</label>
-              <input name="nickname" type="text" value="<{$list['nickname']}>" />
-            </li>
-            <li> <label>技能：</label>
-              <volist name="skillList" id="skill"> <span style="margin-right:10px;">
-                <input type="checkbox" name="skillId[]" value="<{$skill['id']}>">
-                <{$skill['name']}></span> </volist>
-            </li>
-            <li>
-              <label></label>
-              <input name="add" type="submit" value="提交" class="btn btn-primary" />
-            </li>
-          </ul>
-        </form>
-      </div>
+
+      <div class="mainBox-right">
+        <div class="innerContent">
+        <div class="person-msg" id="person-msg">
+          <form action="__APP__/User/updateUserMsg" method="post">
+            <ul>
+              <li>
+                <label>用户名：</label>
+                <input name="username" type="text" value="<{$list['username']}>" disabled="true" />
+              </li>
+              <li>
+                <label>积分：</label>
+                <input name="credit" type="text" value="<{$list['credit']}>" disabled="true" />
+              </li>
+              <li>
+                <label><span class="icon-must">*</span>邮箱：</label>
+                <input name="email" type="text" value="<{$list['email']}>" />
+                <span class="note">用于找回密码</span> </li>
+              <li>
+              <li>
+                <label>昵称：</label>
+                <input name="nickname" type="text" value="<{$list['nickname']}>" />
+              </li>
+              <li> <label>技能：</label>
+                <volist name="skillList" id="skill"> <span style="margin-right:10px;">
+                  <input type="checkbox" name="skillId[]" value="<{$skill['id']}>">
+                  <{$skill['name']}></span> </volist>
+              </li>
+              <li>
+                <label></label>
+                <input name="add" type="submit" value="提交" class="btn btn-primary" />
+              </li>
+            </ul>
+          </form>
+        </div>
+
+        <div class="list border" style="margin-top:20px; display: none;" id="article-list">
+         <{section loop=$articleList name=article}>
+            <article class="post list-image-text">
+            <div class="list-text clearfix">
+              <div class="img">
+                <a href="__APP__/Article/detail/?id=<{$articleList[article].id}>" target="_blank"><img src="__ROOT__/Home/Tpl/default/page/Article/images/<{$smarty.section.article.index}>.jpg"/></a>
+              </div>
+              <header class="list-title"><{if $smarty.section.article.index lt 2}><span style="color:red;">[最新]</span><{/if}>
+                 <{if $articleList[article].is_original == 1 }>[原创]<{else}> <{/if}>
+              <a href="__APP__/Article/detail/?id=<{$articleList[article].id}>" target="_blank"><{$articleList[article].title}></a>
+              <a href="###" class="collect" data-id="<{$articleList[article].id}>" data-user-id="<{$smarty.session.uid}>">取消收藏</a>
+              </header>
+              <p class="info">
+                <span class="info-cate">类别：<{$articleList[article].typeName}></span>
+                <span class="line">|</span>
+                <span class="info-author" style="display:none;"><font>admin</font></span>
+                <span class="info-time"><font><{$articleList[article].add_date}></font></span>
+                <span class="line">|</span>
+                <span class="info-view"><font><{$articleList[article].click_count}></font></span>
+              </p>
+              <{if $articleList[article].summary == null }>
+                <{$articleList[article].summary}>
+              <{else}>
+                <{$articleList[article].summary}>
+              <{/if}>
+            </div>
+            </article>
+         <{/section}>
+        </div> <!-- article end -->
+        </div>
+      </div><!-- right-sidebar end -->
+
     </div>
-  </div>
-</div>
-<include file="Public:footer" />
 </body>
 </html>
 <{/block}>

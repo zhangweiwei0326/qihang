@@ -209,5 +209,18 @@ class ArticleAction extends PublicAction {
         echo $data_json;
 	}
 
+    //文章收藏
+    Public function collect(){
+        $Dao = M("collect");
+        $data["user_id"] = $_GET["userId"];
+        $data["article_id"] = $_GET["articleId"];
+
+        if ($lastInsId = $Dao->add($data)) {
+            echo  1;
+        } else {
+            echo  0;
+        }
+    }
+
 }
 ?>

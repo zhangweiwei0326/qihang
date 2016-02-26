@@ -32,4 +32,23 @@ $(document).ready(function() {
 	$(".m-nav .nenu").click(function() {
 		$(this).next('ul').toggle();
 	});
+
+	//点击收藏
+	$(".collect").click(function() {
+		var t = $(this);
+		var articleId = t.attr('data-id');
+		var userId = t.attr('data-user-id');
+		$.ajax({
+          type:"GET",
+          url: APP + "/Article/collect",
+          data:{userId:userId,articleId:articleId},
+          dataType:"json",
+          success:function (data) {
+          	if(data){
+          		t.html('已收藏');
+          	}
+          }
+		});
+	});
+	
 });

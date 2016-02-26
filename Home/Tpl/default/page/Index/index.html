@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="__ROOT__/Home/Tpl/default/page/Index/css/index.css" />
 <{/block}>
 <{block name="content"}>
-		<div class="mainContent">
+		<div class="mainBox-left">
 			<div class="innerContent">
 				<div class="recommend">
 					<div class="left">
@@ -66,7 +66,10 @@
 			                </div>
 				            <header class="list-title"><{if $smarty.section.article.index lt 2}><span style="color:red;">[最新]</span><{/if}>
 						     <{if $list[article].is_original == 1 }>[原创]<{else}> <{/if}>
-							<a href="__APP__/Article/detail/?id=<{$list[article].id}>" target="_blank"><{$list[article].title}></a> <a href="###" data-id="<{$list[article].id}>">收藏</a>
+							<a href="__APP__/Article/detail/?id=<{$list[article].id}>" target="_blank"><{$list[article].title}></a> 
+							<{if isset($smarty.session.email)}>
+								<a href="###" class="collect" data-id="<{$list[article].id}>" data-user-id="<{$smarty.session.uid}>">收藏</a>
+							<{/if}>
 							</header>
 				            <p class="info">
 						        <span class="info-cate">类别：<{$list[article].typeName}></span>
@@ -95,7 +98,7 @@
 		        </div>
 			</div>
 		</div>
-		<div class="sideBar">
+		<div class="sideBar-right">
 			<{include  file="../../widget/side/side.html"}>
 		</div>
 

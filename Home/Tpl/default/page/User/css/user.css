@@ -32,3 +32,33 @@
 	margin-top: 60px;
 } 
 
+.register {
+	border: 1px #dedede solid;
+	border-radius: 5px;
+	background: #FFF;
+	padding: 10px;
+	margin-top: 20px;
+}
+.register ul {
+	margin-top: 10px;
+}
+.register ul li {
+	margin-bottom: 20px;
+}
+.register ul li label {
+	width: 100px;
+	text-align: right;
+}
+.register ul li input[type="text"] {
+	width: 200px;
+}
+.register label .icon-must {
+	color: #FF0000;
+	font-weight: 400px;
+	margin-right: 6px;
+	font-size: 14px;
+}
+.note {
+	margin-left: 10px;
+	color: #999;
+}

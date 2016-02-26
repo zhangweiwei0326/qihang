@@ -116,6 +116,7 @@ class UserAction extends PublicAction {
 		if(isset($_SESSION['uid'])){		
 			$list = $Dao->where("id=".$_SESSION['uid'])->find();
 			$this->showSkill();
+			$this->collect();
 			$this->assign("list", $list);
 			$this->display();	
 		}	
@@ -137,6 +138,21 @@ class UserAction extends PublicAction {
 				$this->error('数据写入错误！');
 			}
 		}
+	}
+
+	//展示收藏列表
+	public function collect(){
+        header("Content-Type:text/html; charset=utf-8");
+        $Dao = M("article"); 
+        $user_id = $_SESSION['uid'];
+
+        $articleList = $Dao->table('my_article article,my_category category,my_collect collect')
+            ->where('article.cateId = category.id and collect.user_id = '.$user_id.' and article.id = collect.article_id and article.ifShow = 1')
+            ->field('article.id as id,article.title,article.summary,article.is_original,article.content,article.add_date,article.click_count,category.name as typeName')
+			->order('article.add_date desc')
+            ->select();
+
+         $this->assign("articleList", $articleList);
 	}
 	
 	
