@@ -37,11 +37,9 @@
         <div class="form-item">
           <label class="form-label" for="role"><span class="icon-must">*</span>角色：</label>
           <div class="form-content">
-             <select name="role_id[]">
                 <{foreach item='v' from=$role}>
-                   <option value="<{$v['id']}>"><{$v['name']}></option>
+                   <label style="padding-right: 10px;"><input name="role_id[]" type="checkbox" value="<{$v['id']}>" /><{$v['name']}> </label> 
                 <{/foreach}>
-            </select>
           </div>
         </div>
 

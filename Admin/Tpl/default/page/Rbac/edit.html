@@ -12,27 +12,23 @@
 <div class="mainContent">
   <form action="__URL__/update" method="post" class="lhz-form" id="userEdit">
       <input type="hidden" name="id" value="<{$list['id']}>" />
+      
       <div class="form-item">
         <label class="form-label" for="inputEmail">用户名：</label>
         <div class="form-content">
           <input name="username" type="text" value="<{$list['username']}>" data-validator="required" data-desc="用户名" class="input-title input-widht500">
         </div>
       </div>
+
       <div class="form-item">
-        <label class="form-label" for="inputEmail">邮件：</label>
-        <div class="form-content">
-         <input name="email" type="text" value="<{$list['email']}>"  data-validator="email" data-desc="邮箱" class="input-title input-widht500">
-        </div>
+          <label class="form-label" for="role"><span class="icon-must">*</span>角色：</label>
+          <div class="form-content">
+              <{foreach item='v' from=$role}>
+                 <label style="padding-right: 10px;"><input name="role_id[]" type="checkbox" value="<{$v['id']}>" /><{$v['name']}> </label> 
+              <{/foreach}>
+          </div>
       </div>
-      <div class="form-item">
-        <label class="form-label">角色：</label>
-        <div class="form-content">
-          是
-          <input type="radio" name="is_original" value="1" checked="">
-          不是
-          <input type="radio" name="is_original" value="0">
-        </div>
-      </div>
+
       <div class="form-action">
           <input type="submit" value="提交" name="add" class="btn btn-primary" /> <a href="javascript:window.history.go(-1);" class="btn">返回</a> 
       </div>

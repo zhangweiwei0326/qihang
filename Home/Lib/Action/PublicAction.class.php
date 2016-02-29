@@ -63,7 +63,7 @@ class  PublicAction extends Action {
 	public function hotShow() {
 		header("Content-Type:text/html; charset=utf-8");
 		$Dao = M("article");  
-		$hotList = $Dao->order('click_count desc')->limit('6')->select();
+		$hotList = $Dao->where('ifShow = 1')->order('click_count desc')->limit('6')->select();
 		$this->assign("hotList", $hotList);
 		return $hotList;
 	}

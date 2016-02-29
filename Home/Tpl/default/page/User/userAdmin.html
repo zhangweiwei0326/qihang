@@ -60,7 +60,7 @@
               <header class="list-title"><{if $smarty.section.article.index lt 2}><span style="color:red;">[最新]</span><{/if}>
                  <{if $articleList[article].is_original == 1 }>[原创]<{else}> <{/if}>
               <a href="__APP__/Article/detail/?id=<{$articleList[article].id}>" target="_blank"><{$articleList[article].title}></a>
-              <a href="###" class="collect" data-id="<{$articleList[article].id}>" data-user-id="<{$smarty.session.uid}>">取消收藏</a>
+              <a href="###" class="delete-collect" data-id="<{$articleList[article].id}>" data-user-id="<{$smarty.session.uid}>">取消收藏</a>
               </header>
               <p class="info">
                 <span class="info-cate">类别：<{$articleList[article].typeName}></span>

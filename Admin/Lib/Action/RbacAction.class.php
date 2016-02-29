@@ -42,6 +42,7 @@ class RbacAction extends CommonAction {
 			$data["email"] = $_POST['email'];
 			$random = substr(uniqid(rand()), -6);
 			$data["password"] = md5(md5($_POST['password']).$random);
+			$data["random"] = $random ;
 			$data["register_date"] = date("Y-m-d H:i:s");
 			// 写入数据
 			if ($lastId = $Dao->add($data)) {
@@ -71,6 +72,7 @@ class RbacAction extends CommonAction {
 		$list = $user->where("id=$id")->find();
 		$this->assign("list", $list);		
 		$this->assign("title", '编辑');
+		$this->role = M('role')->select();
 		$this->display();
 	}
 	

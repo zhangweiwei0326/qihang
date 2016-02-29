@@ -209,13 +209,26 @@ class ArticleAction extends PublicAction {
         echo $data_json;
 	}
 
-    //文章收藏
-    Public function collect(){
+    //添加文章收藏
+    Public function addCollect(){
         $Dao = M("collect");
         $data["user_id"] = $_GET["userId"];
         $data["article_id"] = $_GET["articleId"];
 
         if ($lastInsId = $Dao->add($data)) {
+            echo  1;
+        } else {
+            echo  0;
+        }
+    }
+
+    //删除文章收藏
+    Public function deleteCollect(){
+        $Dao = M("collect");
+        $data["user_id"] = $_GET["userId"];
+        $data["article_id"] = $_GET["articleId"];
+
+        if ($lastInsId = $Dao->where($data)->delete()) {
             echo  1;
         } else {
             echo  0;

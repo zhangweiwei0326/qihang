@@ -34,13 +34,13 @@ $(document).ready(function() {
 	});
 
 	//点击收藏
-	$(".collect").click(function() {
+	$(".add-collect").click(function() {
 		var t = $(this);
 		var articleId = t.attr('data-id');
 		var userId = t.attr('data-user-id');
 		$.ajax({
           type:"GET",
-          url: APP + "/Article/collect",
+          url: APP + "/Article/addCollect",
           data:{userId:userId,articleId:articleId},
           dataType:"json",
           success:function (data) {
