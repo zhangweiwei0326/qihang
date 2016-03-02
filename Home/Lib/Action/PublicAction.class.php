@@ -105,17 +105,19 @@ class  PublicAction extends Action {
 	}
 
 	//邮件发送  
-	public function send_mail($frommail,$tomail,$subject,$body,$ccmail,$bccmail) { 
+	public function send_mail($tomail,$subject,$body,$ccmail,$bccmail) { 
 		 date_default_timezone_set("Asia/Shanghai");//设定时区东八区    
 		 $mail = new PHPMailer();  
 		   $mail->IsSMTP();                            // 经smtp发送  
 		   $mail->CharSet='utf-8'; //编码 
-		   $mail->SMTPDebug  = 1; // 启用SMTP调试功能  
-		   $mail->Host     = "smtp.163.com";           // SMTP 服务器  
-		   $mail->SMTPAuth = true;                     // 打开SMTP 认证  
-		   $mail->Username = "lihuazhai_com@163.com";    // 用户名  
-		   $mail->Password = "lihuazhai_2014";          // 密码  
-		   $mail->From     = $frommail;                  // 发信人  
+		   $mail->SMTPDebug  = 1; // 启用SMTP调试功能   
+       $mail->Host     = "smtp.163.com";           // SMTP 服务器 
+		   $mail->SMTPAuth = true;                     // 打开SMTP 认证
+       $mail->SMTPKeepAlive = true; 
+       $mail->Port     = 25;  
+		   $mail->Username = "yangxiaoxu006@163.com";    // 用户名  
+		   $mail->Password = "lihuazhai_2014";           // 密码  
+		   $mail->From     = "yangxiaoxu006@163.com";                  // 发信人  
 		   $mail->FromName = "梨花寨-www.lihuazhai.com";        // 发信人别名  
 		   $mail->AddAddress($tomail);                 // 收信人  
 		   if(!empty($ccmail)){  
@@ -124,7 +126,7 @@ class  PublicAction extends Action {
 		if(!empty($bccmail)){  
 		   $mail->AddCC($bccmail);                   // bcc收信人  
 		}  
-		$mail->WordWrap = 50;  
+		  $mail->WordWrap = 50;  
 		  $mail->IsHTML(true);                            // 以html方式发送  
 		  $mail->Subject  = $subject;                 // 邮件标题  
 		  $mail->Body     = $body;                    // 邮件内空  
@@ -201,7 +203,7 @@ class  PublicAction extends Action {
            	    	$emailBody .= '<br/>';
            	    	$emailBody .= '点击链接回复:<a href="'.$url_this.'">'.$url_this.'</a>';
 
-           	    	$this->send_mail("lihuazhai_com@163.com","254264446@qq.com",$emailTitle,$emailBody ,"","");  
+           	    	$this->send_mail("254264446@qq.com",$emailTitle,$emailBody ,"","");  
            	    } else {
            	    	$this->error('数据写入错误！');
            	    }
@@ -262,7 +264,7 @@ class  PublicAction extends Action {
     			$emailBody .= '用户IP信息:'.$user_ip;
     			$emailBody .= '<br/>';
     			$emailBody .= '点击链接回复:<a href="'.$url_this.'">'.$url_this.'</a>';
-    			$this->send_mail("lihuazhai_com@163.com","254264446@qq.com",$emailTitle,$emailBody ,"","");
+    			$this->send_mail("254264446@qq.com",$emailTitle,$emailBody ,"","");
 				//$this->changeCredit($_SESSION['uid'],1);//加积分
     			return ture;	
 

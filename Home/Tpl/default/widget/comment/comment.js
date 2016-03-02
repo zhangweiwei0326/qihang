@@ -8,6 +8,7 @@ $(document).ready(function() {
 		$(this).html("");
 	}).blur(function() {});
 	jQuery("#commentText").textareaAutoHeight();
+	
 	jQuery("#add_comment").click(function() {
 		var verify = jQuery("#verify").val();
 		var id = jQuery("#subject_id").val();

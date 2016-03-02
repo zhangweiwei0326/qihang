@@ -90,11 +90,15 @@ class RbacAction extends CommonAction {
 			$this->error($message);
 		}
 	}
-	//删除用户
+	//删除用户及角色关联关系
 	public function del() {
 		 $id  = $_GET['id'];
 		 $Dao = M("user");
 		 $result = $Dao->where('id = '.$id)->delete();
+
+		 $roleUser = M("role_user");
+		 $result = $roleUser->where('user_id = '.$id)->delete();
+
 		 if($result !== false){
 		 	$this->assign("jumpUrl", "__URL__/index/");
 		 	$this->success('删除成功！');

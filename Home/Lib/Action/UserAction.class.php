@@ -1,4 +1,5 @@
 <?php
+Vendor("PHPMailer.class#phpmailer"); //包函邮件发送类
 class UserAction extends PublicAction {
     public function toLogin() {
 		$this->pubHtml();
@@ -56,30 +57,87 @@ class UserAction extends PublicAction {
         $this->assign("jumpUrl", "__APP__/Index/index");
         $this->success("登出成功！");
     }
+    
+    //注册用户
     public function register() {
 		$this->pubHtml();
         $this->display();
         if (isset($_POST['add'])) {
             if (!empty($_POST['email']) && !empty($_POST['password'])) {
+
+                $Dao = M("user");
+				$email = trim($_POST['email']); 
+				$data = $Dao->where('`email` = "'. $email .'"')->find(); 
+				if(isset($data['email'])){ 
+					$this->error('用户名已存在，请换个其他的用户名！');
+					return false;
+				}
+
             	if($_POST['password'] != $_POST['password2']){
 					$this->error('密码不一致！');
 					return false;
             	}
-                $Dao = M("user");
+
+            	$activate_code = md5($_POST['email'].$_POST['password'].$regtime); //创建用于激活识别码 
+            	$token_exptime = time()+60*60*24;//过期时间为24小时后
+
 				$data["email"] = $_POST['email'];
 				$random = substr(uniqid(rand()), -6);
 				$data["password"] = md5(md5($_POST['password']).$random);
-				$data["random"] = $random ;
+				$data["random"] = $random;
+				$data["state"] = 0;
+				$data["activate_code"] = $activate_code;
+				$data["token_exptime"] = $token_exptime;
 				$data["register_date"] = date("Y-m-d H:i:s");
                 // 写入数据
                 if ($lastInsId = $Dao->add($data)) {
+                	$this->sendActivateEmail($lastInsId,$activate_code);
                     $this->assign("jumpUrl", "__APP__/Index/index");
-                    $this->success("登录成功！");
+                    $this->success("恭喜您，注册成功！<br/>请登录到您的邮箱及时激活您的帐号！");
                 } else {
                     $this->error('数据写入错误！');
                 }
             }
         }
+    }
+
+    //发送激活邮件
+    public function sendActivateEmail($userId,$token){
+		$emailTitle = '来自梨花寨-www.lihuazhai.com平台的评论';			
+		$url_this = "http://$_SERVER[HTTP_HOST]"."/qihang/index.php/User/activateUser/?id=".$userId."&token=".$token;
+		$emailBody = '';
+		$emailBody .= '梨花寨，欢迎加入我们！';
+		$emailBody .= '<br/>';
+		$emailBody .= '<br/>';
+		$emailBody .= '点击链接激活帐号:<a href="'.$url_this.'">'.$url_this.'</a>';
+
+		$this->send_mail("254264446@qq.com",$emailTitle,$emailBody ,"",""); 
+    }
+
+    //激活帐号
+    public function activateUser(){
+		$Dao = M("user");
+		$userId = (int) $_GET['id'];
+		$activate_code = $_GET['token'];
+
+		$data = $Dao->where('`id` = "'. $userId .'" and `activate_code` = "'.$activate_code.'"')->find();
+
+		if(isset($data['state'])){
+			if($data['state'] == 1){
+				$this->error('已激活过了，无需要重复激活！');
+				return false;
+			} 
+			if(time() > $data['token_exptime']){
+				$this->error('您的激活有效期已过，请登录您的帐号重新发送激活邮件！');
+				return false;
+			} 
+			$data['state'] = 1;
+			$Dao->where('id='.$userId)->save($data); // 更改激活状态
+			$this->assign("jumpUrl", "__APP__/Index/index/");
+			$this->success("更新成功！");
+		}else{
+			$this->error('激活失败！');
+		}
     }
 	
 	public function edit() {
@@ -117,6 +175,7 @@ class UserAction extends PublicAction {
 			$list = $Dao->where("id=".$_SESSION['uid'])->find();
 			$this->showSkill();
 			$this->collect();
+			$this->pubHtml();
 			$this->assign("list", $list);
 			$this->display();	
 		}	

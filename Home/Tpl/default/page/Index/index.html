@@ -3,7 +3,7 @@
 <link type="text/css" rel="stylesheet" href="__ROOT__/Lib/syntaxhighlighter/styles/shCore.css"/>
 <link type="text/css" rel="stylesheet" href="__ROOT__/Lib/syntaxhighlighter/styles/shThemeDefault.css"/>
 
-<link rel="stylesheet" href="__ROOT__/Home/Tpl/default/widget/comment/comment.css" />
+<link rel="stylesheet" href="__ROOT__/Home/Tpl/default/widget/addRequire/comment.css" />
 <link rel="stylesheet" href="__ROOT__/Home/Tpl/default/page/Index/css/index.css" />
 <{/block}>
 <{block name="content"}>
@@ -92,10 +92,9 @@
 				   
 				</div>
 
-				<{include  file="../../widget/comment/comment.html" type='all'}>
+				<{include  file="../../widget/addRequire/comment.html" type='all'}>
 
-		        <div class="ad">
-		        </div>
+		        <div class="ad"></div>
 			</div>
 		</div>
 		<div class="sideBar-right">
@@ -115,29 +114,5 @@
   SyntaxHighlighter.config.clipboardSwf = '__ROOT__/Lib/syntaxhighlighter/scripts/clipboard.swf';
   SyntaxHighlighter.all() 
 </script>
-
-<script type="text/javascript" src="__ROOT__/Home/Tpl/default/widget/comment/comment.js"></script>
-	<script type="text/javascript">
-	    jQuery("#add_comment").click(function(){
-	      var id = 0;
-	      var verify =  jQuery("#verify").val();
-	      var type =  jQuery("#type").val();
-	      var content =  jQuery("#commentText").val();
-	      $.ajax({ 
-	          type: "post", 
-	          url : URL + "/requireAdd", 
-	          dataType:'json',//从php返回的值以 JSON方式
-	          data: 'id='+id+'&content='+content+'&verify='+verify+'&type='+type, 
-	          success: function(data){ 
-  			    console.log(data);
-	            if(data['flag'] == 0){
-	              alert('发布成功!'); 
-	              window.location.reload(); 
-	            }else{
-	              alert('验证码错误!');        
-	            } 
-	          }
-	      });
-    	});
-	</script>
+<script type="text/javascript" src="__ROOT__/Home/Tpl/default/widget/addRequire/comment.js"></script>
 <{/block}>

@@ -111,6 +111,7 @@ class ArticleAction extends PublicAction {
             $relation_id_list = $Dao->where('id_list like "%'.$id.'%"')->select();
             return $relation_id_list;
         }
+        
         $relation_id_list = getRelationIdList($id);
 
         function getRelationArticle($idList){
