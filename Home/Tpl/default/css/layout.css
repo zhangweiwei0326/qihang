@@ -1,7 +1,7 @@
 /*!----------------------------------
 * layout
 **----------------------------------*/
-.wrap { position: relative;  width: 100%; height: auto; min-height: 100%;}
+.wrap { position: relative;  width: 100%; height: auto; min-height: 100%; padding:3.8rem;}
 .main-body { width: 1200px; _width: 1200px; margin: 0 auto; text-align: left;  padding: 1rem 2rem 170px 2rem; 
 zoom: 1;overflow: hidden; }
 .main-body:before, .inner:after { display: table; content: "" }

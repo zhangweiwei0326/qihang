@@ -1,0 +1,57 @@
+#toShare {
+    font-size: 13px;
+}
+
+#toShare .label {
+    font-size: 20px;
+}
+
+#toShare .list {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#toShare .list span {
+    width: 30%;
+    display: inline-block;
+    text-align: center;
+    margin: 10px 0;
+}
+
+#toShare .list span i {
+    width: 40px;
+    height: 40px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+
+#toShare .weibo i {
+    background-image: url('../images/weibo.png');
+    background-size: cover;
+}
+
+#toShare .weixin i {
+    background-image: url('../images/weixin_friend.png');
+    background-size: cover;
+}
+
+#toShare .weixin_timeline i {
+    background-image: url('../images/weixin.png');
+    background-size: cover;
+}
+
+#toShare .qq i {
+    background-image: url('../images/qq.png');
+    background-size: cover;
+}
+
+#toShare .qzone i {
+    background-image: url('../images/qqzone.png');
+    background-size: cover;
+}
+
+#toShare .more i {
+    background-image: url('../images/more.png');
+    background-size: cover;
+}

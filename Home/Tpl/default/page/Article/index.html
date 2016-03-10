@@ -14,8 +14,8 @@
                   <a href="__URL__/detail/?id=<{$list[article].id}>" target="_blank"><img src="__ROOT__/Home/Tpl/default/page/Article/images/<{$smarty.section.article.index}>.jpg"/></a>
                 </div>
                  <header class="list-title">
-                    <h2><{if $smarty.section.article.index lt 2}><span style="color:red;">[最新]</span><{/if}><{if $list[article].is_original == 1 }><span style="display: none;">[原创]</span><{else}> <{/if}>
-                    <a href="__URL__/detail/?id=<{$list[article].id}>" target="_blank"><{$list[article].title}></a></h2>
+                    <{if $smarty.section.article.index lt 2}><span style="color:red;">[最新]</span><{/if}><{if $list[article].is_original == 1 }><span style="display: none;">[原创]</span><{else}> <{/if}>
+                    <a href="__URL__/detail/?id=<{$list[article].id}>" target="_blank"><{$list[article].title}></a>
                   <{if isset($smarty.session.email)}>
                   <a href="###" class="add-collect" data-id="<{$list[article].id}>" data-user-id="<{$smarty.session.uid}>">收藏</a>
               <{/if}>

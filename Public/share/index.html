@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>微信JS-SDK Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <link rel="stylesheet" href="css/share.css">
+</head>
+<body>
+  <div id="toShare"></div>
+</body>
+<script src="../debug/debug.js"> </script>
+<script src="js/share.js"> </script>
+<script type="text/javascript">
+  var config = {
+      url:'http://www.lihuazhai.com',
+      title:'前端技术分享',
+      desc:'前端技术分享，欢迎交流~',
+      img:'http://www.lihuazhai.com/qihang/Home/Tpl/default/page/Article/images/2.jpg',
+      img_title:'h5分享组件',
+      from:'梨花寨网站'
+  };
+  var s = new Share('toShare',config);
+</script>
+</html>

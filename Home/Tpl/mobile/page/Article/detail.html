@@ -1,10 +1,10 @@
 <{extends file="../Public/base.html"}>
 <{block name="head" append}>
+<title><{$list['title']}></title>
 <link rel="stylesheet" href="__ROOT__/Public/css/article.css" />
 <script charset="utf-8" src="__ROOT__/Public/kindeditor/plugins/insertVideo/ckplayer/ckplayer.js"></script>
 <script charset="utf-8" src="__ROOT__/Public/kindeditor/plugins/insertVideo/callCkplayer.js"></script>
 <script type="text/javascript" src="__ROOT__/Public/syntaxhighlighter/scripts/shCore.js"></script>
-
 <link type="text/css" rel="stylesheet" href="__ROOT__/Public/syntaxhighlighter/styles/shCore.css"/>
 <link type="text/css" rel="stylesheet" href="__ROOT__/Public/syntaxhighlighter/styles/shThemeDefault.css"/>
 <script type="text/javascript" src="__ROOT__/Public/syntaxhighlighter/scripts/shCore.js"></script>
@@ -29,16 +29,12 @@
              style="border: 1px #ccc solid;box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2); background: #fff; ">
             <article>
                 <h1 class="article-title"><{$list['title']}></h1>
-
                 <div class="info">
                     <span class="info-cate"><{$list['typeName']}></span>
                     <span class="line">|</span>
-            <span class="info-time"> <font><{$list['add_date']}></font>
-            </span>
-                    <span class="line">|</span>
-            <span class="info-view">
-              <font><{$list['click_count']}></font>
-            </span>
+                    <span class="info-time"> <font><{$list['add_date']}></font></span>
+                     <span class="line">|</span>
+                    <span class="info-view"><font><{$list['click_count']}></font></span>
                 </div>
                 <div class="article-content"><{$list['content']}></div>
                 <div class="ad"></div>
@@ -116,6 +112,7 @@
         </div>
     </div>
 </div>
+<div id="toShare"></div>
 <script type="text/javascript">
     var URL = "__URL__";
     function fleshVerify() { //重载验证码
@@ -216,5 +213,20 @@
             });
         });
     })
+</script>
+<link rel="stylesheet" href="__ROOT__/Public/share/css/share.css" />
+<script src="__ROOT__/Public/share/js/share.js"> </script>
+<script type="text/javascript">
+window.onload = function(){    
+    var config = {
+      url:'',
+      title:"<{$list['title']}>",
+      desc:'',
+      img:'http://www.lihuazhai.com/qihang/Home/Tpl/default/page/Article/images/2.jpg',
+      img_title:'h5分享组件',
+      from:'梨花寨网站'
+  };
+  var s = new Share('toShare',config);  
+}  
 </script>
 <{/block}>
