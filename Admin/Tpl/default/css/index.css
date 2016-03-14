@@ -1,8 +1,8 @@
 @charset "utf-8";
 /* header */
 #header {
-	height: 64px;
-	background: url(../images/top-right.gif);
+	height: 50px;
+	background:#0072C6;
 	min-width: 980px;
 }
 #header .logo {
@@ -11,12 +11,16 @@
 }
 #header .topNav {
 	position: absolute;
-	top: 10px;
+	top: 0;
 	right: 20px;
 	color: #fff;
 }
 #header .topNav a {
-	color: #0F0;
+	color: #FFF;
+	line-height: 50px;
+}
+#header .topNav a:hover{
+	text-decoration: none;
 }
 #header .topNav span {
 	margin-left: 10px;
